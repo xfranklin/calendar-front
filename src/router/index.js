@@ -11,7 +11,8 @@ import UiKit from "@/pages/UiKit.vue";
 const routes = [
   {
     path: "/",
-    name: "Root"
+    name: "Root",
+    redirect: UiKit
   },
   {
     path: "/ui-kit",
