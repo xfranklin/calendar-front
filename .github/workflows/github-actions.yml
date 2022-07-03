@@ -34,4 +34,4 @@ jobs:
       - run: npm install
       - run: npm run build:dev
 
-      - run: rsync -e "ssh -i $HOME/.ssh/github_private_key -o StrictHostKeyChecking=no" --archive --compress --delete ./dist github-user@${{secrets.API_ADDRESS}}:/var/www/dev.oooi.app/front/
+      - run: rsync -e "ssh -i $HOME/.ssh/github_private_key -o StrictHostKeyChecking=no" --archive --compress --delete ./dist github-user@206.189.12.4:/var/www/dev.oooi.app/front/
