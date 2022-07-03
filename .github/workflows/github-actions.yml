@@ -37,4 +37,4 @@ jobs:
       - run: ls -la
       - run: cat "$HOME/.ssh/github_private_key"
 
-      - run: rsync -e "ssh -i $HOME/.ssh/github_private_key -o StrictHostKeyChecking=no" --archive --compress --delete ./dist github-user@206.189.12.4:/var/www/dev.oooi.app/front/
+      - run: rsync -e "ssh -i $HOME/.ssh/github_private_key -o StrictHostKeyChecking=no" --archive --compress --delete ./dist/. github-user@206.189.12.4:/var/www/dev.oooi.app/front/
