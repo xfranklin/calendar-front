@@ -6,11 +6,17 @@ import Login from "@/pages/Login.vue";
 import SignUp from "@/pages/SignUp.vue";
 import Reset from "@/pages/Reset.vue";
 import Secret from "@/pages/Secret.vue";
+import UiKit from "@/pages/UiKit.vue";
 
 const routes = [
   {
     path: "/",
     name: "Root"
+  },
+  {
+    path: "/ui-kit",
+    name: "UiKit",
+    component: UiKit
   },
   {
     path: "/login",

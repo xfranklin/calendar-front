@@ -1,0 +1,35 @@
+:root {
+  //Base colors
+  --color-blue-dark: rgba(0, 15, 31, 1);
+  --color-blue-dark-medium: rgba(23, 55, 71, 1);
+  --color-blue-medium: rgba(83, 115, 131, 1);
+  --color-blue-ligth: rgba(163, 195, 211, 1);
+  --color-yelow-dark: rgba(193, 137, 15, 1);
+  --color-yelow-dark-medium: rgba(243, 187, 65, 1);
+  --color-yelow-medium: rgba(255, 227, 105, 1);
+  --color-yellow-light: rgba(255, 255, 195, 1);
+  --color-white: rgba(255, 255, 255, 1);
+
+  // Typography
+  --text-main: var(--color-blue-dark-medium);
+
+  // Backgrounds
+  --background-main: var(--color-white);
+
+  //Components
+  --primary-color: var(--color-blue-dark-medium);
+  --disabled-primary-color: var(--color-blue-ligth);
+}
+
+:root[dark] {
+  // Typography
+  --text-main: var(--color-yellow-light);
+
+  // Backgrounds
+  --background-main: var(--color-blue-dark);
+
+  //Components
+  --primary-color:  var(--color-yelow-medium);
+  --disabled-primary-color: var(--color-blue-medium);
+
+}

@@ -6,10 +6,13 @@ import { createPinia } from "pinia";
 import { servicesPlugin } from "@/plugins/services";
 import { initPlugin } from "@/plugins/init";
 
+import BaseSwitch from "@/components/base/form/BaseSwitch.vue";
+
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(i18n);
 app.use(servicesPlugin);
 app.use(initPlugin);
+app.component("BaseSwitch", BaseSwitch);
 app.mount("#calendar-app");

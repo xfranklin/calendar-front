@@ -1,3 +1,56 @@
 @import "./normalize";
 @import "./fonts";
 @import "./variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-family: Manrope;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-main);
+  background: var(--background-main);
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.headline-1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.headline-2 {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.headline-3 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.subtitle-1 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.subtitle-2 {
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.small-text {
+  font-weight: 400;
+  font-size: 0.75rem;
+}
