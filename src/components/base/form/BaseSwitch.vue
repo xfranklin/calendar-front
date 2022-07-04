@@ -1,9 +1,8 @@
 <template>
   <label class="base-switch">
-    <div :class="['base-switch__toggle', { disabled }]">
+    <div :class="['base-switch__toggle', { disabled }, { checked: modelValue }]">
       <input :disabled="disabled" :checked="modelValue" type="checkbox" class="base-switch__input" @change="onChange" />
       <div class="base-switch__dot"></div>
-      <div class="base-switch__bg"></div>
     </div>
     <div v-if="label" class="base-switch__label">{{ label }}</div>
   </label>
@@ -49,7 +48,15 @@ const onChange = ({ target }) => {
     padding: 2px;
     border-radius: 4px;
     overflow: hidden;
-    transition: transform 250ms ease-in-out;
+    background-image: radial-gradient(ellipse at center, var(--primary-color) 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-size: 200% 300%;
+    background-position: right -100% top 50%;
+    transition: all 250ms ease-in-out;
+
+    &.checked {
+      background-position: right 40% top 50%;
+    }
 
     &.disabled {
       border-color: var(--disabled-primary-color);
@@ -59,8 +66,8 @@ const onChange = ({ target }) => {
         background-color: var(--disabled-primary-color);
       }
 
-      .base-switch__bg {
-        background-color: var(--disabled-primary-color);
+      &.checked {
+        background-image: radial-gradient(ellipse at center, var(--disabled-primary-color) 50%, transparent 50%);
       }
 
       ~ .base-switch__label {
@@ -89,20 +96,6 @@ const onChange = ({ target }) => {
     appearance: none;
   }
 
-  &__bg {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    transform: translateY(-50%);
-    content: "";
-    width: 36px;
-    height: 36px;
-    left: -38px;
-    border-radius: 40%;
-    background-color: var(--primary-color);
-    transition: left ease-in-out 200ms;
-  }
-
   &__dot {
     position: absolute;
     z-index: 10;
@@ -118,10 +111,6 @@ const onChange = ({ target }) => {
     ~ .base-switch__dot {
       left: calc(100% - 14px);
       background-color: var(--background-main);
-    }
-
-    ~ .base-switch__dot + .base-switch__bg {
-      left: -2px;
     }
   }
 
