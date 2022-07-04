@@ -22,6 +22,22 @@
     <div class="small-text">small text</div>
 
     <div class="divider">
+      <h2 class="subtitle-1">Icons</h2>
+      <hr />
+    </div>
+    <BaseIcon name="google" group="socials" />
+    <BaseIcon name="facebook" group="socials" />
+    <BaseIcon name="eye" group="view" />
+    <BaseIcon name="eye-off" group="view" />
+
+    <div class="divider">
+      <h2 class="subtitle-1">Buttons</h2>
+      <hr />
+    </div>
+
+    <button class="primary-button">Button</button>
+
+    <div class="divider">
       <h2 class="subtitle-1">Form</h2>
       <hr />
     </div>
@@ -41,7 +57,7 @@
 import { ref, watch } from "vue";
 
 const variableFont = ref(null);
-const variableWeight = ref(100);
+const variableWeight = ref(200);
 
 const switch_1 = ref(false);
 const switch_2 = ref(true);

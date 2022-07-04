@@ -7,6 +7,7 @@ import { servicesPlugin } from "@/plugins/services";
 import { initPlugin } from "@/plugins/init";
 
 import BaseSwitch from "@/components/base/form/BaseSwitch.vue";
+import BaseIcon from "@/components/base/BaseIcon.vue";
 
 const app = createApp(App);
 app.use(createPinia());
@@ -15,4 +16,5 @@ app.use(i18n);
 app.use(servicesPlugin);
 app.use(initPlugin);
 app.component("BaseSwitch", BaseSwitch);
+app.component("BaseIcon", BaseIcon);
 app.mount("#calendar-app");

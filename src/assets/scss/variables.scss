@@ -16,9 +16,14 @@
   // Backgrounds
   --background-main: var(--color-white);
 
-  //Components
+  // Components
   --primary-color: var(--color-blue-dark-medium);
   --disabled-primary-color: var(--color-blue-ligth);
+
+  // Buttons
+  --primary-button-color: var(--color-blue-dark);
+  --primary-button-text-color: var(--color-yelow-medium);
+
 }
 
 :root[dark] {
@@ -32,4 +37,7 @@
   --primary-color:  var(--color-yelow-medium);
   --disabled-primary-color: var(--color-blue-medium);
 
+  // Buttons
+  --primary-button-color: var(--color-yelow-medium);
+  --primary-button-text-color: var(--color-blue-dark);
 }
