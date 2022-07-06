@@ -35,10 +35,17 @@
       <hr />
     </div>
 
-    <div style="display: flex; gap: 10px">
+    <div style="display: flex; gap: 10px; margin-bottom: 10px">
       <button class="primary-button">Button</button>
       <button class="primary-button" disabled>Button</button>
-      <div style="width: 2px; height: 40px; background-color: grey"></div>
+      <button class="secondary-button">Button</button>
+      <button class="secondary-button" disabled>Button</button>
+    </div>
+    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+      <button class="primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
+      <button class="primary-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
+      <button class="secondary-button icon"><BaseIcon name="eye" group="view" />Button</button>
+      <button class="secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
     </div>
 
     <div class="divider">

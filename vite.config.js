@@ -11,7 +11,12 @@ export default ({ mode }) => {
         "@": path.resolve(__dirname, "./src")
       }
     },
-    plugins: [vue(), svgLoader()],
+    plugins: [
+      vue(),
+      svgLoader({
+        svgo: false
+      })
+    ],
     server: {
       port: 3010,
       proxy: {

@@ -12,7 +12,7 @@ const props = defineProps({
   },
   group: {
     type: String,
-    required: true
+    default: "regular"
   }
 });
 

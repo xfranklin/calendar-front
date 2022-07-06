@@ -7,7 +7,19 @@
   padding: 8px 12px;
   cursor: pointer;
   transition:  all 200ms ease-in-out;
+  outline-color: transparent;
   transition-property: background-color, box-shadow, transform, outline-color;
+
+  &.icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &.icon .base-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -18,7 +30,6 @@
   @include base-button;
   color: var(--primary-button-text-color);
   background-color: var(--primary-button-color);
-  outline-color: var(--primary-button-color);
 
   &:hover {
     background-color: var(--primary-button-hover-color);
@@ -45,8 +56,8 @@
   }
 
   &:disabled {
-    color: var(--primary-button-disabled-text-color);
-    background-color: var(--primary-button-disabled-color);
+    color: var(--solid-button-disabled-text-color);
+    background-color: var(--solid-button-disabled-color);
   }
 
   &:disabled:hover,
@@ -61,6 +72,43 @@
   @include base-button;
   color: var(--secondary-button-text-color);
   background-color: var(--secondary-button-color);
+
+  &:hover {
+    background-color: var(--secondary-button-hover-color);
+    box-shadow: 4px 4px 0 0 var(--shadow-1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 3px 3px 0 0 var(--shadow-1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary-button-color);
+    outline-offset: 2px;
+  }
+
+  &:focus-visible:hover {
+    box-shadow: none;
+    outline-color: var(--secondary-button-hover-color);
+  }
+
+  &:focus-visible:active {
+    box-shadow: none;
+  }
+
+
+  &:disabled {
+    color: var(--solid-button-disabled-text-color);
+    background-color: var(--solid-button-disabled-color);
+  }
+
+  &:disabled:hover,
+  &:disabled:active {
+    box-shadow: none;
+    transform: none;
+  }
+
 }
 
 .primary-outlined-button {
