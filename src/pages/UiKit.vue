@@ -35,7 +35,11 @@
       <hr />
     </div>
 
-    <button class="primary-button">Button</button>
+    <div style="display: flex; gap: 10px">
+      <button class="primary-button">Button</button>
+      <button class="primary-button" disabled>Button</button>
+      <div style="width: 2px; height: 40px; background-color: grey"></div>
+    </div>
 
     <div class="divider">
       <h2 class="subtitle-1">Form</h2>

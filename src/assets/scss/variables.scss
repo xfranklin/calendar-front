@@ -20,10 +20,18 @@
   --primary-color: var(--color-blue-dark-medium);
   --disabled-primary-color: var(--color-blue-ligth);
 
+  // Shadows
+  --shadow-1: rgba(0, 0, 0, 0.25);
+
   // Buttons
   --primary-button-color: var(--color-blue-dark);
   --primary-button-text-color: var(--color-yelow-medium);
+  --primary-button-hover-color: var(--color-blue-dark-medium);
+  --primary-button-disabled-color: var(--color-blue-medium);
+  --primary-button-disabled-text-color: var(--color-blue-ligth);
 
+  --secondary-button-color: var(--color-blue-medium);
+  --secondary-button-color: var(--color-blue-medium);
 }
 
 :root[dark] {
@@ -37,7 +45,13 @@
   --primary-color:  var(--color-yelow-medium);
   --disabled-primary-color: var(--color-blue-medium);
 
+  // Shadows
+  --shadow-1: rgba(255, 255, 255, 0.25);
+
   // Buttons
   --primary-button-color: var(--color-yelow-medium);
   --primary-button-text-color: var(--color-blue-dark);
+  --primary-button-hover-color: var(--color-yelow-dark-medium);
+
+  --secondary-button-color: var(--color-blue-ligth);
 }
