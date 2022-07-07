@@ -6,7 +6,9 @@
       <hr />
     </div>
 
-    <h1 id="h1-variable" ref="variableFont">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</h1>
+    <h1 id="h1-variable" ref="variableFont">
+      ABC DEF GHI JKL MNO PQR STU VWX YZ abc def ghi jkl mno pqr stu vwx yz 01234 56789
+    </h1>
     <br />
     <input v-model="variableWeight" type="range" min="200" max="800" />
     {{ variableWeight }}
@@ -14,7 +16,7 @@
     <br /><br />
 
     <h1 class="headline-1">Headline 1</h1>
-    <h2 class="headline-2">Headline 2</h2>
+    <h2 class="headline-2">Headline 2</h2>A
     <h3 class="headline-3">Headline 3</h3>
     <div class="subtitle-1">Subtitle 1</div>
     <div class="subtitle-2">Subtitle 2</div>
@@ -35,38 +37,38 @@
       <hr />
     </div>
 
-    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="primary-button">Button</button>
       <button class="primary-button" disabled>Button</button>
       <button class="secondary-button">Button</button>
       <button class="secondary-button" disabled>Button</button>
     </div>
-    <div style="display: flex; gap: 10px; margin-bottom: 20px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
       <button class="primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
       <button class="primary-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
       <button class="secondary-button icon"><BaseIcon name="eye" group="view" />Button</button>
       <button class="secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
     </div>
-    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="primary-outlined-button">Button</button>
       <button class="primary-outlined-button" disabled>Button</button>
       <button class="secondary-outlined-button">Button</button>
       <button class="secondary-outlined-button" disabled>Button</button>
     </div>
-    <div style="display: flex; gap: 10px; margin-bottom: 20px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
       <button class="primary-outlined-button icon"><BaseIcon name="google" group="socials" />Button</button>
       <button class="primary-outlined-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
       <button class="secondary-outlined-button icon"><BaseIcon name="eye" group="view" />Button</button>
       <button class="secondary-outlined-button icon" disabled><BaseIcon name="settings" />Button</button>
     </div>
 
-    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="primary-button only-icon"><BaseIcon name="google" group="socials" /></button>
       <button class="primary-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
       <button class="secondary-button only-icon"><BaseIcon name="eye" group="view" /></button>
       <button class="secondary-button only-icon" disabled><BaseIcon name="settings" /></button>
     </div>
-    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="primary-outlined-button only-icon"><BaseIcon name="google" group="socials" /></button>
       <button class="primary-outlined-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
       <button class="secondary-outlined-button only-icon"><BaseIcon name="eye" group="view" /></button>
