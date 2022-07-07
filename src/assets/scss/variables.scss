@@ -28,12 +28,16 @@
   --solid-button-disabled-text-color: var(--color-blue-ligth);
 
   --primary-button-color: var(--color-blue-dark);
-  --primary-button-text-color: var(--color-yelow-medium);
+  --primary-button-text-color: var(--color-yelow-dark-medium);
   --primary-button-hover-color: var(--color-blue-dark-medium);
+  --primary-button-focus-color: var(--primary-button-color);
 
   --secondary-button-color: var(--color-blue-medium);
   --secondary-button-text-color: var(--color-yellow-light);
-  --secondary-button-hover-color: var(--color-blue-dark-medium)
+  --secondary-button-hover-color: var(--color-blue-dark-medium);
+
+  --primary-outline-button-text-color: var(--color-blue-dark);
+  --primary-outline-button-disabled-color: var(--color-blue-ligth);
 }
 
 :root[dark] {
@@ -53,9 +57,13 @@
   // Buttons
   --primary-button-color: var(--color-yelow-medium);
   --primary-button-text-color: var(--color-blue-dark);
-  --primary-button-hover-color: var(--color-yelow-dark-medium);
+  --primary-button-hover-color: var(--color-yelow-dark);
+  --primary-button-focus-color: var(--color-yelow-dark-medium);
 
   --secondary-button-color: var(--color-blue-ligth);
   --secondary-button-text-color: var(--color-blue-dark);
   --secondary-button-hover-color: var(--color-blue-ligth);
+
+  --primary-outline-button-text-color: var(--color-yelow-dark-medium);
+  --primary-outline-button-disabled-color: var(--color-blue-medium);
 }

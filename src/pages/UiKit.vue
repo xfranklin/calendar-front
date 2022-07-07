@@ -41,11 +41,36 @@
       <button class="secondary-button">Button</button>
       <button class="secondary-button" disabled>Button</button>
     </div>
-    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+    <div style="display: flex; gap: 10px; margin-bottom: 20px">
       <button class="primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
       <button class="primary-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
       <button class="secondary-button icon"><BaseIcon name="eye" group="view" />Button</button>
       <button class="secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
+    </div>
+    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+      <button class="primary-outlined-button">Button</button>
+      <button class="primary-outlined-button" disabled>Button</button>
+      <button class="secondary-outlined-button">Button</button>
+      <button class="secondary-outlined-button" disabled>Button</button>
+    </div>
+    <div style="display: flex; gap: 10px; margin-bottom: 20px">
+      <button class="primary-outlined-button icon"><BaseIcon name="google" group="socials" />Button</button>
+      <button class="primary-outlined-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
+      <button class="secondary-outlined-button icon"><BaseIcon name="eye" group="view" />Button</button>
+      <button class="secondary-outlined-button icon" disabled><BaseIcon name="settings" />Button</button>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+      <button class="primary-button only-icon"><BaseIcon name="google" group="socials" /></button>
+      <button class="primary-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
+      <button class="secondary-button only-icon"><BaseIcon name="eye" group="view" /></button>
+      <button class="secondary-button only-icon" disabled><BaseIcon name="settings" /></button>
+    </div>
+    <div style="display: flex; gap: 10px; margin-bottom: 10px">
+      <button class="primary-outlined-button only-icon"><BaseIcon name="google" group="socials" /></button>
+      <button class="primary-outlined-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
+      <button class="secondary-outlined-button only-icon"><BaseIcon name="eye" group="view" /></button>
+      <button class="secondary-outlined-button only-icon" disabled><BaseIcon name="settings" /></button>
     </div>
 
     <div class="divider">
