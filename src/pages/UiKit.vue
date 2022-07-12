@@ -1,22 +1,20 @@
 <template>
   <div class="ui-kit">
     <BaseSwitch :model-value="darkMode" label="Dark mode" @update:model-value="changeMode" />
+
     <div class="divider">
       <h2 class="subtitle-1">Typography</h2>
       <hr />
     </div>
-
     <h1 id="h1-variable" ref="variableFont">
       ABC DEF GHI JKL MNO PQR STU VWX YZ abc def ghi jkl mno pqr stu vwx yz 01234 56789
     </h1>
     <br />
     <input v-model="variableWeight" type="range" min="200" max="800" />
     {{ variableWeight }}
-
     <br /><br />
-
     <h1 class="headline-1">Headline 1</h1>
-    <h2 class="headline-2">Headline 2</h2>A
+    <h2 class="headline-2">Headline 2</h2>
     <h3 class="headline-3">Headline 3</h3>
     <div class="subtitle-1">Subtitle 1</div>
     <div class="subtitle-2">Subtitle 2</div>
@@ -31,52 +29,110 @@
     <BaseIcon name="facebook" group="socials" />
     <BaseIcon name="eye" group="view" />
     <BaseIcon name="eye-off" group="view" />
+    <BaseIcon name="settings" />
 
     <div class="divider">
       <h2 class="subtitle-1">Buttons</h2>
       <hr />
     </div>
-
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
-      <button class="primary-button">Button</button>
-      <button class="primary-button" disabled>Button</button>
-      <button class="secondary-button">Button</button>
-      <button class="secondary-button" disabled>Button</button>
+      <button class="base-primary-button">Button</button>
+      <button class="base-secondary-button">Button</button>
+      <button class="base-primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
+      <button class="base-secondary-button icon"><BaseIcon name="settings" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
-      <button class="primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
-      <button class="primary-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
-      <button class="secondary-button icon"><BaseIcon name="eye" group="view" />Button</button>
-      <button class="secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
+      <button class="base-primary-button" disabled>Button</button>
+      <button class="base-secondary-button" disabled>Button</button>
+      <button class="base-primary-button icon" disabled><BaseIcon name="google" group="socials" />Button</button>
+      <button class="base-secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
-      <button class="primary-outlined-button">Button</button>
-      <button class="primary-outlined-button" disabled>Button</button>
-      <button class="secondary-outlined-button">Button</button>
-      <button class="secondary-outlined-button" disabled>Button</button>
+      <button class="base-primary-outlined-button">Button</button>
+      <button class="base-secondary-outlined-button">Button</button>
+      <button class="base-primary-outlined-button icon"><BaseIcon name="facebook" group="socials" />Button</button>
+      <button class="base-secondary-outlined-button icon"><BaseIcon name="eye" group="view" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
-      <button class="primary-outlined-button icon"><BaseIcon name="google" group="socials" />Button</button>
-      <button class="primary-outlined-button icon" disabled><BaseIcon name="facebook" group="socials" />Button</button>
-      <button class="secondary-outlined-button icon"><BaseIcon name="eye" group="view" />Button</button>
-      <button class="secondary-outlined-button icon" disabled><BaseIcon name="settings" />Button</button>
-    </div>
-
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
-      <button class="primary-button only-icon"><BaseIcon name="google" group="socials" /></button>
-      <button class="primary-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
-      <button class="secondary-button only-icon"><BaseIcon name="eye" group="view" /></button>
-      <button class="secondary-button only-icon" disabled><BaseIcon name="settings" /></button>
+      <button class="base-primary-outlined-button" disabled>Button</button>
+      <button class="base-secondary-outlined-button" disabled>Button</button>
+      <button class="base-primary-outlined-button icon" disabled>
+        <BaseIcon name="facebook" group="socials" />Button
+      </button>
+      <button class="base-secondary-outlined-button icon" disabled><BaseIcon name="eye" group="view" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
-      <button class="primary-outlined-button only-icon"><BaseIcon name="google" group="socials" /></button>
-      <button class="primary-outlined-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
-      <button class="secondary-outlined-button only-icon"><BaseIcon name="eye" group="view" /></button>
-      <button class="secondary-outlined-button only-icon" disabled><BaseIcon name="settings" /></button>
+      <button class="base-primary-button only-icon"><BaseIcon name="facebook" group="socials" /></button>
+      <button class="base-secondary-button only-icon"><BaseIcon name="eye" group="view" /></button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button class="base-primary-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
+      <button class="base-secondary-button only-icon" disabled><BaseIcon name="eye" group="view" /></button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
+      <button class="base-primary-outlined-button only-icon"><BaseIcon name="google" group="socials" /></button>
+      <button class="base-secondary-outlined-button only-icon"><BaseIcon name="eye-off" group="view" /></button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button class="base-primary-outlined-button only-icon" disabled>
+        <BaseIcon name="google" group="socials" />
+      </button>
+      <button class="base-secondary-outlined-button only-icon" disabled>
+        <BaseIcon name="eye-off" group="view" />
+      </button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
+      <router-link class="base-link" to="/ui-kit">Terms of service</router-link>
+      <router-link class="base-link icon" to="/"> <BaseIcon name="settings" />Privacy policy </router-link>
     </div>
 
     <div class="divider">
-      <h2 class="subtitle-1">Form</h2>
+      <h2 class="subtitle-1">Inputs</h2>
+      <hr />
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-end">
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_1" placeholder="example@example.com" />
+      </div>
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_2" placeholder="example@example.com" label="Email or username" />
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-end">
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_3" />
+      </div>
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_4" label="Email or username" />
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-end">
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_5" disabled />
+      </div>
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_6" disabled label="Email or username" />
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-end">
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_7" type="password" />
+      </div>
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput v-model="input_8" type="password" label="Password" />
+      </div>
+    </div>
+
+    <div class="divider">
+      <h2 class="subtitle-1">Form Validation</h2>
+      <hr />
+    </div>
+    <BaseForm ref="form_1" style="max-width: 360px" @submit="validate_1">
+      <BaseInput v-model="input_9" :hints="passwordHints" label="Email" placeholder="exmaple@oooi.app" />
+      <button class="base-primary-button w-100" type="submit">Validate</button>
+    </BaseForm>
+    <div class="divider">
+      <h2 class="subtitle-1">Switch</h2>
       <hr />
     </div>
     <div style="display: flex">
@@ -96,6 +152,30 @@ import { ref, watch } from "vue";
 
 const variableFont = ref(null);
 const variableWeight = ref(200);
+
+const input_1 = ref("");
+const input_2 = ref("");
+const input_3 = ref("");
+const input_4 = ref("");
+const input_5 = ref("support@oooi.app");
+const input_6 = ref("support@oooi.app");
+const input_7 = ref("");
+const input_8 = ref("");
+const input_9 = ref("");
+const input_10 = ref("");
+
+const form_1 = ref(null);
+
+const passwordHints = [
+  (value) => !value && "Required",
+  (value) => value.length <= 2 && "At least 2 chars",
+  (value) => value.length > 8 && "Max 8 chars"
+];
+
+const validate_1 = () => {
+  console.log(form_1.value.validateForm());
+  console.log("VAL");
+};
 
 const switch_1 = ref(false);
 const switch_2 = ref(true);

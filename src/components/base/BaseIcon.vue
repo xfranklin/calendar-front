@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineAsyncComponent, computed } from "vue";
+import { watch, shallowRef, defineAsyncComponent } from "vue";
 
 const props = defineProps({
   name: {
@@ -16,7 +16,15 @@ const props = defineProps({
   }
 });
 
-const dynamicIcon = computed(() => {
-  return defineAsyncComponent(() => import(`./../../assets/icons/${props.group}/${props.name}.svg`));
-});
+const dynamicIcon = shallowRef(null);
+
+watch(
+  () => props.name,
+  (name, oldName) => {
+    if (name !== oldName) {
+      dynamicIcon.value = defineAsyncComponent(() => import(`./../../assets/icons/${props.group}/${name}.svg`));
+    }
+  },
+  { immediate: true }
+);
 </script>

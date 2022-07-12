@@ -1,0 +1,244 @@
+<template>
+  <div :class="['base-input', { error: errorMessage, hint: hintMessage }, type]">
+    <label v-if="label" :for="labelId" :class="['base-input__label', { disabled }]">{{ label }}</label>
+    <div class="base-input__field-wrap">
+      <input
+        :id="labelId"
+        ref="inputRef"
+        :value="modelValue"
+        :type="fieldType"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        class="base-input__field"
+        @input="updateValue"
+      />
+      <button v-if="type === 'password'" type="button" class="base-input__password-button" @click="togglePassword">
+        <BaseIcon :name="passwordIcon" group="view" />
+      </button>
+    </div>
+    <div class="base-input__message">
+      <template v-if="message">{{ message }}</template>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from "vue";
+
+const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true
+  },
+  type: {
+    type: String,
+    default: "text"
+  },
+  label: {
+    type: String
+  },
+  placeholder: {
+    type: String,
+    default: null
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  hints: {
+    type: Array,
+    default: null
+  },
+  errorMessage: {
+    type: String,
+    default: null
+  }
+});
+
+const emit = defineEmits(["update:modelValue"]);
+
+const labelId = props.label ? `label-${Math.random().toString(36).substring(2, 6)}` : null;
+const fieldType = ref(props.type);
+const passwordIcon = ref(props.type === "password" ? "eye" : null);
+const inputRef = ref(null);
+const hintMessage = ref(null);
+
+const message = computed(() => {
+  if (props.errorMessage) return props.errorMessage;
+  if (hintMessage.value) return hintMessage.value;
+  return null;
+});
+
+const updateValue = ({ target }) => {
+  emit("update:modelValue", target.value);
+  validateInput(target.value);
+};
+
+const validateInput = (value = props.modelValue) => {
+  if (props.hints?.length) {
+    hintMessage.value = props.hints.reduce((acc, cb) => {
+      if (!acc) acc = cb(value);
+      return acc;
+    }, null);
+  }
+};
+
+const togglePassword = () => {
+  fieldType.value = fieldType.value === "password" ? "text" : "password";
+  passwordIcon.value = fieldType.value === "password" ? "eye" : "eye-off";
+  inputRef.value.focus();
+};
+</script>
+
+<style scoped lang="scss">
+.base-input {
+  width: 100%;
+  margin: 12px 0;
+
+  // base-input__label
+
+  &__label {
+    display: inline-block;
+    font-size: 1rem;
+    color: var(--base-bg-2);
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: color 200ms ease-in-out;
+  }
+
+  &:focus-within .base-input__label {
+    color: var(--base-text-3);
+  }
+
+  &__label.disabled {
+    color: var(--base-text-6);
+    cursor: not-allowed;
+  }
+
+  &__field-wrap {
+    position: relative;
+  }
+
+  &.hint .base-input__label {
+    color: var(--base-text-3);
+  }
+
+  // base-input__field
+
+  &__field {
+    width: 100%;
+    padding: 9px 10px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    border: 2px solid var(--base-bg-2);
+    border-radius: 4px;
+    background-color: var(--base-page-bg);
+    cursor: text;
+    color: var(--base-text-5);
+    caret-color: var(--base-text-3);
+    transition: all 200ms ease-in-out;
+    transition-property: box-shadow, border-color;
+
+    &:hover {
+      box-shadow: var(--base-shadow-0);
+    }
+
+    &:focus {
+      border-color: var(--base-bg-3);
+    }
+
+    &:disabled {
+      color: var(--base-text-6);
+      border-color: var(--base-bg-4);
+      cursor: not-allowed;
+    }
+
+    &:disabled:hover {
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: var(--base-text-4);
+    }
+  }
+
+  &:focus-within .base-input__field {
+    border-color: var(--base-bg-3);
+  }
+
+  &.password .base-input__field {
+    padding-right: 42px;
+  }
+
+  //???
+  &.hint .base-input__field {
+    border-color: var(--base-bg-3);
+  }
+
+  // base-input__password-button
+
+  &__password-button {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    display: flex;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    outline-color: transparent;
+    transition: all 200ms ease-in-out;
+    transition-property: transform, outline-color;
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--base-bg-2);
+    }
+
+    &:focus-visible:hover {
+      outline-color: var(--base-bg-3);
+    }
+
+    .base-icon {
+      transition: color 200ms ease-in-out;
+      width: 24px;
+      height: 24px;
+      color: var(--base-bg-2);
+    }
+
+    &:hover .base-icon {
+      color: var(--base-bg-3);
+    }
+
+    &:hover ~ .base-input__field {
+      box-shadow: var(--base-shadow-0);
+    }
+  }
+
+  // base-input__message
+
+  &__message {
+    height: 18px;
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  &.hint .base-input__message {
+    color: var(--base-text-7);
+  }
+
+  &.error .base-input__message {
+    color: var(--base-text-8);
+  }
+
+  // for icons
+  //&__field:focus ~ .base-input__password-button {
+  //
+  //}
+}
+</style>

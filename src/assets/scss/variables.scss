@@ -4,66 +4,106 @@
   --color-blue-dark-medium: rgba(23, 55, 71, 1);
   --color-blue-medium: rgba(83, 115, 131, 1);
   --color-blue-ligth: rgba(163, 195, 211, 1);
-  --color-yelow-dark: rgba(193, 137, 15, 1);
-  --color-yelow-dark-medium: rgba(243, 187, 65, 1);
-  --color-yelow-medium: rgba(255, 227, 105, 1);
+  --color-yellow-dark: rgba(193, 137, 15, 1);
+  --color-yellow-dark-medium: rgba(243, 187, 65, 1);
+  --color-yellow-medium: rgba(255, 227, 105, 1);
   --color-yellow-light: rgba(255, 255, 195, 1);
+  --color-error-dark: rgba(194, 32, 0, 1);
+  --color-error-light: rgba(255, 77, 41, 1);
   --color-white: rgba(255, 255, 255, 1);
+  --color-white-opacity-25: rgba(255, 255, 255, .25);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-black-opacity-25: rgba(0, 0, 0, .25);
 
-  // Typography
-  --text-main: var(--color-blue-dark-medium);
+  // Text
+  --base-text: var(--color-blue-dark-medium);
+  --base-text-0: var(--color-blue-dark-medium);
+  --base-text-1: var(--color-yellow-dark-medium);
+  --base-text-2: var(--color-yellow-light);
+  --base-text-3: var(--color-yellow-dark);
+  --base-text-4: var(--color-blue-medium);
+  --base-text-5: var(--color-blue-dark);
+  --base-text-6: var(--color-blue-ligth);
+  --base-text-7: var(--color-yellow-dark);
+  --base-text-8: var(--color-error-dark);
 
   // Backgrounds
-  --background-main: var(--color-white);
+  --base-page-bg: var(--color-white);
+  --base-bg-0: var(--color-blue-dark-medium);
+  --base-bg-1: var(--color-white);
+  --base-bg-2: var(--color-blue-dark-medium);
+  --base-bg-3: var(--color-yellow-dark);
+  --base-bg-4: var(--color-blue-ligth);
+  --base-bg-5: var(--color-blue-dark);
+  --base-bg-6: var(--color-error-dark);
 
-  // Components
-  --primary-color: var(--color-blue-dark-medium);
-  --disabled-primary-color: var(--color-blue-ligth);
+  // Common
+  --base-primary-disabled: var(--color-blue-ligth);
 
   // Shadows
-  --shadow-1: rgba(0, 0, 0, 0.25);
+  --base-shadow-0: 4px 4px 0 0 var(--color-black-opacity-25);
+  --base-shadow-1: 3px 3px 0 0 var(--color-black-opacity-25);
 
   // Buttons
-  --solid-button-disabled-color: var(--color-blue-medium);
-  --solid-button-disabled-text-color: var(--color-blue-ligth);
+  --base-btn-solid-disabled: var(--color-blue-medium);
+  --base-btn-solid-disabled-text: var(--color-blue-ligth);
 
-  --primary-button-color: var(--color-blue-dark);
-  --primary-button-text-color: var(--color-yelow-dark-medium);
-  --primary-button-hover-color: var(--color-blue-dark-medium);
-  --primary-button-focus-color: var(--primary-button-color);
+  --base-primary-btn: var(--color-blue-dark);
+  --base-primary-btn-hover: var(--color-blue-dark-medium);
+  --base-primary-btn-focus: var(--color-blue-dark);
 
-  --secondary-button-color: var(--color-blue-medium);
-  --secondary-button-text-color: var(--color-yellow-light);
-  --secondary-button-hover-color: var(--color-blue-dark-medium);
+  --base-secondary-btn: var(--color-blue-medium);
+  --base-secondary-btn-hover: var(--color-blue-dark-medium);
 
-  --primary-outline-button-text-color: var(--color-blue-dark);
-  --primary-outline-button-disabled-color: var(--color-blue-ligth);
+  --base-primary-outline-btn-text: var(--color-blue-dark);
+
+  --base-link-hover: var(--color-blue-dark-medium);
+  --base-link-active: var(--color-blue-dark);
+  --base-link-focus: var(--color-blue-dark);
 }
 
 :root[dark] {
-  // Typography
-  --text-main: var(--color-yellow-light);
+  // Text
+  --base-text: var(--color-yellow-light);
+  --base-text-0: var(--color-yellow-medium);
+  --base-text-1: var(--color-blue-dark);
+  --base-text-2: var(--color-blue-dark);
+  --base-text-3: var(--color-yellow-medium);
+  --base-text-4: var(--color-blue-ligth);
+  --base-text-5: var(--color-yellow-light);
+  --base-text-6: var(--color-blue-medium);
+  --base-text-7: var(--color-blue-ligth);
+  --base-text-8: var(--color-error-light);
 
   // Backgrounds
-  --background-main: var(--color-blue-dark);
+  --base-page-bg: var(--color-blue-dark);
+  --base-bg-0: var(--color-yellow-medium);
+  --base-bg-1: var(--color-blue-dark);
+  --base-bg-2: var(--color-yellow-light);
+  --base-bg-3: var(--color-yellow-medium);
+  --base-bg-4: var(--color-blue-medium);
+  --base-bg-5: var(--color-yellow-medium);
+  --base-bg-6: var(--color-error-light);
+
 
   //Components
-  --primary-color:  var(--color-yelow-medium);
-  --disabled-primary-color: var(--color-blue-medium);
+  --base-primary-disabled: var(--color-blue-medium);
 
   // Shadows
-  --shadow-1: rgba(255, 255, 255, 0.25);
+  --base-shadow-0: 4px 4px 0 0 var(--color-white-opacity-25);
+  --base-shadow-1: 3px 3px 0 0 var(--color-white-opacity-25);
 
   // Buttons
-  --primary-button-color: var(--color-yelow-medium);
-  --primary-button-text-color: var(--color-blue-dark);
-  --primary-button-hover-color: var(--color-yelow-dark);
-  --primary-button-focus-color: var(--color-yelow-dark-medium);
+  --base-primary-btn: var(--color-yellow-medium);
+  --base-primary-btn-hover: var(--color-yellow-dark);
+  --base-primary-btn-focus: var(--color-yellow-dark-medium);
 
-  --secondary-button-color: var(--color-blue-ligth);
-  --secondary-button-text-color: var(--color-blue-dark);
-  --secondary-button-hover-color: var(--color-blue-ligth);
+  --base-secondary-btn: var(--color-blue-ligth);
+  --base-secondary-btn-hover: var(--color-blue-ligth);
 
-  --primary-outline-button-text-color: var(--color-yelow-dark-medium);
-  --primary-outline-button-disabled-color: var(--color-blue-medium);
+  --base-primary-outline-btn-text: var(--color-yellow-dark-medium);
+
+  --base-link-hover: var(--color-yellow-dark);
+  --base-link-active: var(--color-yellow-dark);
+  --base-link-focus: var(--color-yellow-medium);
 }

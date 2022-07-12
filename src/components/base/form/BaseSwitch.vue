@@ -1,15 +1,8 @@
 <template>
-  <label class="base-switch" tabindex="0" @keyup.capture="onSpace">
-    <div :class="['base-switch__toggle', { disabled }, { checked: modelValue }]">
-      <input
-        ref="checkboxRef"
-        tabindex="-1"
-        :disabled="disabled"
-        :checked="modelValue"
-        type="checkbox"
-        class="base-switch__input"
-        @change="onChange"
-      />
+  <label class="base-switch">
+    <!--    on label active animate core-->
+    <input :disabled="disabled" :checked="modelValue" type="checkbox" class="base-switch__input" @change="onChange" />
+    <div class="base-switch__core">
       <div class="base-switch__dot"></div>
     </div>
     <div v-if="label" class="base-switch__label">{{ label }}</div>
@@ -17,8 +10,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
-
 defineProps({
   modelValue: {
     type: Boolean,
@@ -35,82 +26,19 @@ defineProps({
 });
 
 const emit = defineEmits(["update:modelValue"]);
-const checkboxRef = ref(null);
 
 const onChange = ({ target }) => {
   emit("update:modelValue", target.checked);
 };
-
-const onSpace = (e) => {
-  console.log("KEY", e.keyCode, e.target);
-  if (e.keyCode === 32) {
-    console.log("IN");
-    // e.preventDefault();
-    // checkboxRef.value.click();
-  }
-};
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .base-switch {
   position: relative;
   display: flex;
   align-items: center;
 
-  &:focus-visible {
-    box-shadow: 0 0 0 3px white, 0 0 0 6px blue;
-  }
-
-  &__toggle {
-    position: relative;
-    border: 2px solid var(--primary-color);
-    cursor: pointer;
-    width: 34px;
-    height: 20px;
-    margin: 4px;
-    padding: 2px;
-    border-radius: 4px;
-    overflow: hidden;
-    background-image: radial-gradient(ellipse at center, var(--primary-color) 50%, transparent 50%);
-    background-repeat: no-repeat;
-    background-size: 200% 300%;
-    background-position: right -100% top 50%;
-    transition: all 250ms ease-in-out;
-
-    &.checked {
-      background-position: right 40% top 50%;
-    }
-
-    &.disabled {
-      border-color: var(--disabled-primary-color);
-      cursor: not-allowed;
-
-      .base-switch__dot {
-        background-color: var(--disabled-primary-color);
-      }
-
-      &.checked {
-        background-image: radial-gradient(ellipse at center, var(--disabled-primary-color) 50%, transparent 50%);
-      }
-
-      ~ .base-switch__label {
-        color: var(--disabled-primary-color);
-        cursor: not-allowed;
-      }
-    }
-
-    &:active {
-      transform: scale(0.9);
-
-      .base-switch__dot {
-        width: 14px;
-      }
-
-      .base-switch__input:checked + .base-switch__dot {
-        left: calc(100% - 16px);
-      }
-    }
-  }
+  // base-switch__input
 
   &__input {
     width: 1px;
@@ -119,30 +47,94 @@ const onSpace = (e) => {
     appearance: none;
   }
 
+  // base-switch__core
+
+  &__core {
+    position: relative;
+    border: 2px solid var(--base-bg-0);
+    cursor: pointer;
+    width: 34px;
+    height: 20px;
+    margin: 4px;
+    padding: 2px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-image: radial-gradient(ellipse at center, var(--base-bg-0) 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-size: 200% 300%;
+    background-position: right -100% top 50%;
+    transition: all 250ms ease-in-out;
+    outline-color: transparent;
+    transition-property: transform, background-position, outline-color;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__input:active ~ .base-switch__core {
+    transform: scale(0.9);
+  }
+
+  &__input:checked ~ .base-switch__core {
+    background-position: right 40% top 50%;
+  }
+
+  &__input:disabled ~ .base-switch__core {
+    border-color: var(--base-primary-disabled);
+    cursor: not-allowed;
+  }
+
+  &__input:disabled:checked ~ .base-switch__core {
+    background-image: radial-gradient(ellipse at center, var(--base-primary-disabled) 50%, transparent 50%);
+  }
+
+  &__input:focus-visible ~ .base-switch__core {
+    outline: 2px solid var(--base-bg-0);
+    outline-offset: 2px;
+  }
+
+  // base-switch__dot
+
   &__dot {
     position: absolute;
     z-index: 10;
     width: 12px;
     height: 12px;
-    background-color: var(--primary-color);
+    background-color: var(--base-bg-0);
     border-radius: 2px;
     left: 2px;
     transition: all ease-in-out 200ms;
   }
 
-  &__input:focus-visible {
+  &__core:active .base-switch__dot {
+    width: 14px;
   }
 
-  &__input:checked {
-    ~ .base-switch__dot {
-      left: calc(100% - 14px);
-      background-color: var(--background-main);
-    }
+  &__input:checked ~ .base-switch__core .base-switch__dot {
+    left: calc(100% - 14px);
+    background-color: var(--base-bg-1);
   }
+
+  &__input:disabled:not(:checked) ~ .base-switch__core .base-switch__dot {
+    background-color: var(--base-primary-disabled);
+  }
+
+  &__input:checked ~ .base-switch__core:active .base-switch__dot {
+    left: calc(100% - 16px);
+  }
+
+  // base-switch__label
 
   &__label {
+    margin-left: 6px;
     cursor: pointer;
-    margin-left: 10px;
+    color: var(--base-text-0);
+  }
+
+  &__input:disabled ~ .base-switch__label {
+    color: var(--base-primary-disabled);
+    cursor: not-allowed;
   }
 }
 </style>
