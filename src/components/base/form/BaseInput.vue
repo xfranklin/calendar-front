@@ -1,6 +1,6 @@
 <template>
-  <div :class="['base-input', { error: errorMessage, hint: hintMessage }, type]">
-    <label v-if="label" :for="labelId" :class="['base-input__label', { disabled }]">{{ label }}</label>
+  <div :class="['base-input', { error: errorMessage }, type]">
+    <label v-if="label" :for="labelId" :class="['base-input__label', { disabled }]">{{ $t(label) }}</label>
     <div class="base-input__field-wrap">
       <input
         :id="labelId"
@@ -8,7 +8,7 @@
         :value="modelValue"
         :type="fieldType"
         :disabled="disabled"
-        :placeholder="placeholder"
+        :placeholder="placeholder && $t(placeholder)"
         class="base-input__field"
         @input="updateValue"
       />
@@ -16,14 +16,14 @@
         <BaseIcon :name="passwordIcon" group="view" />
       </button>
     </div>
-    <div class="base-input__message">
-      <template v-if="message">{{ message }}</template>
+    <div class="base-input__error">
+      <template v-if="errorMessage">{{ errorMessage }}</template>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
   modelValue: {
@@ -45,12 +45,8 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  hints: {
+  rules: {
     type: Array,
-    default: null
-  },
-  errorMessage: {
-    type: String,
     default: null
   }
 });
@@ -61,13 +57,7 @@ const labelId = props.label ? `label-${Math.random().toString(36).substring(2, 6
 const fieldType = ref(props.type);
 const passwordIcon = ref(props.type === "password" ? "eye" : null);
 const inputRef = ref(null);
-const hintMessage = ref(null);
-
-const message = computed(() => {
-  if (props.errorMessage) return props.errorMessage;
-  if (hintMessage.value) return hintMessage.value;
-  return null;
-});
+const errorMessage = ref(null);
 
 const updateValue = ({ target }) => {
   emit("update:modelValue", target.value);
@@ -75,12 +65,14 @@ const updateValue = ({ target }) => {
 };
 
 const validateInput = (value = props.modelValue) => {
-  if (props.hints?.length) {
-    hintMessage.value = props.hints.reduce((acc, cb) => {
+  if (props.rules?.length) {
+    errorMessage.value = props.rules.reduce((acc, cb) => {
       if (!acc) acc = cb(value);
       return acc;
     }, null);
+    return !errorMessage.value;
   }
+  return true;
 };
 
 const togglePassword = () => {
@@ -88,12 +80,16 @@ const togglePassword = () => {
   passwordIcon.value = fieldType.value === "password" ? "eye" : "eye-off";
   inputRef.value.focus();
 };
+
+defineExpose({
+  validateInput
+});
 </script>
 
 <style scoped lang="scss">
 .base-input {
   width: 100%;
-  margin: 12px 0;
+  margin-bottom: 4px;
 
   // base-input__label
 
@@ -106,9 +102,9 @@ const togglePassword = () => {
     transition: color 200ms ease-in-out;
   }
 
-  &:focus-within .base-input__label {
-    color: var(--base-text-3);
-  }
+  //&:focus-within .base-input__label {
+  //  color: var(--base-text-3);
+  //}
 
   &__label.disabled {
     color: var(--base-text-6);
@@ -170,9 +166,8 @@ const togglePassword = () => {
     padding-right: 42px;
   }
 
-  //???
-  &.hint .base-input__field {
-    border-color: var(--base-bg-3);
+  &.error .base-input__field {
+    border-color: var(--base-bg-6);
   }
 
   // base-input__password-button
@@ -221,18 +216,11 @@ const togglePassword = () => {
 
   // base-input__message
 
-  &__message {
+  &__error {
     height: 18px;
-    margin-top: 2px;
+    margin-top: 4px;
     font-size: 12px;
     line-height: 1.5;
-  }
-
-  &.hint .base-input__message {
-    color: var(--base-text-7);
-  }
-
-  &.error .base-input__message {
     color: var(--base-text-8);
   }
 

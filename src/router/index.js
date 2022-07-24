@@ -2,9 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useSettingsStore } from "@/store/settings";
 import { useServices } from "@/composables/useServices";
-import Login from "@/pages/Login.vue";
-import SignUp from "@/pages/SignUp.vue";
-import Reset from "@/pages/Reset.vue";
+import { AuthRoutes } from "./auth.js";
 import Secret from "@/pages/Secret.vue";
 import UiKit from "@/pages/UiKit.vue";
 
@@ -12,34 +10,13 @@ const routes = [
   {
     path: "/",
     name: "Root",
-    redirect: UiKit
+    redirect: "/ui-kit"
   },
+  ...AuthRoutes,
   {
     path: "/ui-kit",
     name: "UiKit",
-    component: UiKit
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login,
-    meta: {
-      requireAuth: false
-    }
-  },
-  {
-    path: "/signup",
-    name: "SignUp",
-    component: SignUp,
-    meta: {
-      layout: "EmptyLayout",
-      requireAuth: false
-    }
-  },
-  {
-    path: "/reset",
-    name: "Reset",
-    component: Reset,
+    component: UiKit,
     meta: {
       layout: "EmptyLayout",
       requireAuth: false

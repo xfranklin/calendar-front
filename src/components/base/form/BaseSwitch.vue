@@ -1,6 +1,5 @@
 <template>
   <label class="base-switch">
-    <!--    on label active animate core-->
     <input :disabled="disabled" :checked="modelValue" type="checkbox" class="base-switch__input" @change="onChange" />
     <div class="base-switch__core">
       <div class="base-switch__dot"></div>
@@ -39,7 +38,6 @@ const onChange = ({ target }) => {
   align-items: center;
 
   // base-switch__input
-
   &__input {
     width: 1px;
     height: 1px;
@@ -48,7 +46,6 @@ const onChange = ({ target }) => {
   }
 
   // base-switch__core
-
   &__core {
     position: relative;
     border: 2px solid var(--base-bg-0);
@@ -81,12 +78,12 @@ const onChange = ({ target }) => {
   }
 
   &__input:disabled ~ .base-switch__core {
-    border-color: var(--base-primary-disabled);
+    border-color: var(--base-bg-4);
     cursor: not-allowed;
   }
 
   &__input:disabled:checked ~ .base-switch__core {
-    background-image: radial-gradient(ellipse at center, var(--base-primary-disabled) 50%, transparent 50%);
+    background-image: radial-gradient(ellipse at center, var(--base-bg-4) 50%, transparent 50%);
   }
 
   &__input:focus-visible ~ .base-switch__core {
@@ -94,8 +91,11 @@ const onChange = ({ target }) => {
     outline-offset: 2px;
   }
 
-  // base-switch__dot
+  &:active .base-switch__core {
+    transform: scale(0.9);
+  }
 
+  // base-switch__dot
   &__dot {
     position: absolute;
     z-index: 10;
@@ -107,6 +107,7 @@ const onChange = ({ target }) => {
     transition: all ease-in-out 200ms;
   }
 
+  &:active .base-switch__dot,
   &__core:active .base-switch__dot {
     width: 14px;
   }
@@ -117,15 +118,15 @@ const onChange = ({ target }) => {
   }
 
   &__input:disabled:not(:checked) ~ .base-switch__core .base-switch__dot {
-    background-color: var(--base-primary-disabled);
+    background-color: var(--base-bg-4);
   }
 
+  &:active .base-switch__input:checked ~ .base-switch__core .base-switch__dot,
   &__input:checked ~ .base-switch__core:active .base-switch__dot {
     left: calc(100% - 16px);
   }
 
   // base-switch__label
-
   &__label {
     margin-left: 6px;
     cursor: pointer;
@@ -133,7 +134,7 @@ const onChange = ({ target }) => {
   }
 
   &__input:disabled ~ .base-switch__label {
-    color: var(--base-primary-disabled);
+    color: var(--base-bg-4);
     cursor: not-allowed;
   }
 }

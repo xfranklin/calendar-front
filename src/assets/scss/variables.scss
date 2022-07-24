@@ -26,6 +26,11 @@
   --base-text-6: var(--color-blue-ligth);
   --base-text-7: var(--color-yellow-dark);
   --base-text-8: var(--color-error-dark);
+  --base-text-9: var(--color-blue-dark-medium);
+  --base-text-10:var(--color-blue-dark);
+  --base-text-11: var(--color-blue-ligth);
+  --base-text-12: var(--color-blue-dark-medium);
+
 
   // Backgrounds
   --base-page-bg: var(--color-white);
@@ -36,27 +41,15 @@
   --base-bg-4: var(--color-blue-ligth);
   --base-bg-5: var(--color-blue-dark);
   --base-bg-6: var(--color-error-dark);
-
-  // Common
-  --base-primary-disabled: var(--color-blue-ligth);
+  --base-bg-7: var(--color-blue-dark-medium);
+  --base-bg-8: var(--color-blue-medium);
+  --base-bg-9: var(--color-blue-medium);
 
   // Shadows
   --base-shadow-0: 4px 4px 0 0 var(--color-black-opacity-25);
   --base-shadow-1: 3px 3px 0 0 var(--color-black-opacity-25);
 
   // Buttons
-  --base-btn-solid-disabled: var(--color-blue-medium);
-  --base-btn-solid-disabled-text: var(--color-blue-ligth);
-
-  --base-primary-btn: var(--color-blue-dark);
-  --base-primary-btn-hover: var(--color-blue-dark-medium);
-  --base-primary-btn-focus: var(--color-blue-dark);
-
-  --base-secondary-btn: var(--color-blue-medium);
-  --base-secondary-btn-hover: var(--color-blue-dark-medium);
-
-  --base-primary-outline-btn-text: var(--color-blue-dark);
-
   --base-link-hover: var(--color-blue-dark-medium);
   --base-link-active: var(--color-blue-dark);
   --base-link-focus: var(--color-blue-dark);
@@ -74,6 +67,10 @@
   --base-text-6: var(--color-blue-medium);
   --base-text-7: var(--color-blue-ligth);
   --base-text-8: var(--color-error-light);
+  --base-text-9: var(--color-white);
+  --base-text-10: var(--color-yellow-medium);
+  --base-text-11: var(--color-blue-ligth);
+  --base-text-12: var(--color-yellow-dark-medium);
 
   // Backgrounds
   --base-page-bg: var(--color-blue-dark);
@@ -84,26 +81,11 @@
   --base-bg-4: var(--color-blue-medium);
   --base-bg-5: var(--color-yellow-medium);
   --base-bg-6: var(--color-error-light);
-
-
-  //Components
-  --base-primary-disabled: var(--color-blue-medium);
+  --base-bg-7: var(--color-blue-ligth);
+  --base-bg-8: var(--color-blue-ligth);
+  --base-bg-9: var(--color-blue-medium);
 
   // Shadows
   --base-shadow-0: 4px 4px 0 0 var(--color-white-opacity-25);
   --base-shadow-1: 3px 3px 0 0 var(--color-white-opacity-25);
-
-  // Buttons
-  --base-primary-btn: var(--color-yellow-medium);
-  --base-primary-btn-hover: var(--color-yellow-dark);
-  --base-primary-btn-focus: var(--color-yellow-dark-medium);
-
-  --base-secondary-btn: var(--color-blue-ligth);
-  --base-secondary-btn-hover: var(--color-blue-ligth);
-
-  --base-primary-outline-btn-text: var(--color-yellow-dark-medium);
-
-  --base-link-hover: var(--color-yellow-dark);
-  --base-link-active: var(--color-yellow-dark);
-  --base-link-focus: var(--color-yellow-medium);
 }

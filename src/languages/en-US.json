@@ -1,3 +1,18 @@
 {
-  "CALENDAR_APP": "Hello world"
+  "CALENDAR_APP": "Hello world",
+  "SIGN_UP": "Sign up",
+  "SIGN_UP_INTO": "Sign up into oooi",
+  "ALREADY_HAVE_ACCOUNT": "Already have an account?",
+  "SIGN_IN": "Sign in",
+  "EMAIL": "Email",
+  "PASSWORD": "Password",
+  "EMAIL_PLACEHOLDER": "Enter your email address",
+  "PASSWORD_CREATE_PLACEHOLDER": "Create a password",
+  "SIGN_UP_SOCIALS": "Sign up with socials",
+  "PASSWORD_REQUIRED": "Password is required",
+  "EMAIL_REQUIRED": "Email is required",
+  "MIN_CHARS": "At least {number} characters",
+  "MAX_CHARS": "Maximum {number} characters",
+  "EMAIL_INVALID": "Email is invalid",
+  "PASSWORD_INVALID": "Password contains invalid characters"
 }

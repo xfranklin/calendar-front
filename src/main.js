@@ -6,6 +6,8 @@ import { createPinia } from "pinia";
 import { servicesPlugin } from "@/plugins/services";
 import { initPlugin } from "@/plugins/init";
 
+import { vLoading } from "@/directives/vLoading";
+
 import BaseForm from "@/components/base/form/BaseForm.vue";
 import BaseInput from "@/components/base/form/BaseInput.vue";
 import BaseSwitch from "@/components/base/form/BaseSwitch.vue";
@@ -21,4 +23,5 @@ app.component("BaseForm", BaseForm);
 app.component("BaseInput", BaseInput);
 app.component("BaseSwitch", BaseSwitch);
 app.component("BaseIcon", BaseIcon);
+app.directive("loading", vLoading);
 app.mount("#calendar-app");

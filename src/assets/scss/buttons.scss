@@ -1,4 +1,7 @@
 @mixin base-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -10,6 +13,16 @@
   outline-color: transparent;
   transition-property: background-color, box-shadow, transform, outline-color, border-color;
 
+  &.loading {
+    cursor: wait;
+    &:active {
+      transform: none;
+    }
+    &:hover{
+      box-shadow: none;
+    }
+  }
+
   &:hover {
     box-shadow: var(--base-shadow-0);
   }
@@ -17,6 +30,14 @@
   &:active {
     transform: scale(0.95);
     box-shadow: var(--base-shadow-1)
+  }
+
+  &:focus-visible:hover {
+    box-shadow: none;
+  }
+
+  &:focus-visible:active {
+    box-shadow: none;
   }
 
   &:disabled {
@@ -27,11 +48,6 @@
   &:disabled:active {
     box-shadow: none;
     transform: none;
-  }
-
-  &.icon {
-    display: flex;
-    align-items: center;
   }
 
   &.icon .base-icon {
@@ -49,79 +65,80 @@
     width: 24px;
     height: 24px;
   }
+
+  .base-loader {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border-radius: 2px;
+  }
+
+  &.icon .base-loader {
+    margin: 4px 12px 4px 4px;
+  }
+
+  &.only-icon .base-loader {
+    margin: 4px
+  }
 }
 
 .base-primary-button {
   @include base-button;
   color: var(--base-text-1);
-  background-color: var(--base-primary-btn);
-
-  &:hover {
-    background-color: var(--base-primary-btn-hover);
-  }
+  background-color: var(--base-bg-5);
 
   &:disabled {
-    color: var(--base-btn-solid-disabled-text);
-    background-color: var(--base-btn-solid-disabled);
+    color: var(--base-text-11);
+    background-color: var(--base-bg-9);
   }
 
   &:focus-visible {
-    background-color: var(--base-primary-btn-focus);
-    outline: 2px solid var(--base-primary-btn-focus);
+    outline: 2px solid var(--base-bg-5);
     outline-offset: 2px;
   }
 
-  &:focus-visible:hover {
-    box-shadow: none;
-    outline-color: var(--base-primary-btn-hover);
-    background-color: var(--base-primary-btn-hover);
-  }
-
-  &:focus-visible:active {
-    box-shadow: none;
+  .base-loader {
+    background-color: var(--base-text-1);
   }
 }
 
 .base-secondary-button {
   @include base-button;
   color: var(--base-text-2);
-  background-color: var(--base-secondary-btn);
+  background-color: var(--base-bg-8);
 
+  &.loading,
   &:hover {
-    background-color: var(--base-secondary-btn-hover);
+    background-color: var(--base-bg-7);
   }
 
   &:disabled {
-    color: var(--base-btn-solid-disabled-text);
-    background-color: var(--base-btn-solid-disabled);
+    color: var(--base-text-11);
+    background-color: var(--base-bg-9);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--base-secondary-btn);
+    background-color: var(--base-bg-7);
+    outline: 2px solid var(--base-bg-7);
     outline-offset: 2px;
   }
 
-  &:focus-visible:hover {
-    box-shadow: none;
-    outline-color: var(--base-secondary-btn-hover);
-  }
-
-  &:focus-visible:active {
-    box-shadow: none;
+  .base-loader {
+    background-color: var(--base-text-2);
   }
 }
 
 .base-primary-outlined-button {
   @include base-button;
   padding: 6px 10px;
-  color: var(--base-primary-outline-btn-text);
+  color: var(--base-text-10);
   background-color: transparent;
-  border: 2px solid var(--base-primary-btn);
+  border: 2px solid var(--base-bg-5);
 
+  &.loading,
   &:hover {
     color: var(--base-text-1);
-    border-color: var(--base-primary-btn-hover);
-    background-color: var(--base-primary-btn-hover);
+    background-color: var(--base-bg-5);
   }
 
   &:disabled {
@@ -136,39 +153,31 @@
 
   &:focus-visible {
     color: var(--base-text-1);
-    border-color: var(--base-primary-outline-btn-text);
-    background-color: var(--base-primary-outline-btn-text);
-    outline: 2px solid var(--base-primary-outline-btn-text);
+    background-color: var(--base-bg-5);
+    outline: 2px solid var(--base-bg-5);
     outline-offset: 2px;
-  }
-
-  &:focus-visible:hover {
-    box-shadow: none;
-    outline-color: var(--base-primary-btn-hover);
-    border-color: var(--base-primary-btn-hover);
-    background-color: var(--base-primary-btn-hover);
-  }
-
-  &:focus-visible:active {
-    box-shadow: none;
   }
 
   &.only-icon {
     padding: 6px;
+  }
+
+  .base-loader {
+    background-color: var(--base-text-1);
   }
 }
 
 .base-secondary-outlined-button {
   @include base-button;
   padding: 6px 10px;
-  color: var(--base-secondary-btn);
+  color: var(--base-bg-8);
   background-color: transparent;
-  border: 2px solid var(--base-secondary-btn);
+  border: 2px solid var(--base-bg-8);
 
+  &.loading,
   &:hover {
     color: var(--base-text-2);
-    border-color: var(--base-secondary-btn);
-    background-color: var(--base-secondary-btn);
+    background-color: var(--base-bg-8);
   }
 
   &:disabled {
@@ -183,27 +192,23 @@
 
   &:focus-visible {
     color: var(--base-text-2);
-    border-color: var(--base-secondary-btn);
-    background-color: var(--base-secondary-btn);
-    outline: 2px solid var(--base-secondary-btn);
+    border-color: var(--base-bg-8);
+    background-color: var(--base-bg-8);
+    outline: 2px solid var(--base-bg-8);
     outline-offset: 2px;
-  }
-
-  &:focus-visible:hover {
-    box-shadow: none;
-  }
-
-  &:focus-visible:active {
-    box-shadow: none;
   }
 
   &.only-icon {
     padding: 6px;
   }
+
+  .base-loader {
+    background-color: var(--base-text-2);
+  }
 }
 
 .base-link {
-  color: var(--base-text-3);
+  color: var(--base-text-10);
   padding: 0 4px;
   font-size: 1rem;
   font-weight: 400;
@@ -214,19 +219,19 @@
   transition-property: color, outline-color;
 
   &:hover {
-    color: var(--base-link-hover);
+    color: var(--base-text-12);
   }
 
   &:active {
-    color: var(--base-link-active);
+    color: var(--base-text-12);
     text-decoration-line: underline;
     text-underline-offset: 2px;
   }
 
   &:focus-visible {
-    color: var(--base-link-focus);
+    color: var(--base-text-12);
     border-radius: 4px;
-    outline: 2px solid var(--base-link-focus);
+    outline: 2px solid var(--base-text-12);
     outline-offset: 2px;
   }
 

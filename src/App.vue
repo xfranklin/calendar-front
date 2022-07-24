@@ -5,7 +5,7 @@
   <div v-else>loading</div>
 </template>
 <script setup>
-import { ref, watch, markRaw, computed } from "vue";
+import { ref, watch, markRaw, computed, defineAsyncComponent } from "vue";
 import { useRoute } from "vue-router";
 import { useSettingsStore } from "@/store/settings";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
@@ -22,8 +22,8 @@ watch(
   () => route.meta?.layout,
   async (metaLayout) => {
     try {
-      const component = metaLayout && (await import(`./layouts/${metaLayout}.vue`));
-      layout.value = markRaw(component?.default || DefaultLayout);
+      const component = metaLayout && defineAsyncComponent(() => import(`./layouts/${metaLayout}.vue`));
+      layout.value = markRaw(component || DefaultLayout);
     } catch (e) {
       layout.value = markRaw(DefaultLayout);
     }

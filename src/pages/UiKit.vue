@@ -41,11 +41,21 @@
       <button class="base-primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
       <button class="base-secondary-button icon"><BaseIcon name="settings" />Button</button>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-button" disabled>Button</button>
       <button class="base-secondary-button" disabled>Button</button>
       <button class="base-primary-button icon" disabled><BaseIcon name="google" group="socials" />Button</button>
       <button class="base-secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button v-loading="loading_1" class="base-primary-button" @click="loading_1 = !loading_1">Loading</button>
+      <button v-loading="loading_2" class="base-secondary-button" @click="loading_2 = !loading_2">Loading</button>
+      <button v-loading="loading_3" class="base-primary-button icon" @click="loading_3 = !loading_3">
+        <BaseIcon name="google" group="socials" />Loading
+      </button>
+      <button v-loading="loading_4" class="base-secondary-button icon" @click="loading_4 = !loading_4">
+        <BaseIcon name="settings" />Loading
+      </button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-outlined-button">Button</button>
@@ -53,7 +63,7 @@
       <button class="base-primary-outlined-button icon"><BaseIcon name="facebook" group="socials" />Button</button>
       <button class="base-secondary-outlined-button icon"><BaseIcon name="eye" group="view" />Button</button>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-outlined-button" disabled>Button</button>
       <button class="base-secondary-outlined-button" disabled>Button</button>
       <button class="base-primary-outlined-button icon" disabled>
@@ -61,23 +71,53 @@
       </button>
       <button class="base-secondary-outlined-button icon" disabled><BaseIcon name="eye" group="view" />Button</button>
     </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button v-loading="loading_5" class="base-primary-outlined-button" @click="loading_5 = !loading_5">
+        Loading
+      </button>
+      <button v-loading="loading_6" class="base-secondary-outlined-button" @click="loading_6 = !loading_6">
+        Loading
+      </button>
+      <button v-loading="loading_7" class="base-primary-outlined-button icon" @click="loading_7 = !loading_7">
+        <BaseIcon name="facebook" group="socials" />Loading
+      </button>
+      <button v-loading="loading_8" class="base-secondary-outlined-button icon" @click="loading_8 = !loading_8">
+        <BaseIcon name="eye" group="view" />Loading
+      </button>
+    </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-button only-icon"><BaseIcon name="facebook" group="socials" /></button>
       <button class="base-secondary-button only-icon"><BaseIcon name="eye" group="view" /></button>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-button only-icon" disabled><BaseIcon name="facebook" group="socials" /></button>
       <button class="base-secondary-button only-icon" disabled><BaseIcon name="eye" group="view" /></button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button v-loading="loading_9" class="base-primary-button only-icon" @click="loading_9 = !loading_9">
+        <BaseIcon name="facebook" group="socials" />
+      </button>
+      <button v-loading="loading_10" class="base-secondary-button only-icon" @click="loading_10 = !loading_10">
+        <BaseIcon name="eye" group="view" />
+      </button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-outlined-button only-icon"><BaseIcon name="google" group="socials" /></button>
       <button class="base-secondary-outlined-button only-icon"><BaseIcon name="eye-off" group="view" /></button>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-outlined-button only-icon" disabled>
         <BaseIcon name="google" group="socials" />
       </button>
       <button class="base-secondary-outlined-button only-icon" disabled>
+        <BaseIcon name="eye-off" group="view" />
+      </button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
+      <button v-loading="loading_11" class="base-primary-outlined-button only-icon" @click="loading_11 = !loading_11">
+        <BaseIcon name="google" group="socials" />
+      </button>
+      <button v-loading="loading_12" class="base-secondary-outlined-button only-icon" @click="loading_12 = !loading_12">
         <BaseIcon name="eye-off" group="view" />
       </button>
     </div>
@@ -128,7 +168,7 @@
       <hr />
     </div>
     <BaseForm ref="form_1" style="max-width: 360px" @submit="validate_1">
-      <BaseInput v-model="input_9" :hints="passwordHints" label="Email" placeholder="exmaple@oooi.app" />
+      <BaseInput v-model="input_9" :rules="passwordHints" label="Email" placeholder="exmaple@oooi.app" />
       <button class="base-primary-button w-100" type="submit">Validate</button>
     </BaseForm>
     <div class="divider">
@@ -162,7 +202,6 @@ const input_6 = ref("support@oooi.app");
 const input_7 = ref("");
 const input_8 = ref("");
 const input_9 = ref("");
-const input_10 = ref("");
 
 const form_1 = ref(null);
 
@@ -176,6 +215,19 @@ const validate_1 = () => {
   console.log(form_1.value.validateForm());
   console.log("VAL");
 };
+
+const loading_1 = ref(false);
+const loading_2 = ref(false);
+const loading_3 = ref(false);
+const loading_4 = ref(false);
+const loading_5 = ref(false);
+const loading_6 = ref(false);
+const loading_7 = ref(false);
+const loading_8 = ref(false);
+const loading_9 = ref(false);
+const loading_10 = ref(false);
+const loading_11 = ref(false);
+const loading_12 = ref(false);
 
 const switch_1 = ref(false);
 const switch_2 = ref(true);
