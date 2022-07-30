@@ -223,7 +223,6 @@ const input_13 = ref("");
 const input_14 = ref("");
 
 const form_1 = ref(null);
-const form_2 = ref(null);
 
 const rules_1 = [
   (value) => !value && "Required",
@@ -233,7 +232,6 @@ const rules_1 = [
 
 const validate_1 = () => {
   const data = form_1.value.validateForm();
-  console.log("isValid", data);
 };
 
 const loading_1 = ref(false);

@@ -51,7 +51,6 @@ const passwordHints = [
 const signUp = async () => {
   const isValid = formRef.value.validateForm();
   if (isValid) {
-    console.log("valid");
   }
   // const token = await reCaptchaExecute();
   // const signUpData = {
