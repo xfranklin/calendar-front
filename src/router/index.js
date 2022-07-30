@@ -38,6 +38,7 @@ export const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  console.log("router");
   const user = useUserStore();
   const settings = useSettingsStore();
 

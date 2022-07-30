@@ -1,9 +1,9 @@
 <template>
   <div :class="['base-input', { error: errorMessage }, type]">
-    <label v-if="label" :for="labelId" :class="['base-input__label', { disabled }]">{{ $t(label) }}</label>
+    <label v-if="label" :for="uid" :class="['base-input__label', { disabled }]">{{ $t(label) }}</label>
     <div class="base-input__field-wrap">
       <input
-        :id="labelId"
+        :id="uid"
         ref="inputRef"
         :value="modelValue"
         :type="fieldType"
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, getCurrentInstance, onMounted, onUnmounted, inject } from "vue";
 
 const props = defineProps({
   modelValue: {
@@ -53,11 +53,14 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 
-const labelId = props.label ? `label-${Math.random().toString(36).substring(2, 6)}` : null;
+const uid = getCurrentInstance().uid;
 const fieldType = ref(props.type);
+const isValid = ref(false);
 const passwordIcon = ref(props.type === "password" ? "eye" : null);
 const inputRef = ref(null);
 const errorMessage = ref(null);
+
+const baseForm = inject("baseForm");
 
 const updateValue = ({ target }) => {
   emit("update:modelValue", target.value);
@@ -66,11 +69,16 @@ const updateValue = ({ target }) => {
 
 const validateInput = (value = props.modelValue) => {
   if (props.rules?.length) {
-    errorMessage.value = props.rules.reduce((acc, cb) => {
+    isValid.value = props.rules.reduce((acc, cb) => {
       if (!acc) acc = cb(value);
       return acc;
     }, null);
-    return !errorMessage.value;
+    errorMessage.value = isValid.value;
+    isValid.value = !isValid.value;
+    if (baseForm?.setValidation) {
+      baseForm?.setValidation(isValid, uid);
+    }
+    return isValid.value;
   }
   return true;
 };
@@ -80,6 +88,19 @@ const togglePassword = () => {
   passwordIcon.value = fieldType.value === "password" ? "eye" : "eye-off";
   inputRef.value.focus();
 };
+
+onMounted(() => {
+  if (baseForm?.bind) {
+    baseForm.bind({ validateInput, uid });
+    baseForm.setValidation(isValid.value, uid);
+  }
+});
+
+onUnmounted(() => {
+  if (baseForm?.unBind) {
+    baseForm.unBind({ validateInput, uid });
+  }
+});
 
 defineExpose({
   validateInput
@@ -91,8 +112,6 @@ defineExpose({
   width: 100%;
   margin-bottom: 4px;
 
-  // base-input__label
-
   &__label {
     display: inline-block;
     font-size: 1rem;
@@ -102,9 +121,9 @@ defineExpose({
     transition: color 200ms ease-in-out;
   }
 
-  //&:focus-within .base-input__label {
-  //  color: var(--base-text-3);
-  //}
+  &:focus-within .base-input__label {
+    color: var(--base-text-3);
+  }
 
   &__label.disabled {
     color: var(--base-text-6);
@@ -115,11 +134,10 @@ defineExpose({
     position: relative;
   }
 
-  &.hint .base-input__label {
-    color: var(--base-text-3);
+  &.error .base-input__label {
+    color: var(--base-text-8);
+    transition: none;
   }
-
-  // base-input__field
 
   &__field {
     width: 100%;
@@ -168,9 +186,8 @@ defineExpose({
 
   &.error .base-input__field {
     border-color: var(--base-bg-6);
+    transition: none;
   }
-
-  // base-input__password-button
 
   &__password-button {
     position: absolute;
@@ -191,7 +208,7 @@ defineExpose({
     }
 
     &:focus-visible {
-      outline: 2px solid var(--base-bg-2);
+      outline: 2px solid var(--base-bg-3);
     }
 
     &:focus-visible:hover {
@@ -214,19 +231,12 @@ defineExpose({
     }
   }
 
-  // base-input__message
-
   &__error {
     height: 18px;
-    margin-top: 4px;
+    margin-top: 2px;
     font-size: 12px;
     line-height: 1.5;
     color: var(--base-text-8);
   }
-
-  // for icons
-  //&__field:focus ~ .base-input__password-button {
-  //
-  //}
 }
 </style>

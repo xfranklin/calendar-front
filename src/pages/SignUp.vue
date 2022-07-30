@@ -2,7 +2,7 @@
   <h1 class="subtitle-1">{{ $t("SIGN_UP_INTO") }}</h1>
   <div class="base-text sign-up__description">
     {{ $t("ALREADY_HAVE_ACCOUNT") }}
-    <router-link class="base-link" :to="{ name: 'SignUp' }">{{ $t("SIGN_IN") }}</router-link>
+    <router-link class="base-link" :to="{ name: 'UiKit' }">{{ $t("SIGN_IN") }}</router-link>
   </div>
   <BaseForm ref="formRef" class="sign-up__form" @submit="signUp">
     <BaseInput v-model="signUpForm.email" :rules="emailHints" placeholder="EMAIL_PLACEHOLDER" label="EMAIL" />

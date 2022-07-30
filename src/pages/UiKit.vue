@@ -122,7 +122,7 @@
       </button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
-      <router-link class="base-link" to="/ui-kit">Terms of service</router-link>
+      <router-link class="base-link" :to="{ name: 'SignUp' }">Sign up</router-link>
       <router-link class="base-link icon" to="/"> <BaseIcon name="settings" />Privacy policy </router-link>
     </div>
 
@@ -156,6 +156,14 @@
     </div>
     <div style="display: flex; gap: 20px; align-items: flex-end">
       <div style="max-width: 360px; width: 100%">
+        <BaseInput ref="input_10" model-value="" :rules="[() => true && 'Error message']" />
+      </div>
+      <div style="max-width: 360px; width: 100%">
+        <BaseInput ref="input_11" model-value="" label="Email or username" :rules="[() => true && 'Error message']" />
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-end">
+      <div style="max-width: 360px; width: 100%">
         <BaseInput v-model="input_7" type="password" />
       </div>
       <div style="max-width: 360px; width: 100%">
@@ -168,8 +176,14 @@
       <hr />
     </div>
     <BaseForm ref="form_1" style="max-width: 360px" @submit="validate_1">
-      <BaseInput v-model="input_9" :rules="passwordHints" label="Email" placeholder="exmaple@oooi.app" />
+      <BaseInput v-model="input_9" :rules="rules_1" label="Email" placeholder="exmaple@oooi.app" />
+      <BaseInput v-model="input_12" :rules="rules_1" label="Password" type="password" />
       <button class="base-primary-button w-100" type="submit">Validate</button>
+    </BaseForm>
+    <BaseForm ref="form_1" v-slot="{ valid }" style="max-width: 360px; margin-top: 2rem" @submit="validate_2">
+      <BaseInput v-model="input_13" :rules="rules_1" label="Email" placeholder="exmaple@oooi.app" />
+      <BaseInput v-model="input_14" :rules="rules_1" label="Password" type="password" />
+      <button class="base-primary-button w-100" :disabled="!valid" type="submit">Validate</button>
     </BaseForm>
     <div class="divider">
       <h2 class="subtitle-1">Switch</h2>
@@ -188,7 +202,7 @@
   </div>
 </template>
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 
 const variableFont = ref(null);
 const variableWeight = ref(200);
@@ -202,18 +216,24 @@ const input_6 = ref("support@oooi.app");
 const input_7 = ref("");
 const input_8 = ref("");
 const input_9 = ref("");
+const input_10 = ref(null);
+const input_11 = ref(null);
+const input_12 = ref("");
+const input_13 = ref("");
+const input_14 = ref("");
 
 const form_1 = ref(null);
+const form_2 = ref(null);
 
-const passwordHints = [
+const rules_1 = [
   (value) => !value && "Required",
   (value) => value.length <= 2 && "At least 2 chars",
   (value) => value.length > 8 && "Max 8 chars"
 ];
 
 const validate_1 = () => {
-  console.log(form_1.value.validateForm());
-  console.log("VAL");
+  const data = form_1.value.validateForm();
+  console.log("isValid", data);
 };
 
 const loading_1 = ref(false);
@@ -277,6 +297,11 @@ const changeMode = async (value) => {
 
 watch(variableWeight, (weight) => {
   variableFont.value.style.fontWeight = weight;
+});
+
+onMounted(() => {
+  input_10.value.validateInput();
+  input_11.value.validateInput();
 });
 </script>
 
