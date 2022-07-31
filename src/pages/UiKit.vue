@@ -180,7 +180,7 @@
       <BaseInput v-model="input_12" :rules="rules_1" label="Password" type="password" />
       <button class="base-primary-button w-100" type="submit">Validate</button>
     </BaseForm>
-    <BaseForm ref="form_1" v-slot="{ valid }" style="max-width: 360px; margin-top: 2rem" @submit="validate_2">
+    <BaseForm v-slot="{ valid }" style="max-width: 360px; margin-top: 2rem">
       <BaseInput v-model="input_13" :rules="rules_1" label="Email" placeholder="exmaple@oooi.app" />
       <BaseInput v-model="input_14" :rules="rules_1" label="Password" type="password" />
       <button class="base-primary-button w-100" :disabled="!valid" type="submit">Validate</button>
@@ -231,7 +231,7 @@ const rules_1 = [
 ];
 
 const validate_1 = () => {
-  const data = form_1.value.validateForm();
+  form_1.value.validateForm();
 };
 
 const loading_1 = ref(false);
