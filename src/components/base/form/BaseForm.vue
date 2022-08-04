@@ -30,7 +30,10 @@ const setValidation = (value, uid) => {
 };
 
 const onSubmit = () => {
-  emit("submit");
+  const isValid = validateForm();
+  if (isValid) {
+    emit("submit");
+  }
 };
 
 const validateForm = () => {

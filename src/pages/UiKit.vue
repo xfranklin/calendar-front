@@ -225,17 +225,11 @@ const input_12 = ref("");
 const input_13 = ref("");
 const input_14 = ref("");
 
-const form_1 = ref(null);
-
 const rules_1 = [
   (value) => !value && "Required",
   (value) => value.length <= 2 && "At least 2 chars",
   (value) => value.length > 8 && "Max 8 chars"
 ];
-
-const validate_1 = () => {
-  form_1.value.validateForm();
-};
 
 const loading_1 = ref(false);
 const loading_2 = ref(false);
