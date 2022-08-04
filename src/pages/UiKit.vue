@@ -203,6 +203,9 @@
 </template>
 <script setup>
 import { ref, watch, onMounted } from "vue";
+import { useSettingsStore } from "@/store/settings";
+
+const settings = useSettingsStore();
 
 const variableFont = ref(null);
 const variableWeight = ref(200);
@@ -252,7 +255,7 @@ const switch_2 = ref(true);
 const switch_3 = ref(false);
 const switch_4 = ref(true);
 
-const darkMode = ref(false);
+const darkMode = ref(settings.isDarkMode);
 
 const disableTransitions = () => {
   const css = document.createElement("style");
@@ -282,8 +285,12 @@ const changeMode = async (value) => {
   darkMode.value = value;
   if (value) {
     html && html.setAttribute("dark", "");
+    window.localStorage.setItem("COLOR_MODE", "DARK");
+    settings.setColorMode("DARK");
   } else {
     html && html.removeAttribute("dark");
+    window.localStorage.setItem("COLOR_MODE", "LIGHT");
+    settings.setColorMode("LIGHT");
   }
   await new Promise((res) => {
     setTimeout(() => {
