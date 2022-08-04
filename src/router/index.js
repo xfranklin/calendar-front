@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/",
     name: "Root",
-    redirect: "/ui-kit"
+    redirect: { name: "UiKit" }
   },
   ...AuthRoutes,
   {
