@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/",
     name: "Root",
-    redirect: "/ui-kit"
+    redirect: { name: "UiKit" }
   },
   ...AuthRoutes,
   {
@@ -43,7 +43,7 @@ router.beforeEach(async (to, from, next) => {
 
   if (!settings.isInited) {
     const $services = useServices();
-    await $services.authService.refresh();
+    await $services.auth.refresh();
     settings.isInited = true;
   }
   if (to.meta.requireAuth && !user.isAuthenticated) {
