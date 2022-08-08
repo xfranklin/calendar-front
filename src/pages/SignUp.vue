@@ -58,7 +58,7 @@ const signUp = async () => {
   //   password: signUpForm.value.password,
   //   token
   // };
-  // await $service.authService.signUp(signUpData);
+  // await $service.auth.signUp(signUpData);
 };
 </script>
 <style lang="scss" scoped>
