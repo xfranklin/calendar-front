@@ -3,7 +3,7 @@
     <router-view />
   </component>
   <div v-else>loading</div>
-  <Color-Mode v-if="colorMode" class="color-mode" />
+  <ColorMode v-if="colorMode" class="color-mode" />
 </template>
 <script setup>
 import { ref, watch, markRaw, computed, defineAsyncComponent } from "vue";
@@ -20,10 +20,10 @@ const isInited = computed(() => {
   return settings.isInited;
 });
 
-const colorMode = computed(()=>{
+const colorMode = () => {
   const { host } = window.location;
   return host.includes("localhost") || host.includes("dev");
-})
+};
 
 watch(
   () => route.meta?.layout,

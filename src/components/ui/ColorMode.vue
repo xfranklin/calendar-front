@@ -4,7 +4,7 @@
 <script setup>
 import { computed } from "vue";
 import { useSettingsStore } from "@/store/settings";
-import { setColorMode } from "@/utils/settings-services.js";
+import { SettingsService } from "@/services/settings.service.js";
 defineProps({
   label: {
     type: String,
@@ -12,13 +12,14 @@ defineProps({
   }
 });
 const settings = useSettingsStore();
+const $services = new SettingsService();
 const darkMode = computed(() => settings.isDarkMode);
 
 
 const changeMode = async (value) => {
   disableTransitions();
   darkMode.value = value;
-  value ? setColorMode("DARK") : setColorMode("LIGHT");
+  value ? $services.setColorMode("DARK") : $services.setColorMode("LIGHT");
   await new Promise((res) => {
     setTimeout(() => {
       res();

@@ -1,6 +1,6 @@
 <template>
   <div class="ui-kit">
-    <Color-Mode label="Dark mode"/>
+    <ColorMode label="Dark mode"/>
 
     <div class="divider">
       <h2 class="subtitle-1">Typography</h2>
