@@ -1,6 +1,6 @@
 <template>
   <div class="ui-kit">
-    <BaseSwitch :model-value="darkMode" label="Dark mode" @update:model-value="changeMode" />
+    <ColorMode label="Dark mode"/>
 
     <div class="divider">
       <h2 class="subtitle-1">Typography</h2>
@@ -203,9 +203,8 @@
 </template>
 <script setup>
 import { ref, watch, onMounted } from "vue";
-import { useSettingsStore } from "@/store/settings";
+import ColorMode from "@/components/ui/ColorMode.vue";
 
-const settings = useSettingsStore();
 
 const variableFont = ref(null);
 const variableWeight = ref(200);
@@ -249,50 +248,6 @@ const switch_2 = ref(true);
 const switch_3 = ref(false);
 const switch_4 = ref(true);
 
-const darkMode = ref(settings.isDarkMode);
-
-const disableTransitions = () => {
-  const css = document.createElement("style");
-  css.setAttribute("id", "off-transition");
-  // css.appendChild(
-  //   document.createTextNode(
-  //     `* {
-  //      -webkit-transition: none !important;
-  //      -moz-transition: none !important;
-  //      -o-transition: none !important;
-  //      -ms-transition: none !important;
-  //      transition: none !important;
-  //     }`
-  //   )
-  // );
-  document.head.appendChild(css);
-};
-
-const enableTransitions = () => {
-  const css = document.getElementById("off-transition");
-  css && css.remove();
-};
-
-const changeMode = async (value) => {
-  disableTransitions();
-  const html = document.documentElement;
-  darkMode.value = value;
-  if (value) {
-    html && html.setAttribute("dark", "");
-    window.localStorage.setItem("COLOR_MODE", "DARK");
-    settings.setColorMode("DARK");
-  } else {
-    html && html.removeAttribute("dark");
-    window.localStorage.setItem("COLOR_MODE", "LIGHT");
-    settings.setColorMode("LIGHT");
-  }
-  await new Promise((res) => {
-    setTimeout(() => {
-      res();
-    }, 50);
-  });
-  enableTransitions();
-};
 
 watch(variableWeight, (weight) => {
   variableFont.value.style.fontWeight = weight;
