@@ -1,25 +1,25 @@
 <template>
-    <BaseSwitch :model-value="darkMode" :label="label" @update:model-value="changeMode" />
+  <BaseSwitch id="color-switch" :model-value="darkMode" :label="label" @update:model-value="changeMode" />
 </template>
 <script setup>
 import { computed } from "vue";
 import { useSettingsStore } from "@/store/settings";
-import { SettingsService } from "@/services/settings.service.js";
+import { useServices } from "@/composables/useServices";
+
 defineProps({
   label: {
     type: String,
-    required: false,
+    required: false
   }
 });
-const settings = useSettingsStore();
-const $services = new SettingsService();
-const darkMode = computed(() => settings.isDarkMode);
 
+const settings = useSettingsStore();
+const $services = useServices();
+const darkMode = computed(() => settings.isDarkMode);
 
 const changeMode = async (value) => {
   disableTransitions();
-  darkMode.value = value;
-  value ? $services.setColorMode("DARK") : $services.setColorMode("LIGHT");
+  value ? $services.settings.setColorMode("DARK") : $services.settings.setColorMode("LIGHT");
   await new Promise((res) => {
     setTimeout(() => {
       res();
@@ -27,6 +27,12 @@ const changeMode = async (value) => {
   });
   enableTransitions();
 };
+
+const enableTransitions = () => {
+  const css = document.getElementById("off-transition");
+  css && css.remove();
+};
+
 const disableTransitions = () => {
   const css = document.createElement("style");
   css.setAttribute("id", "off-transition");
@@ -43,8 +49,10 @@ const disableTransitions = () => {
   );
   document.head.appendChild(css);
 };
-const enableTransitions = () => {
-  const css = document.getElementById("off-transition");
-  css && css.remove()
-};
 </script>
+<style>
+#color-switch .base-switch__core {
+  transition: all 250ms ease-in-out !important;
+  transition-property: transform, background-position, outline-color !important;
+}
+</style>
