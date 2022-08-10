@@ -1,22 +1,17 @@
-import { useSettingsStore } from "@/store/settings";
+import { useServices } from "@/composables/useServices";
 
 export const initPlugin = {
   async install() {
+    const $services = useServices();
     const colorMode = window.localStorage.getItem("COLOR_MODE");
-    const settings = useSettingsStore();
-    if (colorMode) {
-      settings.setColorMode(colorMode);
-      if (colorMode === "LIGHT") {
-        document.documentElement.removeAttribute("dark");
-      } else if (colorMode === "DARK") {
-        document.documentElement.setAttribute("dark", "");
-      }
-    } else {
+
+    const isSet = $services.settings.setColorMode(colorMode);
+    if (!isSet) {
       if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        window.localStorage.setItem("COLOR_MODE", "DARK");
-        settings.setColorMode("DARK");
-        document.documentElement.setAttribute("dark", "");
+        $services.settings.setColorMode("DARK");
+        return;
       }
+      $services.settings.setColorMode("LIGHT");
     }
   }
 };
