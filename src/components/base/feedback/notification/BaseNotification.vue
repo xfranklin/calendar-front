@@ -95,6 +95,7 @@ onUnmounted(() => {
   transition: all 150ms ease-in-out;
   transition-property: transform;
   overflow: hidden;
+  box-shadow: var(--base-shadow-2);
 
   .close-icon {
     color: var(--color-blue-dark);
