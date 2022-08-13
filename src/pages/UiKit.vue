@@ -1,6 +1,6 @@
 <template>
   <div class="ui-kit">
-    <ColorMode label="Dark mode"/>
+    <ColorMode label="Dark mode" />
 
     <div class="divider">
       <h2 class="subtitle-1">Typography</h2>
@@ -199,12 +199,29 @@
         <BaseSwitch v-model="switch_4" disabled label="Toggle me" />
       </div>
     </div>
+    <div class="divider">
+      <h2 class="subtitle-1">Notifications</h2>
+      <hr />
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button class="base-primary-outlined-button" @click="noti_1">Default</button>
+      <button class="base-primary-outlined-button" @click="noti_2">Warning</button>
+      <button class="base-primary-outlined-button" @click="noti_3">Error</button>
+      <button class="base-primary-outlined-button" @click="noti_4">Success</button>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <button class="base-primary-outlined-button" @click="noti_5">Default No Duration</button>
+      <button class="base-primary-outlined-button" @click="noti_6">Warning No Duration</button>
+      <button class="base-primary-outlined-button" @click="noti_7">Error No Duration</button>
+      <button class="base-primary-outlined-button" @click="noti_8">Success No Duration</button>
+    </div>
   </div>
 </template>
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
-
+import { $notification } from "@/components/base/feedback/notification/notification";
 
 const variableFont = ref(null);
 const variableWeight = ref(200);
@@ -248,7 +265,6 @@ const switch_2 = ref(true);
 const switch_3 = ref(false);
 const switch_4 = ref(true);
 
-
 watch(variableWeight, (weight) => {
   variableFont.value.style.fontWeight = weight;
 });
@@ -257,6 +273,68 @@ onMounted(() => {
   input_10.value.validateInput();
   input_11.value.validateInput();
 });
+
+// notifications
+const notificationMessage =
+  "We sent you a letter to confirm the email. However, you can use oooi without confirmation.";
+
+const noti_1 = () => {
+  $notification({
+    message: notificationMessage
+  });
+};
+
+const noti_2 = () => {
+  $notification({
+    message: notificationMessage,
+    type: "warning"
+  });
+};
+
+const noti_3 = () => {
+  $notification({
+    message: notificationMessage,
+    type: "error"
+  });
+};
+
+const noti_4 = () => {
+  $notification({
+    message: notificationMessage,
+    type: "success"
+  });
+};
+
+const noti_5 = () => {
+  $notification({
+    message: notificationMessage,
+    duration: "none"
+  });
+};
+
+const noti_6 = () => {
+  $notification({
+    message: notificationMessage,
+    type: "warning",
+    duration: "none"
+  });
+};
+
+const noti_7 = () => {
+  $notification({
+    message: notificationMessage,
+    type: "error",
+    duration: "none"
+  });
+};
+
+const noti_8 = () => {
+  $notification({
+    message: notificationMessage,
+    type: "success",
+    duration: "none"
+  });
+};
 </script>
 
 <style lang="scss" scoped>

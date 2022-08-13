@@ -186,7 +186,7 @@ defineExpose({
 
   &.error .base-input__field {
     border-color: var(--base-bg-6);
-    transition: none;
+    transition: box-shadow 200ms ease-in-out;
   }
 
   &__password-button {

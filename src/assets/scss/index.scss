@@ -80,8 +80,23 @@ hr,
 
 .grecaptcha-badge { visibility: hidden; }
 
-// animations
+#notifications-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 
+  @media screen and (min-width: 769px) {
+    width: auto;
+  }
+}
+
+// animations
 @keyframes square-rotate {
   0% {
     transform: rotateX(0deg) rotateY(0deg);

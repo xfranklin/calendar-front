@@ -9,10 +9,14 @@
   --color-yellow-medium: rgba(255, 227, 105, 1);
   --color-yellow-light: rgba(255, 255, 195, 1);
   --color-error-dark: rgba(194, 32, 0, 1);
-  --color-error-light: rgba(255, 77, 41, 1);
+  --color-error-medium: rgba(255, 77, 41, 1);
+  --color-error-light: rgba(255, 204, 194, 1);
+  --color-success-light: rgba(194, 255, 204, 1);
   --color-white: rgba(255, 255, 255, 1);
+  --color-white-opacity-15: rgba(255, 255, 255, .15);
   --color-white-opacity-25: rgba(255, 255, 255, .25);
   --color-black: rgba(0, 0, 0, 1);
+  --color-black-opacity-15: rgba(0, 0, 0, .15);
   --color-black-opacity-25: rgba(0, 0, 0, .25);
 
   // Text
@@ -44,10 +48,13 @@
   --base-bg-7: var(--color-blue-dark-medium);
   --base-bg-8: var(--color-blue-medium);
   --base-bg-9: var(--color-blue-medium);
+  --base-bg-10: var(--color-yellow-medium);
 
   // Shadows
   --base-shadow-0: 4px 4px 0 0 var(--color-black-opacity-25);
   --base-shadow-1: 3px 3px 0 0 var(--color-black-opacity-25);
+  --base-shadow-2: 0px 2px 4px var(--color-black-opacity-15);
+
 
   // Buttons
   --base-link-hover: var(--color-blue-dark-medium);
@@ -66,7 +73,7 @@
   --base-text-5: var(--color-yellow-light);
   --base-text-6: var(--color-blue-medium);
   --base-text-7: var(--color-blue-ligth);
-  --base-text-8: var(--color-error-light);
+  --base-text-8: var(--color-error-medium);
   --base-text-9: var(--color-white);
   --base-text-10: var(--color-yellow-medium);
   --base-text-11: var(--color-blue-ligth);
@@ -81,12 +88,14 @@
   --base-bg-3: var(--color-yellow-medium);
   --base-bg-4: var(--color-blue-medium);
   --base-bg-5: var(--color-yellow-medium);
-  --base-bg-6: var(--color-error-light);
+  --base-bg-6: var(--color-error-medium);
   --base-bg-7: var(--color-blue-ligth);
   --base-bg-8: var(--color-blue-ligth);
   --base-bg-9: var(--color-blue-medium);
+  --base-bg-10: var(--color-yellow-light);
 
   // Shadows
   --base-shadow-0: 4px 4px 0 0 var(--color-white-opacity-25);
   --base-shadow-1: 3px 3px 0 0 var(--color-white-opacity-25);
+  --base-shadow-2: 0px 2px 4px var(--color-white-opacity-15);
 }
