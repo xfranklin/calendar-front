@@ -208,12 +208,13 @@
 }
 
 .base-link {
-  color: var(--base-text-10);
+  color: var(--base-text-13);
   padding: 0 4px;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   transition: all 200ms ease-in-out;
   outline-color: transparent;
   transition-property: color, outline-color;
@@ -224,15 +225,12 @@
 
   &:active {
     color: var(--base-text-12);
-    text-decoration-line: underline;
-    text-underline-offset: 2px;
   }
 
   &:focus-visible {
     color: var(--base-text-12);
     border-radius: 4px;
     outline: 2px solid var(--base-text-12);
-    outline-offset: 2px;
   }
 
   &.icon {
