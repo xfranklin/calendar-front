@@ -1,6 +1,6 @@
 <template>
   <div class="ui-kit">
-    <ColorMode label="Dark mode"/>
+    <ColorMode label="Dark mode" />
 
     <div class="divider">
       <h2 class="subtitle-1">Typography</h2>
@@ -264,7 +264,6 @@ const switch_1 = ref(false);
 const switch_2 = ref(true);
 const switch_3 = ref(false);
 const switch_4 = ref(true);
-
 
 watch(variableWeight, (weight) => {
   variableFont.value.style.fontWeight = weight;

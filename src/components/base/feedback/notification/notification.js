@@ -13,6 +13,14 @@ export const $notification = ({ message, type = "default", duration = 3500 }) =>
   const container = document.createElement("div");
   const vNode = h(BaseNotification, { message, type, duration });
 
+  vNode.props.onDestroy = () => {
+    render(null, container);
+    !parent.hasChildNodes() && parent.remove();
+  };
+
   render(vNode, container);
   parent.appendChild(container.firstChild);
+
+  // TODO return cb to close notification directly
+  return {};
 };

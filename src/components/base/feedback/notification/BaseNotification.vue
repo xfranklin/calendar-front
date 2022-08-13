@@ -1,20 +1,21 @@
 <template>
-  <transition name="notification">
+  <transition name="notification" @before-enter="beforeEnter" @enter="enter" @after-leave="afterLeave">
     <div v-show="visible" :class="['base-notification', type]">
-      <BaseIcon v-if="iconName" :class="['base-notification__icon']" :name="iconName" />
+      <component :is="iconName" :class="['base-notification__icon']"></component>
       <div class="base-notification__message">{{ message }}</div>
-      <BaseIcon class="base-notification__close" name="close" @click="close" />
-      <div
-        v-if="duration !== 'none'"
-        :class="['base-notification__progress-bar']"
-        :style="{ animationDuration: `${duration}ms` }"
-      ></div>
+      <button class="base-notification__close-button" @click="close">
+        <CloseIcon name="close" class="close-icon" />
+      </button>
     </div>
   </transition>
 </template>
 <script setup>
-import BaseIcon from "@/components/base/BaseIcon.vue";
 import { ref, onMounted, onUnmounted } from "vue";
+import CloseIcon from "@/assets/icons/regular/close.svg";
+import InfoIcon from "@/assets/icons/regular/info.svg";
+import AlertOctagonIcon from "@/assets/icons/regular/alert-octagon.svg";
+import AlertTriangleIcon from "@/assets/icons/regular/alert-triangle.svg";
+import CheckCircleIcon from "@/assets/icons/regular/check-circle.svg";
 
 const props = defineProps({
   type: {
@@ -23,7 +24,6 @@ const props = defineProps({
   },
   duration: {
     type: [Number, String],
-    String,
     default: 3500
   },
 
@@ -33,27 +33,44 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits(["destroy"]);
+
 const visible = ref(false);
 let timer;
 
+// TODO refactor to defineAsyncComponent
 let iconName = null;
 switch (props.type) {
   case "default":
-    iconName = "info";
+    iconName = InfoIcon;
     break;
   case "warning":
-    iconName = "alert-octagon";
+    iconName = AlertOctagonIcon;
     break;
   case "error":
-    iconName = "alert-triangle";
+    iconName = AlertTriangleIcon;
     break;
   case "success":
-    iconName = "check-circle";
+    iconName = CheckCircleIcon;
     break;
 }
 
 const close = () => {
   visible.value = false;
+};
+
+const beforeEnter = (el) => {
+  el.style.maxHeight = "0px";
+  el.style.padding = "0 10px";
+};
+
+const enter = (el) => {
+  el.style.maxHeight = `${el.scrollHeight + 20}px`;
+  el.style.padding = "10px";
+};
+
+const afterLeave = () => {
+  emit("destroy");
 };
 
 onMounted(() => {
@@ -72,19 +89,24 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .base-notification {
   position: relative;
-  display: flex;
-  align-items: center;
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
+  margin: 3px 0;
   color: var(--color-blue-dark);
   transition: all 150ms ease-in-out;
   transition-property: transform;
   overflow: hidden;
 
+  .close-icon {
+    color: var(--color-blue-dark);
+  }
+
   &.default {
     color: var(--base-text-2);
     background-color: var(--base-bg-8);
+
+    .close-icon {
+      color: var(--base-text-2);
+    }
   }
 
   &.warning {
@@ -100,47 +122,57 @@ onUnmounted(() => {
   }
 
   &:hover {
-    transform: translateY(4px);
+    transform: translateY(2px);
   }
 
   &__icon {
-    flex: 0 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 10px;
     width: 24px;
     height: 24px;
-    margin-right: 8px;
+    transform: translateY(-50%);
   }
 
   &__message {
-    margin-right: auto;
+    margin: 0 32px;
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.25rem;
+    opacity: 1;
+    transition: opacity 600ms ease;
   }
 
-  &__close {
-    flex: 0 0 auto;
+  &__close-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
     width: 24px;
     height: 24px;
-    margin-left: 8px;
+    padding: 0;
+    border: none;
     cursor: pointer;
-    transition: transform 150ms ease-in-out;
+    background-color: transparent;
+    outline-color: transparent;
+    transition: outline-color 300ms ease-in-out;
+    transform: translateY(-50%);
+
+    &:active,
     &:hover {
-      transform: rotate(-90deg);
+      .close-icon {
+        transform: rotate(-90deg);
+      }
     }
-  }
 
-  &__progress-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: var(--color-blue-dark);
-    animation-name: progress-bar;
-    animation-timing-function: linear;
-  }
+    &:focus-visible {
+      outline: 2px solid var(--color-blue-dark);
+      border-radius: 2px;
+    }
 
-  &.default .base-notification__progress-bar {
-    background-color: var(--base-text-2);
+    .close-icon {
+      width: 100%;
+      height: 100%;
+      transition: transform 150ms ease-in-out;
+    }
   }
 }
 
@@ -153,20 +185,29 @@ onUnmounted(() => {
 
 .notification-enter-active,
 .notification-leave-active {
-  transition: opacity 0.5s ease;
+  transition: all 300ms ease, clip-path 600ms ease;
 }
 
-.notification-enter-from,
+.notification-enter-from {
+  clip-path: circle(0% at 50% 100%);
+  .base-notification__message {
+    opacity: 0 !important;
+  }
+}
+.notification-enter-to {
+  clip-path: circle(100% at 50% 100%);
+  .base-notification__message {
+    opacity: 1 !important;
+  }
+}
+.notification-leave-from {
+  opacity: 1 !important;
+}
 .notification-leave-to {
-  opacity: 0;
-}
-
-@keyframes progress-bar {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
 }
 </style>
