@@ -15,7 +15,10 @@
   &__background {
     flex-grow: 1;
     height: 140px;
-    background-image: linear-gradient(132.6deg, rgba(71, 139, 214, 1) 23.3%, rgba(37, 216, 211, 1) 84.7%);
+    background-image: url("../assets/images/layouts/auth-bg-mob.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   &__content {
@@ -28,12 +31,22 @@
     flex-direction: row;
 
     &__background {
-      height: 140px;
+      height: auto;
+      min-height: 100vh;
+      background-image: url("../assets/images/layouts/auth-bg.jpg");
     }
 
     &__content {
       width: max(360px, 35%);
       padding: 200px 24px 24px;
+    }
+  }
+}
+[dark] {
+  .auth-layout__background {
+    background-image: url("../assets/images/layouts/auth-bg-mob-dark.jpg");
+    @media screen and (min-width: 769px) {
+      background-image: url("../assets/images/layouts/auth-bg-dark.jpg");
     }
   }
 }
