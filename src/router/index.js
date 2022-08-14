@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/",
     name: "Root",
-    redirect: { name: "Dashboard" }
+    redirect: { name: "SignUp" }
   },
   ...AuthRoutes,
   {
@@ -51,7 +51,7 @@ router.beforeEach(async (to, from, next) => {
   if (to.meta.open) {
     next();
   } else if (to.meta.requireAuth && !user.isAuthenticated) {
-    next({ name: "Login" });
+    next({ name: "SignUp" });
   } else if (user.isAuthenticated && !user.isOnboarded && to.name !== "Onboarding") {
     next({ name: "Onboarding" });
   } else if (user.isAuthenticated && user.isOnboarded && (to.name === "Onboarding" || !to.meta.requireAuth)) {
