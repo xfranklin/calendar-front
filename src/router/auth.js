@@ -1,6 +1,7 @@
-import Login from "@/pages/Login.vue";
-import SignUp from "@/pages/SignUp.vue";
-import Reset from "@/pages/Reset.vue";
+import Login from "@/pages/auth/Login.vue";
+import SignUp from "@/pages/auth/SignUp.vue";
+import Reset from "@/pages/auth/Reset.vue";
+import Onboarding from "@/pages/auth/Onboarding.vue";
 
 export const AuthRoutes = [
   {
@@ -28,6 +29,15 @@ export const AuthRoutes = [
     meta: {
       layout: "AuthLayout",
       requireAuth: false
+    }
+  },
+  {
+    path: "/onboarding",
+    name: "Onboarding",
+    component: Onboarding,
+    meta: {
+      layout: "AuthLayout",
+      requireAuth: true
     }
   }
 ];

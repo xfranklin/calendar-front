@@ -1,7 +1,11 @@
 import axios from "axios";
+import { $notification } from "@/components/base/feedback/notification/notification";
+import { i18n } from "@/configs/i18n";
 
 const HttpStatus = {
-  UNAUTHORIZED: 401
+  UNAUTHORIZED: 401,
+  SERVER_ERRORS: [500, 501, 502, 503, 504],
+  BAD_REQUEST: [400]
 };
 
 export class HttpService {
@@ -13,6 +17,8 @@ export class HttpService {
       HttpService.responseInterceptor.bind(this),
       HttpService.errorInterceptor.bind(this)
     );
+    this.notification = $notification;
+    this.t = i18n.global.t;
   }
 
   static async errorInterceptor({ config, response }) {
@@ -25,11 +31,29 @@ export class HttpService {
       config._retry = true;
       return await this._axios(config);
     }
+
+    if (HttpStatus.SERVER_ERRORS.includes(response.status)) {
+      this.notification({
+        type: "error",
+        duration: "none",
+        message: this.t("SERVER_ERROR")
+      });
+    }
+
+    if (config.headers.VALIDATE && HttpStatus.BAD_REQUEST.includes(response.status) && response?.data?.message) {
+      const errorMessage = Array.isArray(response.data.message) ? response.data.message[0] : response.data.message;
+      this.notification({
+        type: "error",
+        duration: 5000,
+        message: this.t(errorMessage)
+      });
+    }
+
     return response?.data;
   }
 
   static responseInterceptor(response) {
-    return response;
+    return response?.data || response;
   }
 
   async refresh() {
@@ -44,10 +68,11 @@ export class HttpService {
     return await this._axios.get(url);
   }
 
-  async post(url, body) {
+  async post(url, body, validate = false) {
     return await this._axios.post(url, body, {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...(validate && { VALIDATE: true })
       }
     });
   }

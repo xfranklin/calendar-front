@@ -1,14 +1,23 @@
 import { Injector } from "@/dependency-injection/injector";
 import { useUserStore } from "@/store/user";
 import { HTTP_SERVICE_TOKEN } from "@/services/tokens";
+import { router } from "@/router";
 
 export class AuthService {
   constructor() {
     this.$http = Injector.getDependency(HTTP_SERVICE_TOKEN);
+    this.user = useUserStore();
+    this.router = router;
   }
 
   async signUp(signUpData) {
-    return await this.$http.post("/auth/signup", signUpData);
+    const response = await this.$http.post("/auth/signup", signUpData, true);
+    if (response?.user) {
+      this.user.setUserInfo(response.user);
+      this.user.setAuthStatus(true);
+      this.router.push({ name: "Dashboard" });
+    }
+    return response;
   }
 
   async test() {
@@ -20,20 +29,13 @@ export class AuthService {
   }
 
   async refresh() {
-    const user = useUserStore();
     const response = await this.$http.refresh();
     // to http service
     if (response?.message === "ACCESS_TOKEN_NOT_EXPIRED" || response?.status === 200) {
-      user.isAuthenticated = true;
+      this.user.setAuthStatus(true);
     } else {
-      user.isAuthenticated = false;
+      this.user.setAuthStatus(false);
       return response;
     }
   }
-
-  // async refresh() {
-  //   const response = await this.$http.get("/auth/refresh");
-  //   console.log("response", response);
-  //   return response;
-  // }
 }

@@ -14,9 +14,9 @@ import BaseSwitch from "@/components/base/form/BaseSwitch.vue";
 import BaseIcon from "@/components/base/BaseIcon.vue";
 
 const app = createApp(App);
+app.use(i18n);
 app.use(createPinia());
 app.use(router);
-app.use(i18n);
 app.use(servicesPlugin);
 app.use(initPlugin);
 app.component("BaseForm", BaseForm);

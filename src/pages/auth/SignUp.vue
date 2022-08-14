@@ -2,9 +2,9 @@
   <h1 class="subtitle-1">{{ $t("SIGN_UP_INTO") }}</h1>
   <div class="base-text sign-up__description">
     {{ $t("ALREADY_HAVE_ACCOUNT") }}
-    <router-link class="base-link" :to="{ name: 'UiKit' }">{{ $t("SIGN_IN") }}</router-link>
+    <router-link class="base-link" :to="{ name: 'Login' }">{{ $t("SIGN_IN") }}</router-link>
   </div>
-  <BaseForm ref="formRef" class="sign-up__form" @submit="signUp">
+  <BaseForm v-slot="{ valid }" class="sign-up__form" @submit="signUp">
     <BaseInput v-model="signUpForm.email" :rules="emailHints" placeholder="EMAIL_PLACEHOLDER" label="EMAIL" />
     <BaseInput
       v-model="signUpForm.password"
@@ -13,7 +13,14 @@
       placeholder="PASSWORD_CREATE_PLACEHOLDER"
       label="PASSWORD"
     />
-    <button type="submit" class="base-primary-button w-100 sign-up__form-button">{{ $t("SIGN_UP") }}</button>
+    <button
+      v-loading="isLoadingButton"
+      :disabled="!valid"
+      type="submit"
+      class="base-primary-button w-100 sign-up__form-button"
+    >
+      {{ $t("SIGN_UP") }}
+    </button>
   </BaseForm>
   <hr class="sign-up__divider" />
   <div class="base-text">{{ $t("SIGN_UP_SOCIALS") }}:</div>
@@ -32,7 +39,7 @@ import { EMAIL_REG_EXP, PASSWORD_REG_EXP } from "@/utils/regular-expresions";
 const { reCaptchaExecute } = useRecaptcha();
 const { t } = useI18n();
 const $service = useServices();
-const formRef = ref(null);
+const isLoadingButton = ref(false);
 
 const signUpForm = ref({ email: "", password: "" });
 
@@ -49,19 +56,23 @@ const passwordHints = [
 ];
 
 const signUp = async () => {
-  const isValid = formRef.value.validateForm();
-  if (isValid) {
+  if (!isLoadingButton.value) {
+    isLoadingButton.value = true;
+    const token = await reCaptchaExecute();
+    const signUpData = {
+      email: signUpForm.value.email,
+      password: signUpForm.value.password,
+      token: token
+    };
+    await $service.auth.signUp(signUpData);
+    isLoadingButton.value = false;
   }
-  // const token = await reCaptchaExecute();
-  // const signUpData = {
-  //   email: signUpForm.value.email,
-  //   password: signUpForm.value.password,
-  //   token
-  // };
-  // await $service.auth.signUp(signUpData);
 };
 </script>
 <style lang="scss" scoped>
+.subtitle-1 {
+  color: var(--base-text-14);
+}
 .sign-up {
   &__description {
     margin-top: 16px;

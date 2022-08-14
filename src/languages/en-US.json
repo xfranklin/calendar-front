@@ -14,5 +14,8 @@
   "MIN_CHARS": "At least {number} characters",
   "MAX_CHARS": "Maximum {number} characters",
   "EMAIL_INVALID": "Email is invalid",
-  "PASSWORD_INVALID": "Password contains invalid characters"
+  "PASSWORD_INVALID": "Password contains invalid characters",
+  "SERVER_ERROR": "Oops! Something went wrong with our server. Help us improve your experience by sending an error report.",
+  "INVALID_CAPTCHA": "Error verifying reCAPTCHA, please try again.",
+  "EMAIL_ALREADY_EXIST": "This e-mail is already used."
 }
