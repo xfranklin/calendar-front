@@ -186,7 +186,7 @@ onUnmounted(() => {
 
 .notification-enter-active,
 .notification-leave-active {
-  transition: all 300ms ease, clip-path 600ms ease;
+  transition: all 300ms ease, transform 250ms ease, margin 250ms ease, clip-path 400ms ease 150ms;
 }
 
 .notification-enter-from {
