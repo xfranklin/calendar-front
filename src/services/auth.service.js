@@ -20,12 +20,8 @@ export class AuthService {
     return response;
   }
 
-  async test() {
-    return await this.$http.post("/user/user", { body: {} });
-  }
-
   async getGoogleUrl() {
-    return await this.$http.get("/auth/social/google");
+    return await this.$http.get(`/auth/social/google?redirect_uri=${import.meta.env.VITE_APP_URL}`);
   }
 
   async refresh() {
