@@ -25,8 +25,12 @@
   <hr class="sign-up__divider" />
   <div class="base-text">{{ $t("SIGN_UP_SOCIALS") }}:</div>
   <div class="sign-up__socials">
-    <button class="base-primary-outlined-button only-icon"><BaseIcon name="facebook" group="socials" /></button>
-    <button class="base-primary-outlined-button only-icon"><BaseIcon name="google" group="socials" /></button>
+    <button class="base-primary-outlined-button only-icon">
+      <BaseIcon name="facebook" group="socials" />
+    </button>
+    <button v-loading="isLoadingGoogle" class="base-primary-outlined-button only-icon" @click="googleSignUp">
+      <BaseIcon name="google" group="socials" />
+    </button>
   </div>
 </template>
 <script setup>
@@ -39,7 +43,10 @@ import { EMAIL_REG_EXP, PASSWORD_REG_EXP } from "@/utils/regular-expresions";
 const { reCaptchaExecute } = useRecaptcha();
 const { t } = useI18n();
 const $service = useServices();
+
 const isLoadingButton = ref(false);
+const isLoadingFacebook = ref(false);
+const isLoadingGoogle = ref(false);
 
 const signUpForm = ref({ email: "", password: "" });
 
@@ -66,6 +73,15 @@ const signUp = async () => {
     };
     await $service.auth.signUp(signUpData);
     isLoadingButton.value = false;
+  }
+};
+
+const googleSignUp = async () => {
+  if (!isLoadingGoogle.value) {
+    isLoadingGoogle.value = true;
+    const { url } = await $service.auth.getGoogleUrl();
+    window.location = url;
+    isLoadingGoogle.value = false;
   }
 };
 </script>

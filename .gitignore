@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 phpstorm.config.js
-.env.development-local
+.env.local-dev
