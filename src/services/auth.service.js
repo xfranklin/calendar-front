@@ -24,6 +24,10 @@ export class AuthService {
     return await this.$http.get(`/auth/social/google?redirect_uri=${import.meta.env.VITE_APP_URL}`);
   }
 
+  async getFacebookUrl() {
+    return await this.$http.get(`/auth/social/facebook?redirect_uri=${import.meta.env.VITE_APP_URL}`);
+  }
+
   async refresh() {
     const response = await this.$http.refresh();
     // to http service

@@ -25,7 +25,7 @@
   <hr class="sign-up__divider" />
   <div class="base-text">{{ $t("SIGN_UP_SOCIALS") }}:</div>
   <div class="sign-up__socials">
-    <button class="base-primary-outlined-button only-icon">
+    <button v-loading="isLoadingFacebook" class="base-primary-outlined-button only-icon" @click="facebookSignUp">
       <BaseIcon name="facebook" group="socials" />
     </button>
     <button v-loading="isLoadingGoogle" class="base-primary-outlined-button only-icon" @click="googleSignUp">
@@ -82,6 +82,15 @@ const googleSignUp = async () => {
     const { url } = await $service.auth.getGoogleUrl();
     window.location = url;
     isLoadingGoogle.value = false;
+  }
+};
+
+const facebookSignUp = async () => {
+  if (!isLoadingFacebook.value) {
+    isLoadingFacebook.value = true;
+    const { url } = await $service.auth.getFacebookUrl();
+    window.location = url;
+    isLoadingFacebook.value = false;
   }
 };
 </script>
