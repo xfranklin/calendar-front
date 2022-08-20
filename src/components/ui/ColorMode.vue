@@ -51,9 +51,12 @@ const disableTransitions = () => {
 };
 </script>
 <style>
-/*TODO add transiton to dot*/
 #color-switch .base-switch__core {
   transition: all 250ms ease-in-out !important;
   transition-property: transform, background-position, outline-color !important;
+}
+
+#color-switch .base-switch__dot {
+  transition: all ease-in-out 200ms !important;
 }
 </style>
