@@ -20,6 +20,16 @@ export class AuthService {
     return response;
   }
 
+  async signIn(signInData) {
+    const response = await this.$http.post("/auth/login", signInData, true);
+    if (response?.user) {
+      this.user.setUserInfo(response.user);
+      this.user.setAuthStatus(true);
+      this.router.push({ name: "Dashboard" });
+    }
+    return response;
+  }
+
   async getGoogleUrl() {
     return await this.$http.get(`/auth/social/google?redirect_uri=${import.meta.env.VITE_APP_URL}`);
   }
