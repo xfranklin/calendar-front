@@ -22,6 +22,9 @@
       {{ $t("SIGN_IN") }}
     </button>
   </BaseForm>
+  <div class="sign-in__forgot">
+    <router-link class="base-link" :to="{ name: 'Reset' }">{{ $t("FORGOT_PASSWORD") }}</router-link>
+  </div>
   <hr class="sign-in__divider" />
   <div class="base-text">{{ $t("SIGN_IN_SOCIALS") }}:</div>
   <div class="sign-in__socials">
@@ -107,6 +110,9 @@ const facebookSignIn = async () => {
   }
   &__form-button {
     margin-top: 16px;
+  }
+  &__forgot {
+    margin-top: 24px;
   }
   &__divider {
     margin: 40px 0;
