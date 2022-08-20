@@ -2,13 +2,16 @@
   "CALENDAR_APP": "Hello world",
   "SIGN_UP": "Sign up",
   "SIGN_UP_INTO": "Sign up into oooi",
+  "SIGN_IN_INTO": "Sign in to your oooi account",
   "ALREADY_HAVE_ACCOUNT": "Already have an account?",
   "SIGN_IN": "Sign in",
   "EMAIL": "Email",
   "PASSWORD": "Password",
   "EMAIL_PLACEHOLDER": "Enter your email address",
   "PASSWORD_CREATE_PLACEHOLDER": "Create a password",
-  "SIGN_UP_SOCIALS": "Sign up with socials",
+  "PASSWORD_ENTER_PLACEHOLDER": "Enter a strong password",
+  "SIGN_UP_SOCIALS": "Sign up with socials:",
+  "SIGN_IN_SOCIALS": "Sign in with socials:",
   "PASSWORD_REQUIRED": "Password is required",
   "EMAIL_REQUIRED": "Email is required",
   "MIN_CHARS": "At least {number} characters",
@@ -17,5 +20,7 @@
   "PASSWORD_INVALID": "Password contains invalid characters",
   "SERVER_ERROR": "Oops! Something went wrong with our server. Help us improve your experience by sending an error report.",
   "INVALID_CAPTCHA": "Error verifying reCAPTCHA, please try again.",
-  "EMAIL_ALREADY_EXIST": "This e-mail is already used."
+  "EMAIL_ALREADY_EXIST": "This e-mail is already used.",
+  "DONT_HAVE_ACCOUNT": "Don’t have an account?",
+  "CREATE_ACCOUNT": "Create one."
 }
