@@ -2,15 +2,19 @@ import { defineStore } from "pinia";
 
 export const useSettingsStore = defineStore("settings", {
   state: () => ({
-    isInited: false,
+    inited: false,
     colorMode: ""
   }),
   actions: {
     setColorMode(mode) {
       this.colorMode = mode;
+    },
+    setInitStatus(status) {
+      this.inited = status;
     }
   },
   getters: {
-    isDarkMode: (state) => (state.colorMode === "DARK" ? true : false)
+    isDarkMode: (state) => state.colorMode === "DARK",
+    isInited: (state) => state.inited
   }
 });

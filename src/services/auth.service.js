@@ -1,5 +1,6 @@
 import { Injector } from "@/dependency-injection/injector";
 import { useUserStore } from "@/store/user";
+import { useSettingsStore } from "@/store/settings";
 import { HTTP_SERVICE_TOKEN } from "@/services/tokens";
 import { router } from "@/router";
 
@@ -7,6 +8,7 @@ export class AuthService {
   constructor() {
     this.$http = Injector.getDependency(HTTP_SERVICE_TOKEN);
     this.user = useUserStore();
+    this.settings = useSettingsStore();
     this.router = router;
   }
 
@@ -15,7 +17,7 @@ export class AuthService {
     if (response?.user) {
       this.user.setUserInfo(response.user);
       this.user.setAuthStatus(true);
-      this.router.push({ name: "Dashboard" });
+      await this.router.push({ name: "Dashboard" });
     }
     return response;
   }
@@ -25,7 +27,7 @@ export class AuthService {
     if (response?.user) {
       this.user.setUserInfo(response.user);
       this.user.setAuthStatus(true);
-      this.router.push({ name: "Dashboard" });
+      await this.router.push({ name: "Dashboard" });
     }
     return response;
   }
@@ -38,14 +40,20 @@ export class AuthService {
     return await this.$http.get(`/auth/social/facebook?redirect_uri=${import.meta.env.VITE_APP_URL}`);
   }
 
-  async refresh() {
+  async init() {
+    if (this.settings.isInited) return null;
     const response = await this.$http.refresh();
-    // to http service
     if (response?.message === "ACCESS_TOKEN_NOT_EXPIRED" || response?.status === 200) {
       this.user.setAuthStatus(true);
+      const user = await this.me();
+      this.user.setUserInfo(user);
     } else {
       this.user.setAuthStatus(false);
-      return response;
     }
+    this.settings.setInitStatus(true);
+  }
+
+  async me() {
+    return await this.$http.get("/user/me");
   }
 }

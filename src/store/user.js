@@ -6,8 +6,8 @@ export const useUserStore = defineStore("user", {
     userInfo: null
   }),
   actions: {
-    setAuthStatus(value) {
-      this.isAuth = value;
+    setAuthStatus(status) {
+      this.isAuth = status;
     },
     setUserInfo(user) {
       this.userInfo = user;

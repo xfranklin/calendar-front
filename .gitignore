@@ -25,3 +25,4 @@ dist-ssr
 
 phpstorm.config.js
 .env.local-dev
+.env.development

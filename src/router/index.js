@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useUserStore } from "@/store/user";
-import { useSettingsStore } from "@/store/settings";
 import { useServices } from "@/composables/useServices";
 import { AuthRoutes } from "./auth.js";
 import UiKit from "@/pages/UiKit.vue";
@@ -40,13 +39,9 @@ export const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const user = useUserStore();
-  const settings = useSettingsStore();
+  const $services = useServices();
 
-  if (!settings.isInited) {
-    const $services = useServices();
-    await $services.auth.refresh();
-    settings.isInited = true;
-  }
+  await $services.auth.init();
 
   if (to.meta.open) {
     next();
