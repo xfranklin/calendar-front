@@ -23,5 +23,6 @@
   "EMAIL_ALREADY_EXIST": "This e-mail is already used.",
   "DONT_HAVE_ACCOUNT": "Don’t have an account?",
   "CREATE_ACCOUNT": "Create one.",
-  "FORGOT_PASSWORD": " Forgot password?"
+  "FORGOT_PASSWORD": "Forgot password?",
+  "PLACEHOLDER_SELECT": "Select"
 }

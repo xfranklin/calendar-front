@@ -7,6 +7,7 @@ import { servicesPlugin } from "@/plugins/services";
 import { initPlugin } from "@/plugins/init";
 
 import { vLoading } from "@/directives/vLoading";
+import { vClickOutside } from "@/directives/vClickOutside";
 
 import BaseForm from "@/components/base/form/BaseForm.vue";
 import BaseInput from "@/components/base/form/BaseInput.vue";
@@ -19,9 +20,13 @@ app.use(createPinia());
 app.use(router);
 app.use(servicesPlugin);
 app.use(initPlugin);
+
 app.component("BaseForm", BaseForm);
 app.component("BaseInput", BaseInput);
 app.component("BaseSwitch", BaseSwitch);
 app.component("BaseIcon", BaseIcon);
+
 app.directive("loading", vLoading);
+app.directive("click-outside", vClickOutside);
+
 app.mount("#calendar-app");

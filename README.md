@@ -8,3 +8,4 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 ## TODO
 * socials auth improvements with popup
+* group styles BaseInput BaseSelect

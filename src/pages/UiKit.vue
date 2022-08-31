@@ -170,7 +170,19 @@
         <BaseInput v-model="input_8" type="password" label="Password" />
       </div>
     </div>
+    <div class="divider">
+      <h2 class="subtitle-1">Dropdown</h2>
+      <hr />
+    </div>
 
+    <div style="display: flex; gap: 20px; align-items: flex-end">
+      <div style="max-width: 360px; width: 100%">
+        <BaseSelect v-model="dropdown_1" :options="options_1" />
+      </div>
+      <div style="max-width: 360px; width: 100%">
+        <BaseSelect v-model="dropdown_2" label="Options" :options="options_1" />
+      </div>
+    </div>
     <div class="divider">
       <h2 class="subtitle-1">Form Validation</h2>
       <hr />
@@ -221,10 +233,48 @@
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
+import BaseSelect from "@/components/base/form/BaseSelect.vue";
 import { $notification } from "@/components/base/feedback/notification/notification";
 
 const variableFont = ref(null);
 const variableWeight = ref(200);
+
+const dropdown_1 = ref(null);
+const options_1 = ref([
+  {
+    value: 1,
+    label: "One"
+  },
+  {
+    value: 2,
+    label: "Two"
+  },
+  {
+    value: 3,
+    label: "Three"
+  },
+  {
+    value: 4,
+    label: "Four"
+  },
+  {
+    value: 5,
+    label: "Five"
+  },
+  {
+    value: 6,
+    label: "Six"
+  },
+  {
+    value: 7,
+    label: "Seven"
+  },
+  {
+    value: 8,
+    label: "Eight"
+  }
+]);
+const dropdown_2 = ref(null);
 
 const input_1 = ref("");
 const input_2 = ref("");

@@ -115,6 +115,7 @@ defineExpose({
   &__label {
     display: inline-block;
     font-size: 1rem;
+    line-height: 1.5rem;
     color: var(--base-bg-2);
     margin-bottom: 2px;
     cursor: pointer;
@@ -143,7 +144,7 @@ defineExpose({
     width: 100%;
     padding: 9px 10px;
     font-size: 0.75rem;
-    line-height: 1.5;
+    line-height: 1.125rem;
     border: 2px solid var(--base-bg-2);
     border-radius: 4px;
     background-color: var(--base-page-bg);
@@ -234,8 +235,8 @@ defineExpose({
   &__error {
     height: 18px;
     margin-top: 2px;
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
     color: var(--base-text-8);
   }
 }
