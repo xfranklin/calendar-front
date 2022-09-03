@@ -66,6 +66,9 @@ const onboard = () => {
   color: var(--base-text-14);
 }
 
+.small-text {
+}
+
 .onboarding {
   &__form {
     margin-top: 40px;
