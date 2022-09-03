@@ -66,9 +66,6 @@ const onboard = () => {
   color: var(--base-text-14);
 }
 
-.small-text {
-}
-
 .onboarding {
   &__form {
     margin-top: 40px;
@@ -86,19 +83,15 @@ const onboard = () => {
     margin-bottom: 20px;
     gap: 24px;
   }
-  &__birthday-day {
-    flex: 1 0 56px;
-  }
+  &__birthday-day,
   &__birthday-year {
-    flex: 1 0 76px;
+    flex: 1 0 64px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .onboarding {
-    &__birthday-day {
-      flex: auto;
-    }
+    &__birthday-day,
     &__birthday-year {
       flex: auto;
     }
