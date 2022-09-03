@@ -3,7 +3,7 @@
   --color-blue-dark: rgba(0, 15, 31, 1);
   --color-blue-dark-medium: rgba(23, 55, 71, 1);
   --color-blue-medium: rgba(83, 115, 131, 1);
-  --color-blue-ligth: rgba(163, 195, 211, 1);
+  --color-blue-light: rgba(163, 195, 211, 1);
   --color-yellow-dark: rgba(193, 137, 15, 1);
   --color-yellow-dark-medium: rgba(243, 187, 65, 1);
   --color-yellow-medium: rgba(255, 227, 105, 1);
@@ -27,12 +27,12 @@
   --base-text-3: var(--color-yellow-dark);
   --base-text-4: var(--color-blue-medium);
   --base-text-5: var(--color-blue-dark);
-  --base-text-6: var(--color-blue-ligth);
+  --base-text-6: var(--color-blue-light);
   --base-text-7: var(--color-yellow-dark);
   --base-text-8: var(--color-error-dark);
   --base-text-9: var(--color-blue-dark-medium);
   --base-text-10: var(--color-blue-dark);
-  --base-text-11: var(--color-blue-ligth);
+  --base-text-11: var(--color-blue-light);
   --base-text-12: var(--color-blue-dark-medium);
   --base-text-13: var(--color-blue-medium);
   --base-text-14: var(--color-blue-medium);
@@ -43,13 +43,15 @@
   --base-bg-1: var(--color-white);
   --base-bg-2: var(--color-blue-dark-medium);
   --base-bg-3: var(--color-yellow-dark);
-  --base-bg-4: var(--color-blue-ligth);
+  --base-bg-4: var(--color-blue-light);
   --base-bg-5: var(--color-blue-dark);
   --base-bg-6: var(--color-error-dark);
   --base-bg-7: var(--color-blue-dark-medium);
   --base-bg-8: var(--color-blue-medium);
   --base-bg-9: var(--color-blue-medium);
   --base-bg-10: var(--color-yellow-medium);
+  --base-bg-11: var(--color-blue-light);
+  --base-bg-12: var(--color-yellow-light);
 
   // Shadows
   --base-shadow-0: 4px 4px 0 0 var(--color-black-opacity-25);
@@ -70,14 +72,14 @@
   --base-text-1: var(--color-blue-dark);
   --base-text-2: var(--color-blue-dark);
   --base-text-3: var(--color-yellow-medium);
-  --base-text-4: var(--color-blue-ligth);
+  --base-text-4: var(--color-blue-light);
   --base-text-5: var(--color-yellow-light);
   --base-text-6: var(--color-blue-medium);
-  --base-text-7: var(--color-blue-ligth);
+  --base-text-7: var(--color-blue-light);
   --base-text-8: var(--color-error-medium);
   --base-text-9: var(--color-white);
   --base-text-10: var(--color-yellow-medium);
-  --base-text-11: var(--color-blue-ligth);
+  --base-text-11: var(--color-blue-light);
   --base-text-12: var(--color-yellow-dark-medium);
   --base-text-13: var(--color-yellow-medium);
   --base-text-14: var(--color-yellow-light);
@@ -91,10 +93,12 @@
   --base-bg-4: var(--color-blue-medium);
   --base-bg-5: var(--color-yellow-medium);
   --base-bg-6: var(--color-error-medium);
-  --base-bg-7: var(--color-blue-ligth);
-  --base-bg-8: var(--color-blue-ligth);
+  --base-bg-7: var(--color-blue-light);
+  --base-bg-8: var(--color-blue-light);
   --base-bg-9: var(--color-blue-medium);
   --base-bg-10: var(--color-yellow-light);
+  --base-bg-11: var(--color-yellow-light);
+  --base-bg-12: var(--color-blue-light);
 
   // Shadows
   --base-shadow-0: 4px 4px 0 0 var(--color-white-opacity-25);

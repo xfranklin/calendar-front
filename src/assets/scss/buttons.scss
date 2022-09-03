@@ -128,6 +128,27 @@
   }
 }
 
+.base-danger-button {
+  @include base-button;
+  color: var(--color-white);
+  background-color: var(--base-bg-6);
+
+
+  &:disabled {
+    color: var(--base-text-11);
+    background-color: var(--base-bg-9);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--base-bg-6);
+    outline-offset: 2px;
+  }
+
+  .base-loader {
+    background-color: var(--color-white);
+  }
+}
+
 .base-primary-outlined-button {
   @include base-button;
   padding: 6px 10px;

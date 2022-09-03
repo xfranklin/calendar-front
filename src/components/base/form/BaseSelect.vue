@@ -1,6 +1,6 @@
 <template>
   <div v-click-outside="close" :class="['base-select', { open: open }]">
-    <label v-if="label" :for="uid" class="base-select__label">{{ label }}</label>
+    <label v-if="label" :for="uid" class="base-select__label">{{ $t(label) }}</label>
     <div ref="field" class="base-select__field-wrap" @click="toggle">
       <input
         :id="uid"
@@ -150,7 +150,6 @@ const setActive = (option) => {
   }
 
   &.open .base-select__field {
-    //color:
     border-color: var(--base-bg-3);
     box-shadow: none;
   }
@@ -178,7 +177,7 @@ const setActive = (option) => {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-height: 174px;
+    max-height: 190px;
     overflow-y: auto;
     border: 2px solid var(--base-bg-3);
     background-color: var(--base-page-bg);
@@ -196,7 +195,7 @@ const setActive = (option) => {
   &__list-item {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 10px;
     font-size: 0.75rem;
     line-height: 1.125rem;
     cursor: pointer;
@@ -205,7 +204,8 @@ const setActive = (option) => {
     transition-property: background-color;
 
     &:hover {
-      background-color: rgba(120, 120, 120, 0.4);
+      background-color: var(--base-bg-11);
+      color: var(--color-blue-dark-medium) !important;
     }
 
     &.active {

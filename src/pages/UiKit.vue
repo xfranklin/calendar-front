@@ -38,23 +38,31 @@
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-button">Button</button>
       <button class="base-secondary-button">Button</button>
+      <button class="base-danger-button">Button</button>
       <button class="base-primary-button icon"><BaseIcon name="google" group="socials" />Button</button>
       <button class="base-secondary-button icon"><BaseIcon name="settings" />Button</button>
+      <button class="base-danger-button icon"><BaseIcon name="alert-triangle" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-button" disabled>Button</button>
       <button class="base-secondary-button" disabled>Button</button>
+      <button class="base-danger-button" disabled>Button</button>
       <button class="base-primary-button icon" disabled><BaseIcon name="google" group="socials" />Button</button>
       <button class="base-secondary-button icon" disabled><BaseIcon name="settings" />Button</button>
+      <button class="base-danger-button icon" disabled><BaseIcon name="alert-triangle" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
       <button v-loading="loading_1" class="base-primary-button" @click="loading_1 = !loading_1">Loading</button>
       <button v-loading="loading_2" class="base-secondary-button" @click="loading_2 = !loading_2">Loading</button>
+      <button v-loading="loading_13" class="base-danger-button" @click="loading_13 = !loading_13">Loading</button>
       <button v-loading="loading_3" class="base-primary-button icon" @click="loading_3 = !loading_3">
         <BaseIcon name="google" group="socials" />Loading
       </button>
       <button v-loading="loading_4" class="base-secondary-button icon" @click="loading_4 = !loading_4">
         <BaseIcon name="settings" />Loading
+      </button>
+      <button v-loading="loading_14" class="base-danger-button icon" @click="loading_14 = !loading_14">
+        <BaseIcon name="alert-triangle" />Loading
       </button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
@@ -309,6 +317,8 @@ const loading_9 = ref(false);
 const loading_10 = ref(false);
 const loading_11 = ref(false);
 const loading_12 = ref(false);
+const loading_13 = ref(false);
+const loading_14 = ref(false);
 
 const switch_1 = ref(false);
 const switch_2 = ref(true);

@@ -44,20 +44,24 @@ h3 {
 .subtitle-1 {
   font-weight: 400;
   font-size: 1.5rem;
+  line-height: 2.25rem;
 }
 
 .subtitle-2 {
   font-weight: 400;
   font-size: 1.25rem;
+  line-height: 1.875rem;
 }
 
 .small-text {
   font-weight: 400;
   font-size: 0.75rem;
+  line-height: 1.125rem;
 }
 
 .base-text {
   color: var(--base-text-9);
+  line-height: 1.5rem;
 }
 
 hr,
@@ -78,7 +82,24 @@ hr,
   animation: square-rotate 3000ms infinite;
 }
 
-.grecaptcha-badge { visibility: hidden; }
+.base-scroll {
+  &::-webkit-scrollbar {
+    width: 24px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 50px;
+    //background-color: var(--base-bg-12);
+  }
+
+  &::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    border: 8px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: var(--base-bg-11);
+  }
+
+}
 
 #notifications-container {
   display: flex;
@@ -114,3 +135,5 @@ hr,
     transform: rotateX(0deg) rotateY(0deg);
   }
 }
+
+.grecaptcha-badge { visibility: hidden; }

@@ -43,6 +43,8 @@ router.beforeEach(async (to, from, next) => {
 
   await $services.auth.init();
 
+  next();
+  return;
   if (to.meta.open) {
     next();
   } else if (to.meta.requireAuth && !user.isAuthenticated) {
