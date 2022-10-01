@@ -19,6 +19,9 @@ export const useUserStore = defineStore("user", {
     },
     isOnboarded(state) {
       return state.userInfo?.isOnboarded || false;
+    },
+    getUserInfo(state) {
+      return state.userInfo;
     }
   }
 });

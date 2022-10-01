@@ -4,6 +4,7 @@
     <div ref="field" class="base-select__field-wrap" @click="toggle">
       <input
         :id="uid"
+        ref="inputRef"
         :value="value"
         type="text"
         autocomplete="off"
@@ -55,11 +56,12 @@ const uid = getCurrentInstance().uid;
 
 const open = ref(false);
 const field = ref(null);
+const inputRef = ref(null);
 const list = ref(null);
 let cleanup = null;
 
 const value = computed(() => {
-  if (props.modelValue) {
+  if (props.modelValue != null) {
     if (typeof props.options[0] !== "object") {
       return props.modelValue;
     } else {
@@ -91,11 +93,19 @@ const position = () => {
 };
 
 const setActive = (option) => {
-  const value = option.value || option;
+  const value = option?.value ?? option;
   emit("update:modelValue", value);
   emit("change", value);
   toggle();
 };
+
+const focus = () => {
+  inputRef.value.focus();
+};
+
+defineExpose({
+  focus
+});
 </script>
 
 <style lang="scss" scoped>

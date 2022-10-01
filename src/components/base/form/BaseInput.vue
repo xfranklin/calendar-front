@@ -48,6 +48,14 @@ const props = defineProps({
   rules: {
     type: Array,
     default: null
+  },
+  pattern: {
+    type: RegExp,
+    default: null
+  },
+  max: {
+    type: Number,
+    default: null
   }
 });
 
@@ -63,8 +71,16 @@ const errorMessage = ref(null);
 const baseForm = inject("baseForm");
 
 const updateValue = ({ target }) => {
-  emit("update:modelValue", target.value);
-  validateInput(target.value);
+  let value = target.value;
+  if (props.max) {
+    value = target.value.slice(0, props.max);
+  }
+  if (props.pattern) {
+    value = value.replace(props.pattern, "");
+  }
+  emit("update:modelValue", value);
+  if (value !== target.value) target.value = value;
+  if (value !== props.modelValue) validateInput(value);
 };
 
 const validateInput = (value = props.modelValue) => {
@@ -86,11 +102,19 @@ const validateInput = (value = props.modelValue) => {
 const togglePassword = () => {
   fieldType.value = fieldType.value === "password" ? "text" : "password";
   passwordIcon.value = fieldType.value === "password" ? "eye" : "eye-off";
+  focus();
+};
+
+const focus = () => {
   inputRef.value.focus();
 };
 
 onMounted(() => {
   if (baseForm?.bind) {
+    // validate if value predefined
+    if (props.modelValue) {
+      validateInput();
+    }
     baseForm.bind({ validateInput, uid });
     baseForm.setValidation(isValid.value, uid);
   }
@@ -103,7 +127,8 @@ onUnmounted(() => {
 });
 
 defineExpose({
-  validateInput
+  validateInput,
+  focus
 });
 </script>
 

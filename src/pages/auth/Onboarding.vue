@@ -7,48 +7,30 @@
     </div>
     <h2 class="subtitle-2">{{ $t("DATE_OF_BIRTH") }}</h2>
     <div class="onboarding__birthday-description small-text">{{ $t("DATE_ASK_REASON") }}</div>
-    <div class="onboarding__birthday">
-      <BaseInput
-        v-model="formData.day"
-        :rules="[required]"
-        label="DAY"
-        placeholder="DAY_PLACEHOLDER"
-        class="onboarding__birthday-day"
-      />
-      <BaseSelect v-model="formData.month" :options="options" label="MONTH" />
-      <BaseInput
-        v-model="formData.year"
-        :rules="[required]"
-        label="YEAR"
-        placeholder="YEAR_PLACEHOLDER"
-        class="onboarding__birthday-year"
-      />
-    </div>
-    <button v-loading="isLoading" :disabled="!formData.month || !valid" type="submit" class="base-primary-button w-100">
+    <BirthPicker v-model="formData.birth" />
+    <button v-loading="isLoading" :disabled="!formData.birth || !valid" type="submit" class="base-primary-button w-100">
       {{ $t("CONFIRM_PERSONAL_DETAILS") }}
     </button>
   </BaseForm>
 </template>
 <script setup>
-import { getAllMonths } from "@/utils/get-mounts";
-import { useI18n } from "vue-i18n";
 import { ref } from "vue";
-import BaseSelect from "@/components/base/form/BaseSelect.vue";
+import BirthPicker from "@/components/ui/BirthPicker.vue";
+import { useI18n } from "vue-i18n";
+import { useUserStore } from "@/store/user";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
+
 const isLoading = ref(false);
 
 const required = (value) => !value && t("ERROR_REQUIRED");
 const rules = [required, (value) => value.length > 128 && t("MAX_CHARS", { number: 128 })];
-
-const options = getAllMonths(locale.value).map((value, index) => ({ label: value, value: index }));
+const user = useUserStore();
 
 const formData = ref({
-  name: "",
-  surname: "",
-  day: "",
-  month: "",
-  year: ""
+  name: user.getUserInfo?.firstName || "",
+  surname: user.getUserInfo?.lastName || "",
+  birth: user.getUserInfo?.birthday || ""
 });
 
 const onboard = () => {
@@ -77,22 +59,21 @@ const onboard = () => {
   &__birthday-description {
     margin-top: 4px;
   }
-  &__birthday {
-    display: flex;
-    margin-top: 8px;
-    margin-bottom: 20px;
-    gap: 24px;
-  }
-  &__birthday-day,
-  &__birthday-year {
+}
+
+.birth-picker {
+  margin: 8px 0 20px;
+
+  ::v-deep(.birth-picker__year),
+  ::v-deep(.birth-picker__day) {
     flex: 1 0 64px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .onboarding {
-    &__birthday-day,
-    &__birthday-year {
+  .birth-picker {
+    ::v-deep(.birth-picker__year),
+    ::v-deep(.birth-picker__day) {
       flex: auto;
     }
   }
