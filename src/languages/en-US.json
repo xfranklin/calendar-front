@@ -38,5 +38,6 @@
   "YEAR": "Year",
   "DAY_PLACEHOLDER": "DD",
   "YEAR_PLACEHOLDER": "YYYY",
-  "CONFIRM_PERSONAL_DETAILS": "Confirm personal details"
+  "CONFIRM_PERSONAL_DETAILS": "Confirm personal details",
+  "CONFIRM_EMAIL_SEND": "We sent you a letter to confirm the email. However, you can use oooi without confirmation, but some functions will not work to use we need mail. "
 }

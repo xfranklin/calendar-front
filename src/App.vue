@@ -3,17 +3,22 @@
     <router-view />
   </component>
   <div v-else>loading</div>
-  <ColorMode v-if="colorMode" class="color-mode" />
+  <div class="color-mode">
+    <button class="base-primary-outlined-button" @click="logout">logout</button>
+    <ColorMode v-if="colorMode" />
+  </div>
 </template>
 <script setup>
 import { ref, watch, markRaw, computed, defineAsyncComponent } from "vue";
 import { useRoute } from "vue-router";
 import { useSettingsStore } from "@/store/settings";
+import { useServices } from "@/composables/useServices";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
 
 const layout = ref();
 const route = useRoute();
+const $services = useServices();
 const settings = useSettingsStore();
 
 const isInited = computed(() => {
@@ -23,6 +28,10 @@ const isInited = computed(() => {
 const colorMode = () => {
   const { host } = window.location;
   return host.includes("localhost") || host.includes("dev");
+};
+
+const logout = () => {
+  $services.auth.logout();
 };
 
 watch(
@@ -41,6 +50,8 @@ watch(
 <style lang="scss">
 @import "./assets/scss";
 .color-mode {
+  display: flex;
+  flex-direction: column;
   position: fixed !important;
   right: 44px;
   top: 0.5rem;

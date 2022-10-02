@@ -3,7 +3,7 @@ import { useUserStore } from "@/store/user";
 import { useServices } from "@/composables/useServices";
 import { AuthRoutes } from "./auth.js";
 import UiKit from "@/pages/UiKit.vue";
-import Dashboard from "@/pages/Dashboard.vue";
+import Timeline from "@/pages/Timeline.vue";
 
 const routes = [
   {
@@ -22,9 +22,9 @@ const routes = [
     }
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
+    path: "/timeline",
+    name: "Timeline",
+    component: Timeline,
     meta: {
       layout: "EmptyLayout",
       requireAuth: true
@@ -50,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
   } else if (user.isAuthenticated && !user.isOnboarded && to.name !== "Onboarding") {
     next({ name: "Onboarding" });
   } else if (user.isAuthenticated && user.isOnboarded && (to.name === "Onboarding" || !to.meta.requireAuth)) {
-    next({ name: "Dashboard" });
+    next({ name: "Timeline" });
   } else {
     next();
   }
