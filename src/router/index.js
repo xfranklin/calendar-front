@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useServices } from "@/composables/useServices";
 import { AuthRoutes } from "./auth.js";
+import { AppRoutes } from "@/router/app";
 import UiKit from "@/pages/UiKit.vue";
-import Timeline from "@/pages/Timeline.vue";
 
 const routes = [
   {
@@ -12,6 +12,7 @@ const routes = [
     redirect: { name: "SignUp" }
   },
   ...AuthRoutes,
+  ...AppRoutes,
   {
     path: "/ui-kit",
     name: "UiKit",
@@ -19,15 +20,6 @@ const routes = [
     meta: {
       layout: "EmptyLayout",
       open: true
-    }
-  },
-  {
-    path: "/timeline",
-    name: "Timeline",
-    component: Timeline,
-    meta: {
-      layout: "EmptyLayout",
-      requireAuth: true
     }
   }
 ];

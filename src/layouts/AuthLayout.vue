@@ -2,6 +2,7 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
+      <BaseImage class="auth-layout__logo" src="/src/assets/images/logo" type="svg" alt="oooi logo" />
       <slot></slot>
     </div>
   </div>
@@ -24,6 +25,10 @@
   &__content {
     padding: 40px 16px 16px;
   }
+
+  &__logo {
+    margin-bottom: 40px;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -38,7 +43,11 @@
 
     &__content {
       width: max(360px, 35%);
-      padding: 200px 24px 24px;
+      padding: 120px 24px 24px;
+    }
+
+    &__logo {
+      margin-bottom: 80px;
     }
   }
 }

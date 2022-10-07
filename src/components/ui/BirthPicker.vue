@@ -18,7 +18,7 @@
       :rules="[required]"
       label="YEAR"
       placeholder="YEAR_PLACEHOLDER"
-      :pattern="/[^\d]/g"
+      :pattern="/[^0-9]/g"
       :max="4"
       class="birth-picker__year"
       @update:modelValue="yearValidate"

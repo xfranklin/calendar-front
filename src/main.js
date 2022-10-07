@@ -13,6 +13,7 @@ import BaseForm from "@/components/base/form/BaseForm.vue";
 import BaseInput from "@/components/base/form/BaseInput.vue";
 import BaseSwitch from "@/components/base/form/BaseSwitch.vue";
 import BaseIcon from "@/components/base/BaseIcon.vue";
+import BaseImage from "@/components/base/BaseImage.vue";
 
 const app = createApp(App);
 app.use(i18n);
@@ -25,6 +26,7 @@ app.component("BaseForm", BaseForm);
 app.component("BaseInput", BaseInput);
 app.component("BaseSwitch", BaseSwitch);
 app.component("BaseIcon", BaseIcon);
+app.component("BaseImage", BaseImage);
 
 app.directive("loading", vLoading);
 app.directive("click-outside", vClickOutside);
