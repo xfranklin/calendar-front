@@ -2,9 +2,8 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
-      <logo-image />
       <hr />
-      <img src="../assets/images/logo.svg?raw" />
+      <img src="../assets/images/logo.svg?url" />
       <hr />
       <img src="../assets/images/layouts/noise-bg.png" />
       <BaseImage class="auth-layout__logo" src="/src/assets/images/layouts/noise-bg" alt="oooi logo" />
@@ -13,9 +12,6 @@
     </div>
   </div>
 </template>
-<script setup>
-import LogoImage from "@/assets/images/logo.svg";
-</script>
 <style lang="scss">
 .auth-layout {
   width: 100%;
