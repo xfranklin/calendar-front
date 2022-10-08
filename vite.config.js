@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-import svgLoader from "vite-svg-loader";
+// import svgLoader from "vite-svg-loader";
 import * as path from "path";
 
 export default ({ mode }) => {
@@ -11,12 +11,7 @@ export default ({ mode }) => {
         "@": path.resolve(__dirname, "./src")
       }
     },
-    plugins: [
-      vue(),
-      svgLoader({
-        svgo: false
-      })
-    ],
+    plugins: [vue()],
     server: {
       port: 3010,
       proxy: {

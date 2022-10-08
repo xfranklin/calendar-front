@@ -2,7 +2,7 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
-      <logo-image></logo-image>
+      <!--      <logo-image></logo-image>-->
       <!--      <img :src="LogoImage" />-->
       <hr />
       <img src="../assets/images/logo.svg" />
@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup>
-import LogoImage from "@/assets/images/logo.svg";
+// import LogoImage from "@/assets/images/logo.svg";
 </script>
 <style lang="scss">
 .auth-layout {

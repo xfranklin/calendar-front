@@ -1,30 +1,31 @@
 <template>
-  <component :is="dynamicIcon" class="base-icon"></component>
+  <h2>icon</h2>
+  <!--  <component :is="dynamicIcon" class="base-icon"></component>-->
 </template>
 
 <script setup>
-import { watch, shallowRef, defineAsyncComponent } from "vue";
+// import { watch, shallowRef, defineAsyncComponent } from "vue";
+//
+// const props = defineProps({
+//   name: {
+//     type: String,
+//     required: true
+//   },
+//   group: {
+//     type: String,
+//     default: "regular"
+//   }
+// });
+//
+// const dynamicIcon = shallowRef(null);
 
-const props = defineProps({
-  name: {
-    type: String,
-    required: true
-  },
-  group: {
-    type: String,
-    default: "regular"
-  }
-});
-
-const dynamicIcon = shallowRef(null);
-
-watch(
-  () => props.name,
-  (name, oldName) => {
-    if (name !== oldName) {
-      dynamicIcon.value = defineAsyncComponent(() => import(`./../../assets/icons/${props.group}/${name}.svg`));
-    }
-  },
-  { immediate: true }
-);
+// watch(
+//   () => props.name,
+//   (name, oldName) => {
+//     if (name !== oldName) {
+//       dynamicIcon.value = defineAsyncComponent(() => import(`./../../assets/icons/${props.group}/${name}.svg`));
+//     }
+//   },
+//   { immediate: true }
+// );
 </script>
