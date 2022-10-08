@@ -2,12 +2,20 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
+      <logo-image></logo-image>
+      <!--      <img :src="LogoImage" />-->
+      <hr />
       <img src="../assets/images/logo.svg" />
+      <hr />
+      <img src="../assets/images/layouts/noise-bg.png" />
       <!--      <BaseImage class="auth-layout__logo" src="../../assets/images/logo" type="svg" alt="oooi logo" />-->
       <slot></slot>
     </div>
   </div>
 </template>
+<script setup>
+import LogoImage from "@/assets/images/logo.svg";
+</script>
 <style lang="scss">
 .auth-layout {
   width: 100%;
