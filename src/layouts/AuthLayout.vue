@@ -4,7 +4,7 @@
     <div class="auth-layout__content">
       <logo-image />
       <hr />
-      <img src="../assets/images/logo.svg" />
+      <img src="../assets/images/logo.svg?raw" />
       <hr />
       <img src="../assets/images/layouts/noise-bg.png" />
       <BaseImage class="auth-layout__logo" src="/src/assets/images/layouts/noise-bg" alt="oooi logo" />
