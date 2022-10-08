@@ -8,7 +8,7 @@
       <img src="../assets/images/logo.svg" />
       <hr />
       <img src="../assets/images/layouts/noise-bg.png" />
-      <BaseImage class="auth-layout__logo" src="../../assets/images/layouts/noise-bg" alt="oooi logo" />
+      <BaseImage class="auth-layout__logo" src="/src/assets/images/layouts/noise-bg" alt="oooi logo" />
       <slot></slot>
     </div>
   </div>
