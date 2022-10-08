@@ -3,7 +3,7 @@
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
       <img src="../assets/images/logo.svg" />
-      <BaseImage class="auth-layout__logo" src="src/assets/images/logo" type="svg" alt="oooi logo" />
+      <!--      <BaseImage class="auth-layout__logo" src="../../assets/images/logo" type="svg" alt="oooi logo" />-->
       <slot></slot>
     </div>
   </div>
