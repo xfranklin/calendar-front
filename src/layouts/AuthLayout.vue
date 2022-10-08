@@ -2,7 +2,7 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
-      <BaseImage class="auth-layout__logo" src="/src/assets/images/layouts/noise-bg" alt="oooi logo" />
+      <BaseImage class="auth-layout__logo" src="../../assets/images/layouts/noise-bg" alt="oooi logo" />
       <!--            <BaseImage class="auth-layout__logo" src="@/assets/images/logo" type="svg" alt="oooi logo" />-->
       <slot></slot>
     </div>
