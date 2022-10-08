@@ -28,5 +28,6 @@ const imageSrc = computed(() => {
   } catch (e) {
     console.log(e);
   }
+  return "-->";
 });
 </script>
