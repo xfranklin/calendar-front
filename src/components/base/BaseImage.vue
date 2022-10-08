@@ -21,7 +21,8 @@ const props = defineProps({
 });
 
 const settings = useSettingsStore();
-const imageSrc = computed(() =>
-  settings.isDarkMode ? `${props.src}-dark.${props.type}` : `${props.src}.${props.type}`
-);
+const imageSrc = computed(() => {
+  const src = settings.isDarkMode ? `${props.src}-dark.${props.type}` : `${props.src}.${props.type}`;
+  return new URL(src, import.meta.url).href;
+});
 </script>

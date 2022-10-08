@@ -3,7 +3,7 @@
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
       <hr />
-      <img src="../assets/images/logo.svg" />
+      <img src="@/assets/images/logo.svg?url" />
       <hr />
       <img src="../assets/images/layouts/noise-bg.png" />
       <BaseImage class="auth-layout__logo" src="/src/assets/images/layouts/noise-bg" alt="oooi logo" />
