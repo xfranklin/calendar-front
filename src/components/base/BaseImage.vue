@@ -22,12 +22,7 @@ const props = defineProps({
 
 const settings = useSettingsStore();
 const imageSrc = computed(() => {
-  try {
-    const src = settings.isDarkMode ? `${props.src}-dark.${props.type}` : `${props.src}.${props.type}`;
-    return new URL(src, import.meta.url).href;
-  } catch (e) {
-    console.log(e);
-  }
-  return "-->";
+  const src = settings.isDarkMode ? `${props.src}-dark.${props.type}` : `${props.src}.${props.type}`;
+  return new URL(src, import.meta.url);
 });
 </script>
