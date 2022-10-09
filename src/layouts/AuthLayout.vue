@@ -2,8 +2,13 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
-      <img v-if="settings.isDarkMode" class="auth-layout__logo" src="/src/assets/images/logo.svg" alt="oooi logo" />
-      <img v-else class="auth-layout__logo" src="/src/assets/images/logo-dark.svg" alt="oooi logo" />
+      <img
+        v-if="settings.isDarkMode"
+        class="auth-layout__logo"
+        src="/src/assets/images/logo-dark.svg"
+        alt="oooi logo"
+      />
+      <img v-else class="auth-layout__logo" src="/src/assets/images/logo.svg" alt="oooi logo" />
       <slot></slot>
     </div>
   </div>
