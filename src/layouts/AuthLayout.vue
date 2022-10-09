@@ -5,10 +5,10 @@
       <img
         v-if="settings.isDarkMode"
         class="auth-layout__logo"
-        src="/src/assets/images/logo-dark.svg"
+        src="/src/assets/images/logo-dark.svg?url"
         alt="oooi logo"
       />
-      <img v-else class="auth-layout__logo" src="/src/assets/images/logo.svg" alt="oooi logo" />
+      <img v-else class="auth-layout__logo" src="/src/assets/images/logo.svg?url" alt="oooi logo" />
       <slot></slot>
     </div>
   </div>
