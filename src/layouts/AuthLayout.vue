@@ -2,12 +2,16 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
-      <BaseImage class="auth-layout__logo" src="/src/assets/images/layouts/noise-bg" alt="oooi logo" />
-      <!--            <BaseImage class="auth-layout__logo" src="@/assets/images/logo" type="svg" alt="oooi logo" />-->
+      <img v-if="settings.isDarkMode" class="auth-layout__logo" src="/src/assets/images/logo.svg" alt="oooi logo" />
+      <img v-else class="auth-layout__logo" src="/src/assets/images/logo-dark.svg" alt="oooi logo" />
       <slot></slot>
     </div>
   </div>
 </template>
+<script setup>
+import { useSettingsStore } from "@/store/settings";
+const settings = useSettingsStore();
+</script>
 <style lang="scss">
 .auth-layout {
   width: 100%;

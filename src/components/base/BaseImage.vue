@@ -22,19 +22,10 @@ const props = defineProps({
 
 const settings = useSettingsStore();
 const imageSrc = computed(() => {
+  // TODO make more optimal
+  // SVG not work correctly
   const src = settings.isDarkMode ? `${props.src}-dark.${props.type}` : `${props.src}.${props.type}`;
-  console.log("=>", src);
   const modules = import.meta.globEager("/src/assets/images/**/*");
-  console.log(modules);
   return modules[src].default;
-  // try {
-  //   const src = settings.isDarkMode ? `${props.src}-dark.${props.type}` : `${props.src}.${props.type}`;
-  //   console.log(src);
-  //   console.log(new URL(src, import.meta.url));
-  //   return new URL(src, import.meta.url);
-  // } catch (e) {
-  //   console.log(e);
-  // }
-  // return "";
 });
 </script>
