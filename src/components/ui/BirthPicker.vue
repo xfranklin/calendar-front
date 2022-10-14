@@ -11,17 +11,14 @@
       class="birth-picker__day"
       @update:modelValue="dayValidate"
     />
-    <BaseSelect ref="monthRef" v-model="birth.month" :options="options" label="MONTH" @change="dayUpdate" />
-    <BaseInput
+    <BaseSelect ref="monthRef" v-model="birth.month" :options="optionsMounts" label="MONTH" @change="dayUpdate" />
+    <BaseSelect
       ref="yearRef"
-      :model-value="birth.year"
-      :rules="[required]"
+      v-model="birth.year"
+      :options="optionsYears"
       label="YEAR"
-      placeholder="YEAR_PLACEHOLDER"
-      :pattern="/[^0-9]/g"
-      :max="4"
-      class="birth-picker__year"
-      @update:modelValue="yearValidate"
+      place-holder="YEAR_PLACEHOLDER"
+      @change="nextFocus"
     />
   </div>
 </template>
@@ -41,7 +38,8 @@ const props = defineProps({
   }
 });
 
-const options = getAllMonths(locale.value).map((value, index) => ({ label: value, value: index }));
+const optionsMounts = getAllMonths(locale.value).map((value, index) => ({ label: value, value: index }));
+const optionsYears = Array.from({ length: 123 }, (_, i) => 2022 - i);
 
 const required = (value) => !value && t("ERROR_REQUIRED");
 
@@ -93,14 +91,6 @@ const dayUpdate = () => {
   nextFocus();
 };
 
-const yearValidate = (value) => {
-  dayValidate(birth.value.day, false);
-  if (value.length === 4) {
-    nextFocus();
-  }
-  birth.value.year = value;
-};
-
 const nextFocus = () => {
   if (!birth.value.day) {
     dayRef.value.focus();
@@ -117,9 +107,9 @@ watch(
   () => birth,
   (value) => {
     const { day, month, year } = value.value;
-    if (Number(day) && month !== "" && Number(year)) {
+    if (Number(day) && month !== "" && year) {
       try {
-        const birthDay = new Date(Number(year), month, Number(day)).toISOString();
+        const birthDay = new Date(year, month, Number(day)).toISOString();
         emit("update:modelValue", birthDay);
       } catch (e) {
         console.error(e);

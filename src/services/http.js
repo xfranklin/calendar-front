@@ -25,7 +25,7 @@ export class HttpService {
     if (config?.headers?.TYPE !== "REFRESH" && response?.status === HttpStatus.UNAUTHORIZED) {
       const { statusCode } = await this.refresh();
       if (statusCode === 401) {
-        // logout
+        // TODO redirect to login
         return response?.data;
       }
       config._retry = true;

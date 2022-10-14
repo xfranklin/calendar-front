@@ -1,5 +1,5 @@
 <template>
-  <img :src="imageSrc" :alt="alt" />
+  <img :src="imageSrc" :alt="alt" :height="height" />
 </template>
 
 <script setup>
@@ -17,6 +17,10 @@ const props = defineProps({
   },
   alt: {
     type: String
+  },
+  height: {
+    type: Number,
+    default: null
   }
 });
 
