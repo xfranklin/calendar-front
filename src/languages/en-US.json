@@ -47,5 +47,6 @@
   "CONFIRM_EMAIL_SEND": "We sent you a letter to confirm the email. However, you can use oooi without confirmation, but some functions will not work to use we need mail.",
   "BACK_TO_SIGN_IN": "Back to sign in.",
   "DOUBLE_CHECK_YOUR_MAIL": "Double-check in your mailbox the reset password link we just sent. See you soon!",
-  "CHANGE_EMAIL": "Change entered Email"
+  "CHANGE_EMAIL": "Change entered Email",
+  "SEARCH": "Search"
 }

@@ -2,23 +2,12 @@
   <div class="auth-layout">
     <div class="auth-layout__background"></div>
     <div class="auth-layout__content">
-      <img
-        v-if="settings.isDarkMode"
-        class="auth-layout__logo"
-        src="/src/assets/images/logo-dark.svg?url"
-        height="40"
-        alt="oooi logo"
-      />
-      <img v-else class="auth-layout__logo" src="/src/assets/images/logo.svg?url" height="40" alt="oooi logo" />
+      <BaseImage class="auth-layout__logo" src="/src/assets/images/logo" alt="oooi logo" :height="40" />
       <slot></slot>
     </div>
   </div>
 </template>
-<script setup>
-import { useSettingsStore } from "@/store/settings";
-const settings = useSettingsStore();
-</script>
-<style lang="scss">
+<style lang="scss" scoped>
 .auth-layout {
   width: 100%;
   display: flex;
