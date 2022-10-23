@@ -23,7 +23,7 @@
     </button>
   </BaseForm>
   <div class="sign-in__forgot">
-    <router-link class="base-link" :to="{ name: 'Reset' }">{{ $t("FORGOT_PASSWORD") }}</router-link>
+    <router-link class="base-link" :to="{ name: 'Forgot' }">{{ $t("FORGOT_PASSWORD") }}</router-link>
   </div>
   <hr class="sign-in__divider" />
   <div class="base-text">{{ $t("SIGN_IN_SOCIALS") }}:</div>
