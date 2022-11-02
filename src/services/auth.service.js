@@ -60,4 +60,14 @@ export class AuthService {
   async me() {
     return await this.$http.get("/user/me");
   }
+  // remove after response on real point
+  // eslint-disable-next-line no-unused-vars
+  async forgot(forgotData) {
+    // return await this.$http.post("/auth/forgot", forgotData, true);
+    return new Promise((res) => {
+      setTimeout(() => {
+        res(true);
+      }, 500);
+    });
+  }
 }

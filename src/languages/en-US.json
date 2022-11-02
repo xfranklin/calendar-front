@@ -25,6 +25,11 @@
   "DONT_HAVE_ACCOUNT": "Don’t have an account?",
   "CREATE_ACCOUNT": "Create one.",
   "FORGOT_PASSWORD": "Forgot password?",
+  "REFRESH_PASSWORD": "Refreshed password?",
+  "CHANGE_RESENT_EMAIL": "Change resent email",
+  "SENT_RESET_PASSWORD_LINK": "Sent reset password link",
+  "RESEND_RESET_PASSWORD_LINK": "Resend reset password link",
+  "RESEND_RESET_PASSWORD_LINK_IN": "Resend Link in ",
   "PLACEHOLDER_SELECT": "Select",
   "PERSONAL_DETAILS": "Personal details",
   "NAME_LABEL": "Name",
@@ -39,6 +44,9 @@
   "DAY_PLACEHOLDER": "DD",
   "YEAR_PLACEHOLDER": "YYYY",
   "CONFIRM_PERSONAL_DETAILS": "Confirm personal details",
-  "CONFIRM_EMAIL_SEND": "We sent you a letter to confirm the email. However, you can use oooi without confirmation, but some functions will not work to use we need mail. ",
+  "CONFIRM_EMAIL_SEND": "We sent you a letter to confirm the email. However, you can use oooi without confirmation, but some functions will not work to use we need mail.",
+  "BACK_TO_SIGN_IN": "Back to sign in.",
+  "DOUBLE_CHECK_YOUR_MAIL": "Double-check in your mailbox the reset password link we just sent. See you soon!",
+  "CHANGE_EMAIL": "Change entered Email",
   "SEARCH": "Search"
 }
