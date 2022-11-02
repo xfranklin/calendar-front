@@ -8,34 +8,30 @@
     {{ $t("DOUBLE_CHECK_YOUR_MAIL") }}
   </div>
   <BaseForm v-slot="{ valid }" class="forgot__form" @submit="forgot">
-    <BaseInput
-      v-if="!isResendButton"
-      v-model="forgotForm.email"
-      :rules="emailHints"
-      placeholder="EMAIL_PLACEHOLDER"
-      label="EMAIL"
-    />
-    <button v-if="isResendButton" class="base-primary-button w-100 forgot__form-button" @click="isResendButton = false">
-      {{ $t("CHANGE_EMAIL") }}
-    </button>
-    <button
-      v-if="isResendButton"
-      v-loading="isLoadingButton"
-      class="base-primary-outlined-button w-100 forgot__form-button-resend"
-      :disabled="isDisabled"
-      type="submit"
-    >
-      {{ resendButton }}
-    </button>
-    <button
-      v-if="!isResendButton"
-      v-loading="isLoadingButton"
-      :disabled="!valid"
-      type="submit"
-      class="base-primary-button w-100 forgot__form-button"
-    >
-      {{ $t("SENT_RESET_PASSWORD_LINK") }}
-    </button>
+    <template v-if="!isResendButton">
+      <BaseInput v-model="forgotForm" :rules="emailHints" placeholder="EMAIL_PLACEHOLDER" label="EMAIL" />
+      <button
+        v-loading="isLoadingButton"
+        :disabled="!valid"
+        type="submit"
+        class="base-primary-button w-100 forgot__form-button"
+      >
+        {{ $t("SENT_RESET_PASSWORD_LINK") }}
+      </button>
+    </template>
+    <template v-else>
+      <button class="base-primary-button w-100 forgot__form-button" @click="isResendButton = false">
+        {{ $t("CHANGE_EMAIL") }}
+      </button>
+      <button
+        v-loading="isLoadingButton"
+        class="base-primary-outlined-button w-100 forgot__form-button-resend"
+        :disabled="isDisabled"
+        type="submit"
+      >
+        {{ resendButton }}
+      </button>
+    </template>
   </BaseForm>
 </template>
 <script setup>
@@ -51,7 +47,7 @@ const $service = useServices();
 
 const isLoadingButton = ref(false);
 
-const forgotForm = ref({ email: "" });
+const forgotForm = ref("");
 
 const isResendButton = ref(false);
 
@@ -84,7 +80,7 @@ const forgot = async () => {
     isLoadingButton.value = true;
     const token = await reCaptchaExecute();
     const forgotData = {
-      email: forgotForm.value.email,
+      email: forgotForm.value,
       token: token
     };
     const response = await $service.auth.forgot(forgotData);
