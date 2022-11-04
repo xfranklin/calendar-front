@@ -4,7 +4,7 @@
   </component>
   <div v-else>loading</div>
   <div class="color-mode">
-    <button class="base-primary-outlined-button" @click="logout">logout</button>
+    <!--    <button class="base-primary-outlined-button" @click="logout">logout</button>-->
     <ColorMode v-if="colorMode" />
   </div>
 </template>
@@ -54,7 +54,7 @@ watch(
   flex-direction: column;
   position: fixed !important;
   right: 44px;
-  top: 0.5rem;
+  bottom: 0.5rem;
   z-index: 90;
 }
 </style>

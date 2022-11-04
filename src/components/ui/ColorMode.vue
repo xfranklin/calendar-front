@@ -1,8 +1,7 @@
 <template>
-  <BaseSwitch id="color-switch" :model-value="darkMode" :label="label" @update:model-value="changeMode" />
+  <BaseSwitch id="color-switch" :model-value="settings.isDarkMode" :label="label" @update:model-value="changeMode" />
 </template>
 <script setup>
-import { computed } from "vue";
 import { useSettingsStore } from "@/store/settings";
 import { useServices } from "@/composables/useServices";
 
@@ -15,7 +14,6 @@ defineProps({
 
 const settings = useSettingsStore();
 const $services = useServices();
-const darkMode = computed(() => settings.isDarkMode);
 
 const changeMode = async (value) => {
   disableTransitions();
