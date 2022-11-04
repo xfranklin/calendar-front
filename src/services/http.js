@@ -1,6 +1,7 @@
 import axios from "axios";
 import { $notification } from "@/components/base/feedback/notification/notification";
 import { i18n } from "@/configs/i18n";
+import { router } from "@/router";
 
 const HttpStatus = {
   UNAUTHORIZED: 401,
@@ -18,6 +19,7 @@ export class HttpService {
       HttpService.errorInterceptor.bind(this)
     );
     this.notification = $notification;
+    this.router = router;
     this.t = i18n.global.t;
   }
 
@@ -25,8 +27,7 @@ export class HttpService {
     if (config?.headers?.TYPE !== "REFRESH" && response?.status === HttpStatus.UNAUTHORIZED) {
       const { statusCode } = await this.refresh();
       if (statusCode === 401) {
-        // TODO redirect to login
-        return response?.data;
+        await this.router.push({ name: "Login" });
       }
       config._retry = true;
       return await this._axios(config);

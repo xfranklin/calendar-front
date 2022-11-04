@@ -36,10 +36,12 @@
   --base-text-12: var(--color-blue-dark-medium);
   --base-text-13: var(--color-blue-medium);
   --base-text-14: var(--color-blue-medium);
+  --base-text-15: var(--color-blue-dark);
 
   // Backgrounds
   --base-page-bg: var(--color-white);
   --base-bg-0: var(--color-blue-dark-medium);
+  // TODO delete, repeated with --base-page-bg ↓
   --base-bg-1: var(--color-white);
   --base-bg-2: var(--color-blue-dark-medium);
   --base-bg-3: var(--color-yellow-dark);
@@ -83,6 +85,7 @@
   --base-text-12: var(--color-yellow-dark-medium);
   --base-text-13: var(--color-yellow-medium);
   --base-text-14: var(--color-yellow-light);
+  --base-text-15: var(--color-blue-light);
 
   // Backgrounds
   --base-page-bg: var(--color-blue-dark);
