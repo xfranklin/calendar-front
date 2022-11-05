@@ -18,7 +18,7 @@
       :options="optionsYears"
       label="YEAR"
       place-holder="YEAR_PLACEHOLDER"
-      @change="nextFocus"
+      @change="dayUpdate"
     />
   </div>
 </template>
@@ -71,9 +71,9 @@ const dayValidate = (value, focusable = true) => {
     if (month !== "") {
       MAX_DAY = [3, 5, 8, 10].includes(month) ? 30 : 31;
       if (month === 1) {
-        MAX_DAY = 28;
-        if (year && isLeakYear(year)) {
-          MAX_DAY = 29;
+        MAX_DAY = 29;
+        if (year && !isLeakYear(year)) {
+          MAX_DAY = 28;
         }
       }
     }

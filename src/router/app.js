@@ -9,5 +9,32 @@ export const AppRoutes = [
       layout: "AppLayout",
       requireAuth: true
     }
+  },
+  {
+    path: "/boards",
+    name: "Boards",
+    component: Timeline,
+    meta: {
+      layout: "AppLayout",
+      requireAuth: true
+    }
+  },
+  {
+    path: "/archive",
+    name: "Archive",
+    component: Timeline,
+    meta: {
+      layout: "AppLayout",
+      requireAuth: true
+    }
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Timeline,
+    meta: {
+      layout: "AppLayout",
+      requireAuth: true
+    }
   }
 ];

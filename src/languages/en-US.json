@@ -49,5 +49,12 @@
   "CHANGE_EMAIL": "Change entered Email",
   "CONFIRM_EMAIL_SEND": "We sent you a letter to confirm the email. However, you can use oooi without confirmation, but some functions will not work to use we need mail. ",
   "SEARCH": "Search",
-  "DARK_MODE": "Dark mode"
+  "DARK_MODE": "Dark mode",
+  "TIMELINE": "Timeline",
+  "BOARDS": "Boards",
+  "ARCHIVE": "Archive",
+  "SETTINGS": "Settings",
+  "ONBOARDING": "Onboarding",
+  "HELP": "Help",
+  "LOG_OUT": "Log out"
 }
