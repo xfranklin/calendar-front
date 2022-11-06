@@ -2,7 +2,9 @@
   <div class="app-layout">
     <Header />
     <Sidebar />
-    <slot />
+    <main class="app-layout-main">
+      <slot />
+    </main>
   </div>
 </template>
 <script setup>

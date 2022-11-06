@@ -19,18 +19,30 @@
         {{ $t(term) }}
       </router-link>
     </nav>
+    <div class="main-sidebar__actions">
+      <button
+        v-for="({ action, term, icon }, key) in actionsList"
+        :key="key"
+        type="button"
+        class="main-sidebar__actions-btn"
+        @click="actions[action]()"
+      >
+        <BaseIcon :name="icon" />
+        {{ $t(term) }}
+      </button>
+    </div>
   </aside>
   <div v-if="settings.isSidebarOpened" class="main-sidebar__bg-layout" @click="close"></div>
 </template>
 <script setup>
-import { onUnmounted } from "vue";
+import { watch } from "vue";
 import { useSettingsStore } from "@/store/settings";
+import { useServices } from "@/composables/useServices";
+import { useRoute } from "vue-router";
 
 const settings = useSettingsStore();
-
-const close = () => {
-  settings.setSideBarStatus(false);
-};
+const $services = useServices();
+const route = useRoute();
 
 const navigationList = [
   { name: "Timeline", term: "TIMELINE", icon: "clock" },
@@ -39,10 +51,28 @@ const navigationList = [
   { name: "Settings", term: "SETTINGS", icon: "settings" }
 ];
 
-const actionsList = [];
-onUnmounted(() => {
-  close();
-});
+const actionsList = [
+  { action: "onboarding", term: "ONBOARDING", icon: "gaming" },
+  { action: "help", term: "HELP", icon: "help" },
+  { action: "logout", term: "LOG_OUT", icon: "logout" }
+];
+
+watch(
+  () => route.name,
+  () => {
+    close();
+  }
+);
+
+const close = () => {
+  settings.setSideBarStatus(false);
+};
+
+const actions = {
+  async logout() {
+    await $services.auth.logout();
+  }
+};
 </script>
 <style lang="scss">
 .main-sidebar {
@@ -50,12 +80,16 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   max-width: 480px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   z-index: 900;
   background-color: var(--base-page-bg);
+  overflow: auto;
   transform: translateX(-100%);
   transition: transform 300ms ease-in-out;
+  padding-bottom: 16px;
 
   &.opened {
     transform: translateX(0);
@@ -68,12 +102,22 @@ onUnmounted(() => {
     padding: 24px 16px;
   }
 
-  &__menu {
+  &__menu,
+  &__actions {
     display: flex;
     flex-direction: column;
   }
 
-  &__menu-link {
+  &__menu {
+    margin-bottom: 40px;
+  }
+
+  &__actions {
+    margin-top: auto;
+  }
+
+  &__menu-link,
+  &__actions-btn {
     position: relative;
     display: flex;
     margin-bottom: 8px;
@@ -85,11 +129,29 @@ onUnmounted(() => {
     outline-color: transparent;
     transition: color, outline-color 150ms linear;
 
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
     &:focus-visible {
       outline: 2px solid var(--base-bg-5);
       outline-offset: -2px;
     }
 
+    .base-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      transition: transform 150ms linear;
+    }
+
+    &.router-link-active .base-icon,
+    &:hover .base-icon {
+      transform: scale(1.2);
+    }
+  }
+
+  &__menu-link {
     &:before {
       position: absolute;
       content: "";
@@ -111,12 +173,12 @@ onUnmounted(() => {
         opacity: 1;
       }
     }
+  }
 
-    .base-icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
-    }
+  &__actions-btn {
+    border: none;
+    background-color: unset;
+    cursor: pointer;
   }
 
   &__bg-layout {

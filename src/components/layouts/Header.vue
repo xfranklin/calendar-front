@@ -26,6 +26,7 @@ const openSidebar = () => {
 .main-header {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 16px;
 
   &__logo {
