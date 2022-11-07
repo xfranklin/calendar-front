@@ -1,5 +1,5 @@
 <template>
-  <h2>Timeline</h2>
+  <h2 style="height: 2000px">Timeline</h2>
 </template>
 
 <script>

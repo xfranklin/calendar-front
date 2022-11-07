@@ -31,4 +31,4 @@ app.component("BaseImage", BaseImage);
 app.directive("loading", vLoading);
 app.directive("click-outside", vClickOutside);
 
-app.mount("#calendar-app");
+app.mount("#oooi-app");

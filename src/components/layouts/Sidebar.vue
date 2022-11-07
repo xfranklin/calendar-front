@@ -65,6 +65,8 @@ watch(
 );
 
 const close = () => {
+  const body = document.getElementById("oooi-app");
+  body.style.overflowY = "unset";
   settings.setSideBarStatus(false);
 };
 

@@ -19,7 +19,9 @@ const settings = useSettingsStore();
 const breakpoints = useBreakPoints();
 
 const openSidebar = () => {
-  settings.setSideBarStatus(true);
+  const body = document.getElementById("oooi-app");
+  body.style.overflowY = "hidden";
+  body && settings.setSideBarStatus(true);
 };
 </script>
 <style lang="scss">
