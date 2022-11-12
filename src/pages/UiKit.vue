@@ -7,7 +7,7 @@
       <hr />
     </div>
     <h1 id="h1-variable" ref="variableFont">
-      ABC DEF GHI JKL MNO PQR STU VWX YZ abc def ghi jkl mno pqr stu vwx yz 01234 56789
+      ABC DEF GHI JKL MNO PQR STU VWX YZ abc def ghi jkl mno pqr stu vwx yz 01 23 45 67 89
     </h1>
     <br />
     <input v-model="variableWeight" type="range" min="200" max="800" />
@@ -211,14 +211,29 @@
     </div>
     <div style="display: flex">
       <div>
-        <BaseSwitch v-model="switch_1" label="Toggle me" />
-        <BaseSwitch v-model="switch_2" label="Toggle me" />
+        <BaseSwitch v-model="switch_1" label="Toggle me" class="mb-4" />
+        <BaseSwitch v-model="switch_2" label="Toggle me" class="mb-4" />
       </div>
       <div style="margin-left: 2rem">
-        <BaseSwitch v-model="switch_3" disabled label="Toggle me" />
-        <BaseSwitch v-model="switch_4" disabled label="Toggle me" />
+        <BaseSwitch v-model="switch_3" disabled label="Toggle me" class="mb-4" />
+        <BaseSwitch v-model="switch_4" disabled label="Toggle me" class="mb-4" />
       </div>
     </div>
+    <div class="divider">
+      <h2 class="subtitle-1">Radio</h2>
+      <hr />
+    </div>
+    <div style="display: flex">
+      <div>
+        <BaseRadio v-model="radio_1" label="Radio me" :val="1" class="mb-4" />
+        <BaseRadio v-model="radio_1" label="Radio me" :val="2" class="mb-4" />
+      </div>
+      <div style="margin-left: 2rem">
+        <BaseRadio v-model="radio_2" disabled label="Radio me" :val="1" class="mb-4" />
+        <BaseRadio v-model="radio_2" disabled label="Radio me" :val="2" class="mb-4" />
+      </div>
+    </div>
+
     <div class="divider">
       <h2 class="subtitle-1">Notifications</h2>
       <hr />
@@ -242,6 +257,7 @@
 import { ref, watch, onMounted } from "vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
 import BaseSelect from "@/components/base/form/BaseSelect.vue";
+import BaseRadio from "@/components/base/form/BaseRadio.vue";
 import { $notification } from "@/components/base/feedback/notification/notification";
 
 const variableFont = ref(null);
@@ -256,30 +272,6 @@ const options_1 = ref([
   {
     value: 2,
     label: "Two"
-  },
-  {
-    value: 3,
-    label: "Three"
-  },
-  {
-    value: 4,
-    label: "Four"
-  },
-  {
-    value: 5,
-    label: "Five"
-  },
-  {
-    value: 6,
-    label: "Six"
-  },
-  {
-    value: 7,
-    label: "Seven"
-  },
-  {
-    value: 8,
-    label: "Eight"
   }
 ]);
 const dropdown_2 = ref(null);
@@ -324,6 +316,9 @@ const switch_1 = ref(false);
 const switch_2 = ref(true);
 const switch_3 = ref(false);
 const switch_4 = ref(true);
+
+const radio_1 = ref(1);
+const radio_2 = ref(null);
 
 watch(variableWeight, (weight) => {
   variableFont.value.style.fontWeight = weight;
@@ -411,5 +406,9 @@ const noti_8 = () => {
 
 .divider {
   margin: 2rem 0 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 4px;
 }
 </style>

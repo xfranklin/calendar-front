@@ -93,6 +93,7 @@ const position = () => {
 };
 
 const setActive = (option) => {
+  // TODO add focus to dropdown on close
   const value = option?.value ?? option;
   emit("update:modelValue", value);
   emit("change", value);

@@ -47,6 +47,7 @@
     }
 
     &__logo {
+      display: block;
       margin-bottom: 80px;
     }
   }

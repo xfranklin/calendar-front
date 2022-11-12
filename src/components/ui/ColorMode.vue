@@ -36,7 +36,7 @@ const disableTransitions = () => {
   css.setAttribute("id", "off-transition");
   css.appendChild(
     document.createTextNode(
-      `* {
+      `*, *::before, *::after {
        -webkit-transition: none !important;
        -moz-transition: none !important;
        -o-transition: none !important;

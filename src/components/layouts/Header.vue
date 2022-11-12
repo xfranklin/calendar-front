@@ -50,7 +50,7 @@ const openSidebar = () => {
 @media screen and (min-width: 769px) {
   .main-header {
     &__logo {
-      margin: 0 16px 0 20px;
+      margin: 0 18px 0 20px;
     }
 
     &__color-mode {

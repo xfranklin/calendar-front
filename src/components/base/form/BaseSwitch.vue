@@ -43,6 +43,7 @@ const onChange = ({ target }) => {
     height: 1px;
     position: absolute;
     appearance: none;
+    -webkit-appearance: none;
   }
 
   // base-switch__core
@@ -52,7 +53,7 @@ const onChange = ({ target }) => {
     cursor: pointer;
     width: 34px;
     height: 20px;
-    margin: 4px;
+    margin: 2px;
     padding: 2px;
     border-radius: 4px;
     overflow: hidden;
@@ -128,7 +129,7 @@ const onChange = ({ target }) => {
 
   // base-switch__label
   &__label {
-    margin-left: 6px;
+    margin-left: 8px;
     cursor: pointer;
     color: var(--base-text-0);
   }

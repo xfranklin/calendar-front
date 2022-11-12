@@ -2,9 +2,8 @@
   <component :is="layout" v-if="isInited">
     <router-view />
   </component>
-  <div v-else>loading</div>
+  <Loader v-else />
   <div class="color-mode">
-    <!--    <button class="base-primary-outlined-button" @click="logout">logout</button>-->
     <ColorMode v-if="colorMode" />
   </div>
 </template>
@@ -15,6 +14,7 @@ import { useSettingsStore } from "@/store/settings";
 import { useServices } from "@/composables/useServices";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
+import Loader from "@/components/layouts/Loader.vue";
 
 const layout = ref();
 const route = useRoute();
@@ -28,10 +28,6 @@ const isInited = computed(() => {
 const colorMode = () => {
   const { host } = window.location;
   return host.includes("localhost") || host.includes("dev");
-};
-
-const logout = () => {
-  $services.auth.logout();
 };
 
 watch(
