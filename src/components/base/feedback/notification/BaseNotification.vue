@@ -1,11 +1,11 @@
 <template>
   <transition name="notification" @before-enter="beforeEnter" @enter="enter" @after-leave="afterLeave">
     <div v-show="visible" :class="['base-notification', type]">
-      <component :is="iconName" :class="['base-notification__icon']"></component>
+      <!--      <component :is="iconName" :class="['base-notification__icon']"></component>-->
       <div class="base-notification__message">{{ message }}</div>
-      <button class="base-notification__close-button" @click="close">
-        <CloseIcon name="close" class="close-icon" />
-      </button>
+      <!--      <button class="base-notification__close-button" @click="close">-->
+      <!--        <CloseIcon name="close" class="close-icon" />-->
+      <!--      </button>-->
     </div>
   </transition>
 </template>
@@ -137,7 +137,7 @@ onUnmounted(() => {
   }
 
   &__message {
-    padding: 0 32px;
+    //margin: 0 32px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 1;
