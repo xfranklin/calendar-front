@@ -66,8 +66,8 @@ const beforeEnter = (el) => {
 
 const enter = (el) => {
   console.log(el.scrollHeight);
-  el.style.maxHeight = `${el.scrollHeight + 14}px`;
-  el.style.padding = "7px 10px";
+  el.style.maxHeight = `${el.scrollHeight + 20}px`;
+  el.style.padding = "10px";
 };
 
 const afterLeave = () => {
@@ -137,7 +137,7 @@ onUnmounted(() => {
   }
 
   &__message {
-    margin: 0 32px;
+    padding: 0 32px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 1;
