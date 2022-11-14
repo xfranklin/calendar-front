@@ -1,7 +1,7 @@
 <template>
   <transition name="notification" @before-enter="beforeEnter" @enter="enter" @after-leave="afterLeave">
     <div v-show="visible" :class="['base-notification', type]">
-      <!--      <component :is="iconName" :class="['base-notification__icon']"></component>-->
+      <component :is="iconName" :class="['base-notification__icon']"></component>
       <div class="base-notification__message">{{ message }}</div>
       <button class="base-notification__close-button" @click="close">
         <CloseIcon name="close" class="close-icon" />
@@ -180,7 +180,7 @@ onUnmounted(() => {
 
 @media screen and (min-width: 769px) {
   .base-notification {
-    width: 320px;
+    width: 180px;
     border-radius: 4px;
   }
 }
