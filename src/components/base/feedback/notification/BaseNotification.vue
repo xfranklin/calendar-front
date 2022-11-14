@@ -64,10 +64,9 @@ const beforeEnter = (el) => {
   el.style.maxHeight = "0px";
 };
 
-const enter = (el, done) => {
+const enter = (el) => {
   el.style.maxHeight = `${el.scrollHeight + 20}px`;
   el.style.padding = "10px";
-  done();
 };
 
 const afterLeave = () => {
@@ -94,6 +93,7 @@ onUnmounted(() => {
   margin: 3px 0;
   color: var(--color-blue-dark);
   transition: all 150ms ease-in-out;
+  box-sizing: border-box;
   transition-property: transform;
   overflow: hidden;
   box-shadow: var(--base-shadow-2);
