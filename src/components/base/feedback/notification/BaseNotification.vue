@@ -65,8 +65,8 @@ const beforeEnter = (el) => {
 };
 
 const enter = (el) => {
-  el.style.maxHeight = `${el.scrollHeight + 20}px`;
   el.style.padding = "10px";
+  el.style.maxHeight = `${el.scrollHeight + 20}px`;
 };
 
 const afterLeave = () => {
