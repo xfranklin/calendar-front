@@ -180,7 +180,7 @@ onUnmounted(() => {
 
 @media screen and (min-width: 769px) {
   .base-notification {
-    width: 180px;
+    width: 320px;
     border-radius: 4px;
   }
 }
