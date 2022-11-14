@@ -65,6 +65,7 @@ const beforeEnter = (el) => {
 };
 
 const enter = (el) => {
+  console.log(el.scrollHeight);
   el.style.maxHeight = `${el.scrollHeight + 14}px`;
   el.style.padding = "7px 10px";
 };
