@@ -11,7 +11,7 @@
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import CloseIcon from "@/assets/icons/regular/close.svg";
+// import CloseIcon from "@/assets/icons/regular/close.svg";
 import InfoIcon from "@/assets/icons/regular/info.svg";
 import AlertOctagonIcon from "@/assets/icons/regular/alert-octagon.svg";
 import AlertTriangleIcon from "@/assets/icons/regular/alert-triangle.svg";
