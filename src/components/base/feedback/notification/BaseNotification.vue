@@ -60,7 +60,6 @@ const close = () => {
 };
 
 const beforeEnter = (el) => {
-  debugger;
   el.style.padding = "0 10px";
   el.style.maxHeight = "0px";
 };
@@ -71,7 +70,8 @@ const enter = (el) => {
   el.style.padding = "10px";
 };
 
-const afterLeave = () => {
+const afterLeave = (el) => {
+  el.style.maxHeight = "unset";
   emit("destroy");
 };
 
