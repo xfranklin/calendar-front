@@ -60,14 +60,14 @@ const close = () => {
 };
 
 const beforeEnter = (el) => {
-  el.style.padding = "0 10px";
+  el.style.padding = "0 12px";
   el.style.maxHeight = "0px";
 };
 
 const enter = (el) => {
   console.log("scrollHeight", el.scrollHeight);
   el.style.maxHeight = `${el.scrollHeight + 20}px`;
-  el.style.padding = "10px";
+  el.style.padding = "10px 12px";
 };
 
 const afterLeave = (el) => {
