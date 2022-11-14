@@ -60,8 +60,8 @@ const close = () => {
 };
 
 const beforeEnter = (el) => {
-  el.style.maxHeight = "0px";
   el.style.padding = "0 10px";
+  el.style.maxHeight = "0px";
 };
 
 const enter = (el) => {
