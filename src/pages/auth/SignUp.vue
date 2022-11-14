@@ -80,7 +80,9 @@ const googleSignUp = async () => {
   if (!isLoadingGoogle.value) {
     isLoadingGoogle.value = true;
     const { url } = await $service.auth.getGoogleUrl();
-    window.location = url;
+    if (url) {
+      window.location = url;
+    }
     isLoadingGoogle.value = false;
   }
 };
@@ -89,7 +91,9 @@ const facebookSignUp = async () => {
   if (!isLoadingFacebook.value) {
     isLoadingFacebook.value = true;
     const { url } = await $service.auth.getFacebookUrl();
-    window.location = url;
+    if (url) {
+      window.location = url;
+    }
     isLoadingFacebook.value = false;
   }
 };
