@@ -70,7 +70,7 @@ const enter = (el) => {
   // el.style.padding = "10px";
 };
 
-const afterLeave = (el) => {
+const afterLeave = () => {
   emit("destroy");
 };
 
