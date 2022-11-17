@@ -60,12 +60,13 @@ const close = () => {
 };
 
 const beforeEnter = (el) => {
+  el.style.padding = "0 10px";
   el.style.maxHeight = "0px";
 };
 
 const enter = (el) => {
-  el.style.maxHeight = `${el.scrollHeight}px`;
-  // el.style.padding = "10px 0";
+  el.style.maxHeight = `${el.scrollHeight + 20}px`;
+  el.style.padding = "10px";
 };
 
 const afterLeave = () => {
@@ -135,7 +136,7 @@ onUnmounted(() => {
   }
 
   &__message {
-    margin: 0 42px;
+    margin: 0 32px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 1;
