@@ -14,6 +14,11 @@ export class AuthService {
 
   async init() {
     if (this.settings.isInited) return null;
+    await new Promise((res) =>
+      setTimeout(() => {
+        res();
+      }, 100)
+    );
     const response = await this.$http.refresh();
     if (response?.message === "ACCESS_TOKEN_NOT_EXPIRED" || response?.status === 200) {
       this.user.setAuthStatus(true);
