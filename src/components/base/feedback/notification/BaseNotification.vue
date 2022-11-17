@@ -1,17 +1,17 @@
 <template>
   <transition name="notification" @before-enter="beforeEnter" @enter="enter" @after-leave="afterLeave">
     <div v-show="visible" :class="['base-notification', type]">
-      <!--      <component :is="iconName" :class="['base-notification__icon']"></component>-->
+      <component :is="iconName" :class="['base-notification__icon']"></component>
       <div class="base-notification__message">{{ message }}</div>
-      <!--      <button class="base-notification__close-button" @click="close">-->
-      <!--        <CloseIcon name="close" class="close-icon" />-->
-      <!--      </button>-->
+      <button class="base-notification__close-button" @click="close">
+        <CloseIcon name="close" class="close-icon" />
+      </button>
     </div>
   </transition>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-// import CloseIcon from "@/assets/icons/regular/close.svg";
+import CloseIcon from "@/assets/icons/regular/close.svg";
 import InfoIcon from "@/assets/icons/regular/info.svg";
 import AlertOctagonIcon from "@/assets/icons/regular/alert-octagon.svg";
 import AlertTriangleIcon from "@/assets/icons/regular/alert-triangle.svg";
@@ -60,14 +60,13 @@ const close = () => {
 };
 
 const beforeEnter = (el) => {
-  el.style.padding = "0 32px";
+  el.style.padding = "0 42px";
   el.style.maxHeight = "0px";
 };
 
 const enter = (el) => {
-  console.log(el.scrollHeight);
   el.style.maxHeight = `${el.scrollHeight + 20}px`;
-  el.style.padding = "10px 32px";
+  el.style.padding = "10px 42px";
 };
 
 const afterLeave = () => {
@@ -137,7 +136,6 @@ onUnmounted(() => {
   }
 
   &__message {
-    //margin: 0 32px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 1;
