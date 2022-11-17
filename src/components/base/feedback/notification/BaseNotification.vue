@@ -60,7 +60,6 @@ const close = () => {
 };
 
 const beforeEnter = (el) => {
-  el.style.padding = "0px";
   el.style.maxHeight = "0px";
 };
 
