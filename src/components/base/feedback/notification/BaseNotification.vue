@@ -136,6 +136,7 @@ onUnmounted(() => {
   }
 
   &__message {
+    width: 236px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 1;
