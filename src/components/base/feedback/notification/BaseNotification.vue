@@ -139,8 +139,6 @@ onUnmounted(() => {
     margin: 0 32px;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    opacity: 1;
-    transition: opacity 600ms ease;
   }
 
   &__close-button {
@@ -187,6 +185,9 @@ onUnmounted(() => {
 .notification-enter-active,
 .notification-leave-active {
   transition: all 300ms ease, transform 250ms ease, margin 250ms ease, clip-path 400ms ease 150ms;
+  .base-notification__message {
+    transition: opacity 400ms ease 150ms;
+  }
 }
 
 .notification-enter-from {
