@@ -19,7 +19,7 @@ export class AuthService {
     await new Promise((response) =>
       setTimeout(() => {
         response();
-      }, 10)
+      }, 50)
     );
 
     const response = await this.$http.refresh();
