@@ -12,7 +12,8 @@ const HttpStatus = {
 export class HttpService {
   constructor() {
     this._axios = axios.create({
-      baseURL: import.meta.env.VITE_API
+      baseURL: import.meta.env.VITE_API,
+      timeout: 30000
     });
     this._axios.interceptors.response.use(
       HttpService.responseInterceptor.bind(this),
@@ -33,7 +34,7 @@ export class HttpService {
       return await this._axios(config);
     }
 
-    if (HttpStatus.SERVER_ERRORS.includes(response.status)) {
+    if (HttpStatus.SERVER_ERRORS.includes(response?.status)) {
       this.notification({
         type: "error",
         duration: "none",
