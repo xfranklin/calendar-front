@@ -1,6 +1,11 @@
 <template>
   <h1 class="subtitle-1">{{ $t("RESET_PASSWORD") }}</h1>
-  <div class="reset__description base-text">{{ $t("ENTER_YOUR_NEW_PASSWORD") }}.</div>
+  <div class="reset__description base-text">
+    {{ $t("ENTER_YOUR_NEW_PASSWORD") }}.<router-link class="base-link" :to="{ name: 'Login' }">{{
+      $t("BACK_TO_SIGN_IN")
+    }}</router-link
+    >.
+  </div>
   <BaseForm v-slot="{ valid }" class="reset__form">
     <BaseInput :model-value="resetForm.email" :disabled="true" label="EMAIL" />
     <BaseInput v-model="resetForm.password" type="password" label="NEW_PASSWORD" placeholder="PASSWORD" />
