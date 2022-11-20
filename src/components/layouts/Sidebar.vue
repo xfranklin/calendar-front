@@ -32,7 +32,9 @@
       </button>
     </div>
   </aside>
-  <div v-if="settings.isSidebarOpened" class="main-sidebar__bg-layout" @click="close"></div>
+  <transition name="fade">
+    <div v-show="settings.isSidebarOpened" class="main-sidebar__bg-layout" @click="close"></div>
+  </transition>
 </template>
 <script setup>
 import { watch } from "vue";
@@ -191,6 +193,7 @@ const actions = {
     left: 0;
     right: 0;
     cursor: pointer;
+    background-color: rgba(0, 15, 31, 0.2);
   }
 }
 
@@ -201,5 +204,20 @@ const actions = {
     &__header {
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms ease-in;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0 !important;
+}
+
+.fade-leave-from,
+.fade-enter-to {
+  opacity: 1 !important;
 }
 </style>
