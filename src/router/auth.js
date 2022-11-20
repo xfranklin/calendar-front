@@ -24,7 +24,7 @@ export const AuthRoutes = [
     }
   },
   {
-    path: "/reset",
+    path: "/reset-password",
     name: "Reset",
     component: Reset,
     meta: {
