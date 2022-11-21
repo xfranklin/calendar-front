@@ -110,7 +110,7 @@ const focus = () => {
 };
 
 onMounted(() => {
-  if (baseForm?.bind) {
+  if (baseForm?.bind && props.rules) {
     // validate if value predefined
     if (props.modelValue) {
       validateInput();

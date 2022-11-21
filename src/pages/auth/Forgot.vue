@@ -83,7 +83,7 @@ const forgot = async () => {
       email: forgotForm.value,
       token: token
     };
-    const response = await $service.auth.forgot(forgotData);
+    const response = await $service.auth.forgotPassword(forgotData);
     isLoadingButton.value = false;
 
     if (response) {

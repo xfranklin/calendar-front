@@ -73,14 +73,25 @@ export class AuthService {
   async me() {
     return await this.$http.get("/user/me");
   }
-  // remove after response on real point
-  // eslint-disable-next-line no-unused-vars
-  async forgot(forgotData) {
+
+  // TODO remove after response on real point
+  async forgotPassword(forgotData) {
     // return await this.$http.post("/auth/forgot", forgotData, true);
     return new Promise((res) => {
       setTimeout(() => {
+        console.log(forgotData);
         res(true);
       }, 500);
+    });
+  }
+
+  // TODO remove after response on real point
+  async resetPassword(data) {
+    return new Promise((res) => {
+      setTimeout(() => {
+        console.log(data);
+        res(true);
+      }, 1500);
     });
   }
 }

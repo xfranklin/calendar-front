@@ -6,24 +6,57 @@
     }}</router-link
     >.
   </div>
-  <BaseForm v-slot="{ valid }" class="reset__form">
+  <BaseForm v-slot="{ valid }" class="reset__form" @submit="resetPassword">
     <BaseInput :model-value="resetForm.email" :disabled="true" label="EMAIL" />
-    <BaseInput v-model="resetForm.password" type="password" label="NEW_PASSWORD" placeholder="PASSWORD" />
+    <BaseInput
+      v-model="resetForm.password"
+      :rules="passwordRules"
+      type="password"
+      label="NEW_PASSWORD"
+      placeholder="PASSWORD"
+    />
     <BaseInput
       v-model="resetForm.confirmPassword"
+      :rules="confirmRules"
       type="password"
       label="CONFIRM_NEW_PASSWORD"
       placeholder="ENTER_PASSWORD_AGAIN"
     />
-    <button :disabled="!valid" class="base-primary-button w-100 reset__form-button">
+    <button
+      v-loading="isLoadingButton"
+      type="submit"
+      :disabled="!valid"
+      class="base-primary-button w-100 reset__form-button"
+    >
       {{ $t("CONFIRM_NEW_PASSWORD") }}
     </button>
   </BaseForm>
 </template>
 <script setup>
 import { ref } from "vue";
+import { PASSWORD_REG_EXP } from "@/utils/regular-expresions";
+import { useI18n } from "vue-i18n";
+import { useServices } from "@/composables/useServices";
+const { t } = useI18n();
+const $service = useServices();
+
+const passwordRules = [
+  (value) => !value && t("PASSWORD_REQUIRED"),
+  (value) => !PASSWORD_REG_EXP.test(value) && t("PASSWORD_INVALID"),
+  (value) => value.length < 4 && t("MIN_CHARS", { number: 4 }),
+  (value) => value.length > 128 && t("MAX_CHARS", { number: 128 })
+];
+const confirmRules = [(value) => value !== resetForm.value.password && t("PASSWORD_NOT_MATCH")];
 
 const resetForm = ref({ email: "giorgiomod@gmail.com", password: "", confirmPassword: "" });
+const isLoadingButton = ref(false);
+
+const resetPassword = async () => {
+  isLoadingButton.value = true;
+  const token = "token";
+  await $service.auth.resetPassword({ token, password: resetForm.value.password });
+  isLoadingButton.value = false;
+};
 </script>
 <style lang="scss" scoped>
 .subtitle-1 {

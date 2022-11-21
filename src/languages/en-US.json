@@ -36,6 +36,7 @@
   "SENT_RESET_PASSWORD_LINK": "Sent reset password link",
   "RESEND_RESET_PASSWORD_LINK": "Resend reset password link",
   "RESEND_RESET_PASSWORD_LINK_IN": "Resend Link in ",
+  "PASSWORD_NOT_MATCH": "Passwords don’t match",
   "PLACEHOLDER_SELECT": "Select",
   "PERSONAL_DETAILS": "Personal details",
   "NAME_LABEL": "Name",
