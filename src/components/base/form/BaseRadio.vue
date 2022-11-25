@@ -72,10 +72,10 @@ const onChange = () => {
   //  }
   //}
 
-  &__input:checked ~ .base-radio__core:hover::before {
-    background-color: var(--base-bg-13) !important;
-    border-color: var(--base-bg-13) !important;
-  }
+  //&__input:checked ~ .base-radio__core:hover::before {
+  //  background-color: var(--base-bg-13) !important;
+  //  border-color: var(--base-bg-13) !important;
+  //}
 
   &:active .base-radio__core {
     transform: scale(0.9);
