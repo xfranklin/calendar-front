@@ -11,7 +11,7 @@
   cursor: pointer;
   transition: all 200ms ease-in-out;
   outline-color: transparent;
-  transition-property: background-color, box-shadow, transform, outline-color, border-color;
+  transition-property: color, background-color, box-shadow, transform, outline-color, border-color;
 
   &.loading {
     cursor: wait;

@@ -172,7 +172,7 @@ defineExpose({
     line-height: 1.125rem;
     border: 2px solid var(--base-bg-2);
     border-radius: 4px;
-    background-color: var(--base-page-bg);
+    background-color: transparent;
     cursor: text;
     color: var(--base-text-5);
     caret-color: var(--base-text-3);

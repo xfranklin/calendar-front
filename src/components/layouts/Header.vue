@@ -29,7 +29,7 @@ const openSidebar = () => {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 16px;
+  padding: 8px 16px;
 
   &__logo {
     display: flex;
@@ -49,6 +49,8 @@ const openSidebar = () => {
 
 @media screen and (min-width: 769px) {
   .main-header {
+    padding: 16px;
+
     &__logo {
       margin: 0 18px 0 20px;
     }

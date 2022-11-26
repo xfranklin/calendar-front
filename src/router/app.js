@@ -1,4 +1,5 @@
 import Timeline from "@/pages/Timeline.vue";
+import Settings from "@/pages/Settings.vue";
 
 export const AppRoutes = [
   {
@@ -31,7 +32,7 @@ export const AppRoutes = [
   {
     path: "/settings",
     name: "Settings",
-    component: Timeline,
+    component: Settings,
     meta: {
       layout: "AppLayout",
       requireAuth: true

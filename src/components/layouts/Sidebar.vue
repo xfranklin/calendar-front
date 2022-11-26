@@ -183,6 +183,10 @@ const actions = {
     border: none;
     background-color: unset;
     cursor: pointer;
+
+    &:last-of-type {
+      color: var(--color-error-dark);
+    }
   }
 
   &__bg-layout {
@@ -201,8 +205,6 @@ const actions = {
   .main-sidebar {
     max-width: 375px;
     border-radius: 0 16px 16px 0;
-    &__header {
-    }
   }
 }
 

@@ -51,6 +51,7 @@
   "DAY_PLACEHOLDER": "DD",
   "YEAR_PLACEHOLDER": "YYYY",
   "CONFIRM_PERSONAL_DETAILS": "Confirm personal details",
+  "UPDATE_PERSONAL_DETAILS": "Update personal details",
   "BACK_TO_SIGN_IN": "Back to sign in.",
   "DOUBLE_CHECK_YOUR_MAIL": "Double-check in your mailbox the reset password link we just sent. See you soon!",
   "CHANGE_EMAIL": "Change entered Email",
