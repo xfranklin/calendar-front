@@ -3,9 +3,6 @@
     <router-view />
   </component>
   <Loader v-else />
-  <div class="color-mode">
-    <ColorMode v-if="colorMode" />
-  </div>
 </template>
 <script setup>
 import { ref, watch, markRaw, computed, defineAsyncComponent } from "vue";
@@ -13,7 +10,6 @@ import { useRoute } from "vue-router";
 import { useSettingsStore } from "@/store/settings";
 import { useServices } from "@/composables/useServices";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import ColorMode from "@/components/ui/ColorMode.vue";
 import Loader from "@/components/layouts/Loader.vue";
 
 const layout = ref();
@@ -24,11 +20,6 @@ const settings = useSettingsStore();
 const isInited = computed(() => {
   return settings.isInited;
 });
-
-const colorMode = () => {
-  const { host } = window.location;
-  return host.includes("localhost") || host.includes("dev");
-};
 
 watch(
   () => route.meta?.layout,
@@ -43,14 +34,3 @@ watch(
   { immediate: true }
 );
 </script>
-<style lang="scss">
-@import "./assets/scss";
-.color-mode {
-  display: flex;
-  flex-direction: column;
-  position: fixed !important;
-  right: 44px;
-  bottom: 0.5rem;
-  z-index: 90;
-}
-</style>

@@ -64,5 +64,8 @@
   "SETTINGS": "Settings",
   "ONBOARDING": "Onboarding",
   "HELP": "Help",
-  "LOG_OUT": "Log out"
+  "LOG_OUT": "Log out",
+  "APPEARANCE": "Appearance",
+  "AUTH_CHANNELS": "Authorisation channels",
+  "SOCIALS": "Socials"
 }

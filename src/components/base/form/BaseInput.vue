@@ -8,6 +8,7 @@
         :value="modelValue"
         :type="fieldType"
         :disabled="disabled"
+        :readonly="readonly"
         :placeholder="placeholder && $t(placeholder)"
         class="base-input__field"
         @input="updateValue"
@@ -42,6 +43,10 @@ const props = defineProps({
     default: null
   },
   disabled: {
+    type: Boolean,
+    default: false
+  },
+  readonly: {
     type: Boolean,
     default: false
   },

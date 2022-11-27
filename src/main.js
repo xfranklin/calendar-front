@@ -5,6 +5,7 @@ import { i18n } from "./configs/i18n";
 import { createPinia } from "pinia";
 import { servicesPlugin } from "@/plugins/services";
 import { initPlugin } from "@/plugins/init";
+import "@/assets/scss/index.scss";
 
 import { vLoading } from "@/directives/vLoading";
 import { vClickOutside } from "@/directives/vClickOutside";

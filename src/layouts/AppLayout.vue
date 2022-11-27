@@ -19,6 +19,7 @@ import Sidebar from "@/components/layouts/Sidebar.vue";
 }
 
 [dark] .app-layout {
+  /* TODO rewrite gradient-bg (ask Dasha) */
   background-image: url("../assets/images/layouts/noise-bg-dark.png"),
     radial-gradient(200% 200% at 120% 125%, #0f1011 10%, #091b1f 24%, #0b272d 55%, #0c272c 50%);
 }
