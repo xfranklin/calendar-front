@@ -2,6 +2,7 @@
   <div class="app-layout">
     <Header />
     <Sidebar />
+    <!--    TODO center max-height (ask Dasha)-->
     <main class="app-layout-main">
       <slot />
     </main>

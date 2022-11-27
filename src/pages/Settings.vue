@@ -11,8 +11,6 @@
       {{ $t("UPDATE_PERSONAL_DETAILS") }}
     </button>
   </BaseForm>
-  <h2 v-if="!breakpoints.tablet" class="subtitle-1 settings__subtitle">{{ $t("APPEARANCE") }}</h2>
-  <ColorMode v-if="!breakpoints.tablet" class="settings__color-switch" :label="$t('DARK_MODE')" />
   <h2 class="subtitle-1 settings__subtitle">{{ $t("AUTH_CHANNELS") }}</h2>
   <div class="settings__auth-channels">
     <BaseInput :model-value="user.userInfo.email" class="settings__input" label="EMAIL" :readonly="true" />
@@ -28,6 +26,8 @@
       </div>
     </div>
   </div>
+  <h2 v-if="!breakpoints.tablet" class="subtitle-1 settings__subtitle">{{ $t("APPEARANCE") }}</h2>
+  <ColorMode v-if="!breakpoints.tablet" class="settings__color-switch" :label="$t('DARK_MODE')" />
 </template>
 <script setup>
 import BirthPicker from "@/components/ui/BirthPicker.vue";
