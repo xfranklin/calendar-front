@@ -66,39 +66,36 @@ const passwordHints = [
 ];
 
 const signIn = async () => {
-  if (!isLoadingButton.value) {
-    isLoadingButton.value = true;
-    const token = await reCaptchaExecute();
-    const signInData = {
-      email: signInForm.value.email,
-      password: signInForm.value.password,
-      token: token
-    };
-    await $service.auth.signIn(signInData);
-    isLoadingButton.value = false;
-  }
+  if (isLoadingButton.value) return;
+  isLoadingButton.value = true;
+  const token = await reCaptchaExecute();
+  const signInData = {
+    email: signInForm.value.email,
+    password: signInForm.value.password,
+    token: token
+  };
+  await $service.auth.signIn(signInData);
+  isLoadingButton.value = false;
 };
 
 const googleSignIn = async () => {
-  if (!isLoadingGoogle.value) {
-    isLoadingGoogle.value = true;
-    const { url } = await $service.auth.getGoogleUrl();
-    if (url) {
-      window.location = url;
-    }
-    isLoadingGoogle.value = false;
+  if (isLoadingGoogle.value) return;
+  isLoadingGoogle.value = true;
+  const { url } = await $service.auth.getGoogleUrl();
+  if (url) {
+    window.location = url;
   }
+  isLoadingGoogle.value = false;
 };
 
 const facebookSignIn = async () => {
-  if (!isLoadingFacebook.value) {
-    isLoadingFacebook.value = true;
-    const { url } = await $service.auth.getFacebookUrl();
-    if (url) {
-      window.location = url;
-    }
-    isLoadingFacebook.value = false;
+  if (isLoadingFacebook.value) return;
+  isLoadingFacebook.value = true;
+  const { url } = await $service.auth.getFacebookUrl();
+  if (url) {
+    window.location = url;
   }
+  isLoadingFacebook.value = false;
 };
 </script>
 <style lang="scss" scoped>

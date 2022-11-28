@@ -76,22 +76,21 @@ const startTimer = () => {
 };
 
 const forgot = async () => {
-  if (!isLoadingButton.value) {
-    isLoadingButton.value = true;
-    const token = await reCaptchaExecute();
-    const forgotData = {
-      email: forgotForm.value,
-      token: token
-    };
-    const response = await $service.auth.forgotPassword(forgotData);
-    isLoadingButton.value = false;
+  if (isLoadingButton.value) return;
+  isLoadingButton.value = true;
+  const token = await reCaptchaExecute();
+  const forgotData = {
+    email: forgotForm.value,
+    token: token
+  };
+  const response = await $service.auth.forgotPassword(forgotData);
+  isLoadingButton.value = false;
 
-    if (response) {
-      isResendButton.value = true;
-      clearInterval(interval);
-      startTime.value = 30;
-      startTimer();
-    }
+  if (response) {
+    isResendButton.value = true;
+    clearInterval(interval);
+    startTime.value = 30;
+    startTimer();
   }
 };
 

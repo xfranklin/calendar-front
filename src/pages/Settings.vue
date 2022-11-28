@@ -1,13 +1,30 @@
 <template>
   <h1 class="headline-2 settings__title">{{ $t("SETTINGS") }}</h1>
   <h2 class="subtitle-1 settings__subtitle">{{ $t("PERSONAL_DETAILS") }}</h2>
-  <BaseForm v-slot="{ valid }" class="settings__form">
+  <BaseForm v-slot="{ valid }" class="settings__form" @submit="updatePersonDetails">
     <div class="settings__personal">
-      <BaseInput class="settings__input" label="NAME_LABEL" placeholder="NAME_PLACEHOLDER" />
-      <BaseInput class="settings__input" label="SURNAME_LABEL" placeholder="SURNAME_PLACEHOLDER" />
+      <BaseInput
+        v-model="personalForm.firstName"
+        :rules="rules"
+        class="settings__input"
+        label="NAME_LABEL"
+        placeholder="NAME_PLACEHOLDER"
+      />
+      <BaseInput
+        v-model="personalForm.lastName"
+        :rules="rules"
+        class="settings__input"
+        label="SURNAME_LABEL"
+        placeholder="SURNAME_PLACEHOLDER"
+      />
     </div>
-    <BirthPicker class="settings__input" model-value="" />
-    <button :disabled="!valid" type="submit" class="base-primary-button settings__update-button">
+    <BirthPicker v-model="personalForm.birthday" class="settings__input" />
+    <button
+      v-loading="personalDataLoading"
+      :disabled="!valid || !hasChanges"
+      type="submit"
+      class="base-primary-button settings__update-button"
+    >
       {{ $t("UPDATE_PERSONAL_DETAILS") }}
     </button>
   </BaseForm>
@@ -30,13 +47,45 @@
   <ColorMode v-if="!breakpoints.tablet" class="settings__color-switch" :label="$t('DARK_MODE')" />
 </template>
 <script setup>
+import { ref, computed } from "vue";
 import BirthPicker from "@/components/ui/BirthPicker.vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
 import { useBreakPoints } from "@/composables/useBreakPoints";
 import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const breakpoints = useBreakPoints();
 const user = useUserStore();
+
+const personalDataLoading = ref(false);
+
+const personalForm = ref({
+  firstName: user.getUserInfo?.firstName || "",
+  lastName: user.getUserInfo?.lastName || "",
+  birthday: user.getUserInfo?.birthday || ""
+});
+
+const rules = [
+  (value) => !value && t("ERROR_REQUIRED"),
+  (value) => value.length > 128 && t("MAX_CHARS", { number: 128 })
+];
+
+const hasChanges = computed(() => {
+  // TODO time GTM
+  const { firstName, lastName, birthday } = user.getUserInfo;
+  return Boolean(
+    personalForm.value.firstName !== firstName ||
+      personalForm.value.lastName !== lastName ||
+      new Date(personalForm.value.birthday).getTime() !== new Date(birthday).getTime()
+  );
+});
+
+const updatePersonDetails = async () => {
+  if (personalDataLoading.value) return;
+  personalDataLoading.value = true;
+};
 </script>
 <style lang="scss">
 .settings {

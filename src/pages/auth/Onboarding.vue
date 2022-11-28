@@ -30,8 +30,10 @@ const { t } = useI18n();
 
 const isLoading = ref(false);
 
-const required = (value) => !value && t("ERROR_REQUIRED");
-const rules = [required, (value) => value.length > 128 && t("MAX_CHARS", { number: 128 })];
+const rules = [
+  (value) => !value && t("ERROR_REQUIRED"),
+  (value) => value.length > 128 && t("MAX_CHARS", { number: 128 })
+];
 const user = useUserStore();
 
 const formData = ref({
@@ -41,11 +43,10 @@ const formData = ref({
 });
 
 const onboard = async () => {
-  if (!isLoading.value) {
-    isLoading.value = true;
-    await $services.user.onboarding(formData.value);
-    isLoading.value = false;
-  }
+  if (isLoading.value) return;
+  isLoading.value = true;
+  await $services.user.onboarding(formData.value);
+  isLoading.value = false;
 };
 </script>
 <style lang="scss" scoped>

@@ -52,6 +52,7 @@ const resetForm = ref({ email: "giorgiomod@gmail.com", password: "", confirmPass
 const isLoadingButton = ref(false);
 
 const resetPassword = async () => {
+  if (isLoadingButton.value) return;
   isLoadingButton.value = true;
   const token = "token";
   await $service.auth.resetPassword({ token, password: resetForm.value.password });
