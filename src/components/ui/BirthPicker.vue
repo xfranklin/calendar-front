@@ -109,7 +109,7 @@ watch(
     const { day, month, year } = value.value;
     if (Number(day) && month !== "" && year) {
       try {
-        const birthDay = new Date(year, month, Number(day)).toISOString();
+        const birthDay = new Date(Date.UTC(year, month, Number(day))).toISOString();
         emit("update:modelValue", birthDay);
       } catch (e) {
         console.error(e);
