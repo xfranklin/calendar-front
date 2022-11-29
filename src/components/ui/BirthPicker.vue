@@ -21,6 +21,7 @@
       @change="dayUpdate"
     />
   </div>
+  <pre>{{ modelValue }}</pre>
 </template>
 <script setup>
 import { getAllMonths } from "@/utils/get-mounts";
@@ -51,9 +52,9 @@ try {
 }
 
 const birth = ref({
-  day: date?.getDate() ?? "",
-  month: date?.getMonth() ?? "",
-  year: date?.getFullYear() ?? ""
+  day: date?.getDate() || "",
+  month: date?.getMonth() || "",
+  year: date?.getFullYear() || ""
 });
 
 const dayRef = ref(null);
