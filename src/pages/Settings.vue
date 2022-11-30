@@ -43,6 +43,23 @@
       </div>
     </div>
   </div>
+  <!--  TODO ask Dasha redesign-->
+  <div class="settings__account-manage">
+    <button
+      class="base-primary-outlined-button icon settings__change-password"
+      @click="$router.push({ name: 'ChangePassword' })"
+    >
+      <BaseIcon name="settings" />
+      {{ $t("CHANGE_PASSWORD") }}
+    </button>
+    <button class="base-primary-outlined-button icon settings__confirm-button">
+      <BaseIcon name="mail" />{{ $t("SEND_CONFIRM_LETTER") }}
+    </button>
+
+    <button class="base-danger-outlined-button icon settings__delete-button">
+      <BaseIcon name="trash" />{{ $t("DELETE_ACCOUNT") }}
+    </button>
+  </div>
   <h2 v-if="!breakpoints.tablet" class="subtitle-1 settings__subtitle">{{ $t("APPEARANCE") }}</h2>
   <ColorMode v-if="!breakpoints.tablet" class="settings__color-switch" :label="$t('DARK_MODE')" />
 </template>
@@ -112,7 +129,7 @@ const updatePersonDetails = async () => {
     margin-top: 16px;
   }
   &__auth-channels {
-    padding: 0 16px 40px 16px;
+    padding: 0 16px 40px;
   }
   &__socials-title {
     color: var(--base-text-5) !important;
@@ -122,19 +139,30 @@ const updatePersonDetails = async () => {
     display: flex;
     gap: 16px;
   }
+  &__account-manage {
+    padding: 0 16px 40px;
+  }
+  &__change-password {
+    margin-bottom: 8px;
+  }
+  &__confirm-button {
+    margin-bottom: 24px;
+  }
 }
 
 @media screen and(min-width: 769px) {
   .settings {
     &__title {
-      padding: 24px 24px 40px 24px;
+      padding: 24px 24px 40px;
     }
     &__subtitle {
-      padding: 0 24px 16px 24px;
+      padding: 0 24px 16px;
     }
-    &__form,
+    &__form {
+      padding: 0 24px 40px;
+    }
     &__auth-channels {
-      padding: 0 24px 40px 24px;
+      padding: 0 24px 16px;
     }
     &__input,
     &__update-button {
@@ -144,6 +172,12 @@ const updatePersonDetails = async () => {
     &__auth-channels {
       display: flex;
       gap: 24px;
+    }
+    &__account-manage {
+      padding: 0 24px 40px;
+    }
+    &__confirm-button {
+      margin-bottom: 40px;
     }
   }
 }

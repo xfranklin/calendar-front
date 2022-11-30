@@ -9,7 +9,8 @@ const getElementType = (el) => {
     "base-secondary-button",
     "base-danger-button",
     "base-primary-outlined-button",
-    "base-secondary-outlined-button"
+    "base-secondary-outlined-button",
+    "base-danger-outlined-button"
   ].some((className) => el.classList.contains(className));
 
   if (isButton) {

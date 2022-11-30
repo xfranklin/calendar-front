@@ -68,16 +68,20 @@
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-outlined-button">Button</button>
       <button class="base-secondary-outlined-button">Button</button>
+      <button class="base-danger-outlined-button">Button</button>
       <button class="base-primary-outlined-button icon"><BaseIcon name="facebook" group="socials" />Button</button>
       <button class="base-secondary-outlined-button icon"><BaseIcon name="eye" group="view" />Button</button>
+      <button class="base-danger-outlined-button icon"><BaseIcon name="mail" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
       <button class="base-primary-outlined-button" disabled>Button</button>
       <button class="base-secondary-outlined-button" disabled>Button</button>
+      <button class="base-danger-outlined-button" disabled>Button</button>
       <button class="base-primary-outlined-button icon" disabled>
         <BaseIcon name="facebook" group="socials" />Button
       </button>
       <button class="base-secondary-outlined-button icon" disabled><BaseIcon name="eye" group="view" />Button</button>
+      <button class="base-danger-outlined-button icon" disabled><BaseIcon name="mail" />Button</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
       <button v-loading="loading_5" class="base-primary-outlined-button" @click="loading_5 = !loading_5">
@@ -86,11 +90,17 @@
       <button v-loading="loading_6" class="base-secondary-outlined-button" @click="loading_6 = !loading_6">
         Loading
       </button>
+      <button v-loading="loading_16" class="base-danger-outlined-button" @click="loading_16 = !loading_16">
+        Loading
+      </button>
       <button v-loading="loading_7" class="base-primary-outlined-button icon" @click="loading_7 = !loading_7">
         <BaseIcon name="facebook" group="socials" />Loading
       </button>
       <button v-loading="loading_8" class="base-secondary-outlined-button icon" @click="loading_8 = !loading_8">
         <BaseIcon name="eye" group="view" />Loading
+      </button>
+      <button v-loading="loading_15" class="base-danger-outlined-button icon" @click="loading_15 = !loading_15">
+        <BaseIcon name="mail" />Loading
       </button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px">
@@ -311,6 +321,8 @@ const loading_11 = ref(false);
 const loading_12 = ref(false);
 const loading_13 = ref(false);
 const loading_14 = ref(false);
+const loading_15 = ref(false);
+const loading_16 = ref(false);
 
 const switch_1 = ref(false);
 const switch_2 = ref(true);

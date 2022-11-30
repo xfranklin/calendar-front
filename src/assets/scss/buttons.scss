@@ -228,6 +228,46 @@
   }
 }
 
+.base-danger-outlined-button {
+  @include base-button;
+  padding: 6px 10px;
+  color: var(--base-bg-6);
+  background-color: transparent;
+  border: 2px solid var(--base-bg-6);
+
+  &.loading,
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--base-bg-6);
+  }
+
+  &:disabled {
+    border-color: var(--base-bg-4);
+    color: var(--base-bg-4);
+  }
+
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: transparent;
+  }
+
+  &:focus-visible {
+    color: var(--color-white);
+    border-color: var(--base-bg-6);
+    background-color: var(--base-bg-6);
+    outline: 2px solid var(--base-bg-6);
+    outline-offset: 2px;
+  }
+
+  &.only-icon {
+    padding: 6px;
+  }
+
+  .base-loader {
+    background-color: var(--color-white);
+  }
+}
+
 .base-link {
   color: var(--base-text-13);
   padding: 0 4px;

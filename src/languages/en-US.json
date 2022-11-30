@@ -28,6 +28,7 @@
   "REFRESH_PASSWORD": "Refreshed password?",
   "CHANGE_RESENT_EMAIL": "Change resent email",
   "RESET_PASSWORD": "Reset password",
+  "CHANGE_PASSWORD": "Change password",
   "NEW_PASSWORD": "New password",
   "CONFIRM_NEW_PASSWORD": "Confirm new password",
   "SET_NEW_PASSWORD": "Set new password",
@@ -68,5 +69,7 @@
   "LOG_OUT": "Log out",
   "APPEARANCE": "Appearance",
   "AUTH_CHANNELS": "Authorization channels",
-  "SOCIALS": "Socials"
+  "SOCIALS": "Socials",
+  "SEND_CONFIRM_LETTER": "Send confirm letter",
+  "DELETE_ACCOUNT": "Delete account"
 }
