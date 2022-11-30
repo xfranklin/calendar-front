@@ -45,15 +45,15 @@ const required = (value) => !value && t("ERROR_REQUIRED");
 
 let date;
 try {
-  date = new Date(props.modelValue);
+  if (props.modelValue) date = new Date(props.modelValue);
 } catch (e) {
   console.error(e);
 }
 
 const birth = ref({
-  day: date?.getDate() || "",
+  day: date?.getDate() ?? "",
   month: date?.getMonth() ?? "",
-  year: date?.getFullYear() || ""
+  year: date?.getFullYear() ?? ""
 });
 
 const dayRef = ref(null);
@@ -94,7 +94,7 @@ const dayUpdate = () => {
 const nextFocus = () => {
   if (!birth.value.day) {
     dayRef.value.focus();
-  } else if (!birth.value.month) {
+  } else if (!birth.value.month && birth.value.month !== 0) {
     monthRef.value.focus();
   } else if (!birth.value.year) {
     yearRef.value.focus();
