@@ -9,7 +9,7 @@
   </div>
   <BaseForm v-slot="{ valid }" class="forgot__form" @submit="forgot">
     <template v-if="!isResendButton">
-      <BaseInput v-model="forgotForm" :rules="emailHints" placeholder="EMAIL_PLACEHOLDER" label="EMAIL" />
+      <BaseInput v-model="email" :rules="emailHints" placeholder="EMAIL_PLACEHOLDER" label="EMAIL" />
       <button
         v-loading="isLoadingButton"
         :disabled="!valid"
@@ -47,7 +47,7 @@ const $service = useServices();
 
 const isLoadingButton = ref(false);
 
-const forgotForm = ref("");
+const email = ref("");
 
 const isResendButton = ref(false);
 
@@ -79,11 +79,7 @@ const forgot = async () => {
   if (isLoadingButton.value) return;
   isLoadingButton.value = true;
   const token = await reCaptchaExecute();
-  const forgotData = {
-    email: forgotForm.value,
-    token: token
-  };
-  const response = await $service.auth.forgotPassword(forgotData);
+  const response = await $service.auth.forgotPassword({ email: email.value, token });
   isLoadingButton.value = false;
 
   if (response) {

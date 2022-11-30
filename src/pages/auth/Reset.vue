@@ -55,7 +55,7 @@ const resetPassword = async () => {
   if (isLoadingButton.value) return;
   isLoadingButton.value = true;
   const token = "token";
-  await $service.auth.resetPassword({ token, password: resetForm.value.password });
+  await $service.auth.resetPassword({ password: resetForm.value.password, token });
   isLoadingButton.value = false;
 };
 </script>

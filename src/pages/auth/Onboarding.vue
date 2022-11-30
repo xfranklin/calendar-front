@@ -45,7 +45,7 @@ const formData = ref({
 const onboard = async () => {
   if (isLoading.value) return;
   isLoading.value = true;
-  await $services.user.onboarding(formData.value);
+  await $services.user.onboarding({ ...formData.value });
   isLoading.value = false;
 };
 </script>

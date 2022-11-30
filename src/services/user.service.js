@@ -27,4 +27,15 @@ export class UserService {
       await this.router.push({ name: "Timeline" });
     }
   }
+
+  // TODO replace to real endpoint
+  async updatePersonalDetails(personalDetails) {
+    await new Promise((res) => {
+      setTimeout(() => {
+        res();
+      }, 1500);
+    });
+    this.user.setUserInfo({ ...this.user.getUserInfo, ...personalDetails });
+    this.notification({ message: this.t("PERSONAL_DETAILS_UPDATED"), type: "success" });
+  }
 }

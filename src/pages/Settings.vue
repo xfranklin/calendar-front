@@ -52,12 +52,14 @@ import BirthPicker from "@/components/ui/BirthPicker.vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
 import { useBreakPoints } from "@/composables/useBreakPoints";
 import { useUserStore } from "@/store/user";
+import { useServices } from "@/composables/useServices";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 
 const breakpoints = useBreakPoints();
 const user = useUserStore();
+const $services = useServices();
 
 const personalDataLoading = ref(false);
 
@@ -73,18 +75,19 @@ const rules = [
 ];
 
 const hasChanges = computed(() => {
-  // TODO time GTM
   const { firstName, lastName, birthday } = user.getUserInfo;
   return Boolean(
     personalForm.value.firstName !== firstName ||
       personalForm.value.lastName !== lastName ||
-      new Date(personalForm.value.birthday).getTime() !== new Date(birthday).getTime()
+      personalForm.value.birthday !== birthday
   );
 });
 
 const updatePersonDetails = async () => {
   if (personalDataLoading.value) return;
   personalDataLoading.value = true;
+  await $services.user.updatePersonalDetails({ ...personalForm.value });
+  personalDataLoading.value = false;
 };
 </script>
 <style lang="scss">

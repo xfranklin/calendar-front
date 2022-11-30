@@ -66,12 +66,7 @@ const signUp = async () => {
   if (isLoadingButton.value) return;
   isLoadingButton.value = true;
   const token = await reCaptchaExecute();
-  const signUpData = {
-    email: signUpForm.value.email,
-    password: signUpForm.value.password,
-    token: token
-  };
-  await $service.auth.signUp(signUpData);
+  await $service.auth.signUp({ ...signUpForm.value, token });
   isLoadingButton.value = false;
 };
 
