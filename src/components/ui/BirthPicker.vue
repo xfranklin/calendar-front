@@ -53,7 +53,7 @@ try {
 
 const birth = ref({
   day: date?.getDate() || "",
-  month: date?.getMonth() || "",
+  month: date?.getMonth() ?? "",
   year: date?.getFullYear() || ""
 });
 
