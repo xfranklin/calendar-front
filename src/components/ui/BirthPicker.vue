@@ -21,7 +21,6 @@
       @change="dayUpdate"
     />
   </div>
-  <pre>{{ modelValue }}</pre>
 </template>
 <script setup>
 import { getAllMonths } from "@/utils/get-mounts";
