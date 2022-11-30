@@ -1,5 +1,7 @@
 <template>
   <h1 class="headline-2 settings__title">{{ $t("SETTINGS") }}</h1>
+  <h2 v-if="!breakpoints.tablet" class="subtitle-1 settings__subtitle">{{ $t("APPEARANCE") }}</h2>
+  <ColorMode v-if="!breakpoints.tablet" class="settings__color-switch" :label="$t('DARK_MODE')" />
   <h2 class="subtitle-1 settings__subtitle">{{ $t("PERSONAL_DETAILS") }}</h2>
   <BaseForm v-slot="{ valid }" class="settings__form" @submit="updatePersonDetails">
     <div class="settings__personal">
@@ -60,8 +62,6 @@
       <BaseIcon name="trash" />{{ $t("DELETE_ACCOUNT") }}
     </button>
   </div>
-  <h2 v-if="!breakpoints.tablet" class="subtitle-1 settings__subtitle">{{ $t("APPEARANCE") }}</h2>
-  <ColorMode v-if="!breakpoints.tablet" class="settings__color-switch" :label="$t('DARK_MODE')" />
 </template>
 <script setup>
 import { ref, computed } from "vue";
