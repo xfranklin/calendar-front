@@ -111,18 +111,13 @@ const updatePersonDetails = async () => {
 .settings {
   &__title {
     padding: 24px 16px;
-    color: var(--base-text-5);
   }
   &__subtitle {
     padding: 0 16px 16px 16px;
-    color: var(--base-text-5);
   }
   &__form,
   &__color-switch {
     padding: 0 16px 40px 16px;
-  }
-  &__color-switch .base-switch__label {
-    color: var(--base-text-5) !important;
   }
   &__update-button {
     width: 100%;
@@ -132,7 +127,7 @@ const updatePersonDetails = async () => {
     padding: 0 16px 40px;
   }
   &__socials-title {
-    color: var(--base-text-5) !important;
+    color: var(--base-text) !important;
     margin-bottom: 2px;
   }
   &__socials-buttons {
