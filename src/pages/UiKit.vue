@@ -243,6 +243,29 @@
         <BaseRadio v-model="radio_2" disabled label="Radio me" :val="2" class="mb-4" />
       </div>
     </div>
+    <div class="divider">
+      <h2 class="subtitle-1">Modals</h2>
+      <hr />
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px">
+      <div style="display: flex; gap: 10px">
+        <button class="base-primary-outlined-button" @click="modal_2 = true">Modal</button>
+        <button class="base-primary-outlined-button" @click="modal_1 = true">Fullscreen Modal</button>
+      </div>
+      <BaseModal v-model:open="modal_1" :fullscreen="true">
+        <h1 style="max-width: 480px; margin: 0 auto">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ex odio tempora voluptates. Aliquid at
+          consequuntur cupiditate doloremque
+        </h1>
+      </BaseModal>
+      <BaseModal v-model:open="modal_2">
+        <h2 style="max-width: 480px; padding: 56px 24px 24px">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores magni, molestiae molestias nihil nostrum
+          odit quos sint soluta tempora voluptatum. Architecto harum in laudantium odit.
+        </h2>
+      </BaseModal>
+    </div>
 
     <div class="divider">
       <h2 class="subtitle-1">Notifications</h2>
@@ -268,6 +291,8 @@ import { ref, watch, onMounted } from "vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
 import BaseSelect from "@/components/base/form/BaseSelect.vue";
 import BaseRadio from "@/components/base/form/BaseRadio.vue";
+import BaseModal from "@/components/base/feedback/BaseModal.vue";
+
 import { $notification } from "@/components/base/feedback/notification/notification";
 
 const variableFont = ref(null);
@@ -332,13 +357,16 @@ const switch_4 = ref(true);
 const radio_1 = ref(1);
 const radio_2 = ref(null);
 
+const modal_1 = ref(false);
+const modal_2 = ref(false);
+
 watch(variableWeight, (weight) => {
   variableFont.value.style.fontWeight = weight;
 });
 
 onMounted(() => {
-  input_10.value.validateInput();
-  input_11.value.validateInput();
+  // input_10.value.validateInput();
+  // input_11.value.validateInput();
 });
 
 // notifications
@@ -412,7 +440,7 @@ const noti_8 = () => {
 
 .ui-kit {
   margin: 0.5rem 1.5rem;
-  max-width: 960px;
+  //max-width: 960px;
   width: 100%;
 }
 

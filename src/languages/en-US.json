@@ -71,5 +71,17 @@
   "AUTH_CHANNELS": "Authorization channels",
   "SOCIALS": "Socials",
   "SEND_CONFIRM_LETTER": "Send confirm letter",
-  "DELETE_ACCOUNT": "Delete account"
+  "DELETE_ACCOUNT": "Delete account",
+  "DELETE_EFFECTS": "Deleting account will do the following:",
+  "DELETE_EFFECT_1": "Log you out on all devices",
+  "DELETE_EFFECT_2": "Delete all your recordings",
+  "DELETE_EFFECT_3": "Delete all your personal information",
+  "DELETE_EFFECT_RESULT": "If you confirm this now, you can’t change the decision anymore.",
+  "DELETE_ANSWER_QUESTION": "Before deleting, answer the question:",
+  "DELETE_QUESTION": "Why are you deleting your account?",
+  "DELETE_VAR_1": "I don’t use/like oooi anymore",
+  "DELETE_VAR_2": "I’m switching to something else",
+  "DELETE_VAR_3": "Other",
+  "DELETE_QUESTION_PLACEHOLDER": "My reason...",
+  "DELETE": "Delete"
 }

@@ -18,11 +18,9 @@ const bind = (component) => {
   state.value.validatedComponents.push(component);
 };
 
-const unBind = (uid) => {
-  const index = state.value.validatedComponents.findIndex((c) => c.uid === uid);
-  if (index > -1) {
-    state.value.validatedComponents.splice(index, 1);
-  }
+const unBind = ({ uid }) => {
+  state.value.validatedComponents = state.value.validatedComponents.filter((c) => c.uid !== uid);
+  delete state.value.isValid[uid];
 };
 
 const setValidation = (value, uid) => {

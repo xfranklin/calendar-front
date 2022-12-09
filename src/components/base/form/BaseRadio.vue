@@ -10,7 +10,7 @@
       @change="onChange"
     />
     <div class="base-radio__core"></div>
-    <div v-if="label" class="base-radio__label">{{ label }}</div>
+    <div v-if="label" class="base-radio__label">{{ $t(label) }}</div>
   </label>
 </template>
 <script setup>
@@ -82,7 +82,7 @@ const onChange = () => {
   }
 
   &__input:focus-visible ~ .base-radio__core {
-    outline: 2px solid var(--base-bg-13);
+    outline: 2px solid var(--base-bg-0);
     outline-offset: 2px;
     //border-color: var(--base-bg-13);
     //&::before {

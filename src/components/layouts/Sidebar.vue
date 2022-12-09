@@ -1,10 +1,10 @@
 <template>
-  <aside :class="['main-sidebar', { opened: settings.isSidebarOpened }]">
+  <aside ref="sidebar" :tabindex="tabIndex" :class="['main-sidebar', { opened: settings.isSidebarOpened }]">
     <div class="main-sidebar__header">
-      <router-link class="clear-button" :to="{ name: 'UiKit' }">
+      <router-link class="clear-button" :tabindex="tabIndex" :to="{ name: 'UiKit' }">
         <BaseImage src="/src/assets/images/logo" alt="oooi-logo" :height="40" />
       </router-link>
-      <button class="main-sidebar__header-close clear-button" @click="close">
+      <button class="main-sidebar__header-close clear-button" :tabindex="tabIndex" @click="close">
         <BaseIcon name="close" />
       </button>
     </div>
@@ -13,6 +13,7 @@
         v-for="({ name, term, icon }, key) in navigationList"
         :key="key"
         :to="{ name }"
+        :tabindex="tabIndex"
         class="main-sidebar__menu-link"
       >
         <BaseIcon :name="icon" />
@@ -23,6 +24,7 @@
       <button
         v-for="({ action, term, icon }, key) in actionsList"
         :key="key"
+        :tabindex="tabIndex"
         type="button"
         class="main-sidebar__actions-btn"
         @click="actions[action]()"
@@ -37,7 +39,7 @@
   </transition>
 </template>
 <script setup>
-import { watch } from "vue";
+import { watch, ref } from "vue";
 import { useSettingsStore } from "@/store/settings";
 import { useServices } from "@/composables/useServices";
 import { useRoute } from "vue-router";
@@ -45,7 +47,10 @@ import { useRoute } from "vue-router";
 const settings = useSettingsStore();
 const $services = useServices();
 const route = useRoute();
+const tabIndex = ref(-1);
+const sidebar = ref(null);
 
+const body = document.getElementById("oooi-app");
 const navigationList = [
   { name: "Timeline", term: "TIMELINE", icon: "clock" },
   { name: "Boards", term: "BOARDS", icon: "grid" },
@@ -66,9 +71,21 @@ watch(
   }
 );
 
+watch(
+  () => settings.isSidebarOpened,
+  (value) => {
+    if (value) {
+      tabIndex.value = 0;
+      sidebar.value.focus();
+      body.style.overflowY = "hidden";
+    } else {
+      tabIndex.value = -1;
+      body.style.overflowY = "unset";
+    }
+  }
+);
+
 const close = () => {
-  const body = document.getElementById("oooi-app");
-  body.style.overflowY = "unset";
   settings.setSideBarStatus(false);
 };
 
@@ -88,7 +105,7 @@ const actions = {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  z-index: 900;
+  z-index: 800;
   background-color: var(--base-page-bg);
   overflow: auto;
   transform: translateX(-100%);
@@ -191,12 +208,13 @@ const actions = {
 
   &__bg-layout {
     position: fixed;
-    z-index: 800;
+    z-index: 700;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     cursor: pointer;
+    backdrop-filter: saturate(140%) blur(4px);
     background-color: rgba(0, 15, 31, 0.2);
   }
 }

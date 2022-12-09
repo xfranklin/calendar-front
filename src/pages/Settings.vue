@@ -57,16 +57,14 @@
     <button class="base-primary-outlined-button icon settings__confirm-button">
       <BaseIcon name="mail" />{{ $t("SEND_CONFIRM_LETTER") }}
     </button>
-
-    <button class="base-danger-outlined-button icon settings__delete-button">
-      <BaseIcon name="trash" />{{ $t("DELETE_ACCOUNT") }}
-    </button>
+    <DeleteAccountModal />
   </div>
 </template>
 <script setup>
 import { ref, computed } from "vue";
 import BirthPicker from "@/components/ui/BirthPicker.vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
+import DeleteAccountModal from "@/components/modals/DeleteAccountModal.vue";
 import { useBreakPoints } from "@/composables/useBreakPoints";
 import { useUserStore } from "@/store/user";
 import { useServices } from "@/composables/useServices";
