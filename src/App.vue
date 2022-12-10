@@ -3,6 +3,7 @@
     <router-view />
   </component>
   <Loader v-else />
+  <div id="modals-portal"></div>
 </template>
 <script setup>
 import { ref, watch, markRaw, computed, defineAsyncComponent } from "vue";

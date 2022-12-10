@@ -1,5 +1,5 @@
 <template>
-  <teleport to="#oooi-app">
+  <teleport to="#modals-portal">
     <transition name="modal">
       <div v-if="open" :class="['base-modal', { fullscreen }]" @click.self="close">
         <div ref="modal" tabindex="0" class="base-modal__body">
