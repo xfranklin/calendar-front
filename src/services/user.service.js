@@ -37,6 +37,7 @@ export class UserService {
       }, 2000);
     });
     this.user.$reset();
+    await this.router.push({ name: "Login" });
     this.notification({
       duration: "none",
       type: "success",

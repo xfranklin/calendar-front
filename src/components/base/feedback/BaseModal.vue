@@ -58,7 +58,8 @@ const onEsc = (event) => {
 };
 
 onUnmounted(() => {
-  close();
+  document.removeEventListener("keydown", onEsc);
+  document.documentElement.style.overflow = "";
 });
 </script>
 <style lang="scss">

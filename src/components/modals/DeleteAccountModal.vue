@@ -67,8 +67,6 @@ const deleteAccount = async () => {
     ...(otherReason.value && { other: otherReason.value })
   });
   loading.value = false;
-  deleteModal.value = false;
-  await router.push({ name: "Login" });
 };
 </script>
 <style lang="scss">
