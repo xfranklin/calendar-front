@@ -29,6 +29,22 @@ export class UserService {
   }
 
   // TODO replace to real endpoint
+  async deleteAccount(deletionData) {
+    await new Promise((res) => {
+      setTimeout(() => {
+        console.log(deletionData);
+        res();
+      }, 2000);
+    });
+    this.user.$reset();
+    this.notification({
+      duration: "none",
+      type: "success",
+      message: this.t("SUCCESS_DELETION")
+    });
+  }
+
+  // TODO replace to real endpoint
   async updatePersonalDetails(personalDetails) {
     await new Promise((res) => {
       setTimeout(() => {

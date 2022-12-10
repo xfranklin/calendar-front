@@ -83,5 +83,7 @@
   "DELETE_VAR_2": "I’m switching to something else",
   "DELETE_VAR_3": "Other",
   "DELETE_QUESTION_PLACEHOLDER": "My reason...",
-  "DELETE": "Delete"
+  "DELETE": "Delete",
+  "SUCCESS_DELETION": "Your account has been deleted. Hope to see you again soon!"
+
 }

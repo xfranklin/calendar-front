@@ -32,7 +32,7 @@
   </BaseForm>
   <h2 class="subtitle-1 settings__subtitle">{{ $t("AUTH_CHANNELS") }}</h2>
   <div class="settings__auth-channels">
-    <BaseInput :model-value="user.userInfo.email" class="settings__input" label="EMAIL" :readonly="true" />
+    <BaseInput :model-value="personalForm.email" class="settings__input" label="EMAIL" :readonly="true" />
     <div class="settings__socials">
       <div class="base-text settings__socials-title">{{ $t("SOCIALS") }}</div>
       <div class="settings__socials-buttons">
@@ -81,7 +81,8 @@ const personalDataLoading = ref(false);
 const personalForm = ref({
   firstName: user.getUserInfo?.firstName || "",
   lastName: user.getUserInfo?.lastName || "",
-  birthday: user.getUserInfo?.birthday || ""
+  birthday: user.getUserInfo?.birthday || "",
+  email: user.getUserInfo?.email || ""
 });
 
 const rules = [
@@ -90,6 +91,7 @@ const rules = [
 ];
 
 const hasChanges = computed(() => {
+  if (!user.getUserInfo) return false;
   const { firstName, lastName, birthday } = user.getUserInfo;
   return Boolean(
     personalForm.value.firstName !== firstName ||

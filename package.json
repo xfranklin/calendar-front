@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --mode local-dev",
+    "dev": "vite --mode local-dev --host",
     "build:dev": "vite build --mode development",
     "build": "vite build",
     "preview": "vite preview",

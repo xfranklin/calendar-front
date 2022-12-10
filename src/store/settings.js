@@ -3,8 +3,8 @@ import { defineStore } from "pinia";
 export const useSettingsStore = defineStore("settings", {
   state: () => ({
     inited: false,
-    colorMode: "",
-    sideBardOpened: false
+    colorMode: null,
+    sideBarOpened: false
   }),
   actions: {
     setColorMode(mode) {
@@ -14,12 +14,12 @@ export const useSettingsStore = defineStore("settings", {
       this.inited = status;
     },
     setSideBarStatus(status) {
-      this.sideBardOpened = status;
+      this.sideBarOpened = status;
     }
   },
   getters: {
     isDarkMode: (state) => state.colorMode === "DARK",
     isInited: (state) => state.inited,
-    isSidebarOpened: (state) => state.sideBardOpened
+    isSidebarOpened: (state) => state.sideBarOpened
   }
 });

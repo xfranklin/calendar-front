@@ -64,8 +64,7 @@ export class AuthService {
   async logout() {
     const response = await this.$http.post("/auth/logout", {});
     if (response.status === 200) {
-      this.user.setUserInfo(null);
-      this.user.setAuthStatus(false);
+      this.user.$reset();
       await this.router.push({ name: "Login" });
     }
   }

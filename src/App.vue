@@ -8,13 +8,11 @@
 import { ref, watch, markRaw, computed, defineAsyncComponent } from "vue";
 import { useRoute } from "vue-router";
 import { useSettingsStore } from "@/store/settings";
-import { useServices } from "@/composables/useServices";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import Loader from "@/components/layouts/Loader.vue";
 
 const layout = ref();
 const route = useRoute();
-const $services = useServices();
 const settings = useSettingsStore();
 
 const isInited = computed(() => {

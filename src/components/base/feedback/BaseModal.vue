@@ -15,7 +15,7 @@
   </teleport>
 </template>
 <script setup>
-import { watch, ref, nextTick } from "vue";
+import { watch, ref, onUnmounted, nextTick } from "vue";
 
 const props = defineProps({
   open: {
@@ -56,6 +56,10 @@ const onEsc = (event) => {
     close();
   }
 };
+
+onUnmounted(() => {
+  close();
+});
 </script>
 <style lang="scss">
 [dark] .base-modal__body {

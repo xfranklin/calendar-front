@@ -35,6 +35,7 @@ const onSubmit = () => {
 };
 
 const validateForm = () => {
+  if (!state.value.validatedComponents.length) return true;
   return state.value.validatedComponents.reduce((acc, { validateInput }) => {
     const isValid = validateInput();
     if (acc === false) return acc;
