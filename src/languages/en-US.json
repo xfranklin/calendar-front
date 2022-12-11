@@ -85,5 +85,11 @@
   "DELETE_QUESTION_PLACEHOLDER": "My reason...",
   "DELETE": "Delete",
   "SUCCESS_DELETION": "Your account has been deleted. Hope to see you again soon!",
-  "CANNOT_CHANGE_WARNING": "To change your password, you must first confirm your email"
+  "CANNOT_CHANGE_WARNING": "To change your password, you must first confirm your email",
+  "CONFIRM_PASSWORD": "Confirm Changes",
+  "CURRENT_PASSWORD": "Current password",
+  "REPEAT_NEW_PASSWORD": "Repeat new password",
+  "BACK_TO_SETTINGS": "Back to Settings",
+  "PASSWORD_EQUAL": "The password and repeat password must be equal.",
+  "PASSWORD_CHANGED": "Your password has been changed."
 }
