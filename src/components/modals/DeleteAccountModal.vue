@@ -41,13 +41,11 @@
 import BaseModal from "@/components/base/feedback/BaseModal.vue";
 import BaseRadio from "@/components/base/form/BaseRadio.vue";
 import { useI18n } from "vue-i18n";
-import { useRouter } from "vue-router";
 import { useServices } from "@/composables/useServices";
 import { ref } from "vue";
 const $services = useServices();
 
 const { t } = useI18n();
-const router = useRouter();
 
 const rules = [
   (value) => !value && t("ERROR_REQUIRED"),

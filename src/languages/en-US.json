@@ -84,6 +84,6 @@
   "DELETE_VAR_3": "Other",
   "DELETE_QUESTION_PLACEHOLDER": "My reason...",
   "DELETE": "Delete",
-  "SUCCESS_DELETION": "Your account has been deleted. Hope to see you again soon!"
-
+  "SUCCESS_DELETION": "Your account has been deleted. Hope to see you again soon!",
+  "CANNOT_CHANGE_WARNING": "To change your password, you must first confirm your email"
 }

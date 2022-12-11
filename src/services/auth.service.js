@@ -27,6 +27,7 @@ export class AuthService {
       this.user.setAuthStatus(true);
       const user = await this.me();
       this.user.setUserInfo(user);
+      await this.getEntrypoints();
     } else {
       this.user.setAuthStatus(false);
     }
@@ -38,6 +39,7 @@ export class AuthService {
     if (response?.user) {
       this.user.setUserInfo(response.user);
       this.user.setAuthStatus(true);
+      await this.getEntrypoints();
       await this.router.push({ name: "Timeline" });
     }
     return response;
@@ -48,6 +50,7 @@ export class AuthService {
     if (response?.user) {
       this.user.setUserInfo(response.user);
       this.user.setAuthStatus(true);
+      await this.getEntrypoints();
       await this.router.push({ name: "Timeline" });
     }
     return response;
@@ -71,6 +74,11 @@ export class AuthService {
 
   async me() {
     return await this.$http.get("/user/me");
+  }
+
+  async getEntrypoints() {
+    const response = await this.$http.get("/user/entrypoints");
+    this.user.setEntrypoints(response);
   }
 
   // TODO remove after response on real point

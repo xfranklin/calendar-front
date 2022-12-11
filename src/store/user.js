@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("user", {
   state: () => ({
     authenticated: false,
-    userInfo: null
+    userInfo: null,
+    entrypoints: null
   }),
   actions: {
     setAuthStatus(status) {
@@ -11,6 +12,9 @@ export const useUserStore = defineStore("user", {
     },
     setUserInfo(user) {
       this.userInfo = user;
+    },
+    setEntrypoints(entrypoints) {
+      this.entrypoints = entrypoints;
     }
   },
   getters: {
@@ -22,6 +26,9 @@ export const useUserStore = defineStore("user", {
     },
     getUserInfo(state) {
       return state.userInfo;
+    },
+    getEntrypoints(state) {
+      return state.entrypoints;
     }
   }
 });

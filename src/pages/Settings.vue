@@ -32,14 +32,14 @@
   </BaseForm>
   <h2 class="subtitle-1 settings__subtitle">{{ $t("AUTH_CHANNELS") }}</h2>
   <div class="settings__auth-channels">
-    <BaseInput :model-value="personalForm.email" class="settings__input" label="EMAIL" :readonly="true" />
+    <BaseInput v-if="email" :model-value="email" class="settings__input" label="EMAIL" :readonly="true" />
     <div class="settings__socials">
       <div class="base-text settings__socials-title">{{ $t("SOCIALS") }}</div>
       <div class="settings__socials-buttons">
-        <button class="base-primary-outlined-button only-icon">
+        <button class="base-primary-outlined-button only-icon" :disabled="myEntrypoint !== Entrypoints.GOOGLE">
           <BaseIcon name="google" group="socials" />
         </button>
-        <button class="base-primary-outlined-button only-icon" disabled>
+        <button class="base-primary-outlined-button only-icon" :disabled="myEntrypoint !== Entrypoints.FACEBOOK">
           <BaseIcon name="facebook" group="socials" />
         </button>
       </div>
@@ -47,21 +47,22 @@
   </div>
   <!--  TODO ask Dasha redesign-->
   <div class="settings__account-manage">
-    <button
-      class="base-primary-outlined-button icon settings__change-password"
-      @click="$router.push({ name: 'ChangePassword' })"
-    >
-      <BaseIcon name="settings" />
-      {{ $t("CHANGE_PASSWORD") }}
-    </button>
-    <button class="base-primary-outlined-button icon settings__confirm-button">
-      <BaseIcon name="mail" />{{ $t("SEND_CONFIRM_LETTER") }}
-    </button>
+    <template v-if="myEntrypoint === Entrypoints.EMAIL">
+      <button class="base-primary-outlined-button icon settings__change-password" @click="changePassword">
+        <BaseIcon name="settings" />
+        {{ $t("CHANGE_PASSWORD") }}
+      </button>
+      <button v-if="!isVerified" class="base-primary-outlined-button icon settings__confirm-button">
+        <BaseIcon name="mail" />{{ $t("SEND_CONFIRM_LETTER") }}
+      </button>
+    </template>
     <DeleteAccountModal />
   </div>
 </template>
 <script setup>
 import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+import { Entrypoints } from "@/utils/entrypoints";
 import BirthPicker from "@/components/ui/BirthPicker.vue";
 import ColorMode from "@/components/ui/ColorMode.vue";
 import DeleteAccountModal from "@/components/modals/DeleteAccountModal.vue";
@@ -69,8 +70,10 @@ import { useBreakPoints } from "@/composables/useBreakPoints";
 import { useUserStore } from "@/store/user";
 import { useServices } from "@/composables/useServices";
 import { useI18n } from "vue-i18n";
+import { $notification } from "@/components/base/feedback/notification/notification";
 
 const { t } = useI18n();
+const router = useRouter();
 
 const breakpoints = useBreakPoints();
 const user = useUserStore();
@@ -78,11 +81,14 @@ const $services = useServices();
 
 const personalDataLoading = ref(false);
 
+const email = user.getUserInfo?.email || "";
+const myEntrypoint = user.getEntrypoints[0].type;
+const isVerified = user.getUserInfo?.isVerified;
+
 const personalForm = ref({
   firstName: user.getUserInfo?.firstName || "",
   lastName: user.getUserInfo?.lastName || "",
-  birthday: user.getUserInfo?.birthday || "",
-  email: user.getUserInfo?.email || ""
+  birthday: user.getUserInfo?.birthday || ""
 });
 
 const rules = [
@@ -103,8 +109,16 @@ const hasChanges = computed(() => {
 const updatePersonDetails = async () => {
   if (personalDataLoading.value) return;
   personalDataLoading.value = true;
-  await $services.user.updatePersonalDetails({ ...personalForm.value });
+  await $services.user.updatePersonalInfo({ ...personalForm.value });
   personalDataLoading.value = false;
+};
+
+const changePassword = async () => {
+  if (isVerified) {
+    await router.push({ name: "ChangePassword" });
+  } else {
+    $notification({ type: "warning", message: t("CANNOT_CHANGE_WARNING") });
+  }
 };
 </script>
 <style lang="scss">
