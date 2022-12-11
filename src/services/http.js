@@ -1,6 +1,7 @@
 import axios from "axios";
 import { $notification } from "@/components/base/feedback/notification/notification";
 import { i18n } from "@/configs/i18n";
+import { useUserStore } from "@/store/user";
 import { router } from "@/router";
 
 const HttpStatus = {
@@ -22,13 +23,16 @@ export class HttpService {
     this.notification = $notification;
     this.router = router;
     this.t = i18n.global.t;
+    this.user = useUserStore();
   }
 
   static async errorInterceptor({ config, response }) {
     if (config?.headers?.TYPE !== "REFRESH" && response?.status === HttpStatus.UNAUTHORIZED) {
       const { statusCode } = await this.refresh();
       if (statusCode === 401) {
+        this.user.$reset();
         await this.router.push({ name: "Login" });
+        return;
       }
       config._retry = true;
       return await this._axios(config);
