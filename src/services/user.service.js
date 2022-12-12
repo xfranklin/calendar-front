@@ -52,4 +52,11 @@ export class UserService {
       this.notification({ message: this.t("PERSONAL_DETAILS_UPDATED"), type: "success" });
     }
   }
+
+  async ChangePassword(passwords) {
+    const response = await this.$http.post("/user/change-password", passwords, true);
+    if (response.status === 200) {
+      this.notification({ message: this.t("PASSWORD_CHANGED"), type: "success" });
+    }
+  }
 }
