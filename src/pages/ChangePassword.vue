@@ -98,17 +98,21 @@ onMounted(() => {
 </script>
 <style lang="scss">
 .change-password {
+  box-sizing: content-box;
+  max-width: 536px;
+  margin: 0 auto;
+  padding: 0 16px;
+
   &__title {
-    padding: 24px 16px;
+    padding: 24px 0;
   }
 
   &__link {
     display: flex;
-    padding-left: 16px;
   }
 
   &__form {
-    padding: 40px 16px;
+    padding: 40px 0;
   }
 
   &__confirm-button {
@@ -118,9 +122,6 @@ onMounted(() => {
 
 @media screen and(min-width: 769px) {
   .change-password {
-    max-width: 416px;
-    margin: 0 auto;
-
     &__title {
       padding-bottom: 40px;
       text-align: center;
