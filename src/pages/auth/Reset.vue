@@ -3,8 +3,7 @@
   <div class="reset__description base-text">
     {{ $t("ENTER_YOUR_NEW_PASSWORD") }}.<router-link class="base-link" :to="{ name: 'Login' }">{{
       $t("BACK_TO_SIGN_IN")
-    }}</router-link
-    >.
+    }}</router-link>
   </div>
   <BaseForm v-slot="{ valid }" class="reset__form" @submit="resetPassword">
     <BaseInput :model-value="resetForm.email" :disabled="true" label="EMAIL" />
@@ -74,7 +73,7 @@ const resetPassword = async () => {
   }
 
   &__form-button {
-    margin-top: 16px;
+    margin-top: 20px;
   }
 }
 </style>

@@ -34,7 +34,7 @@ const onChange = ({ target }) => {
 <style scoped lang="scss">
 .base-switch {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   // base-switch__input

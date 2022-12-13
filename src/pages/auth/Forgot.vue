@@ -106,7 +106,7 @@ onUnmounted(() => {
     margin-top: 40px;
   }
   &__form-button {
-    margin-top: 16px;
+    margin-top: 20px;
     &-resend {
       margin-top: 24px;
     }

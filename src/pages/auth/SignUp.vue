@@ -102,7 +102,7 @@ const facebookSignUp = async () => {
     margin-top: 40px;
   }
   &__form-button {
-    margin-top: 16px;
+    margin-top: 20px;
   }
   &__divider {
     margin: 40px 0;

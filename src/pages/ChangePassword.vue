@@ -4,36 +4,36 @@
     <router-link class="base-link icon change-password__link" :to="{ name: 'Settings' }">
       <BaseIcon name="chevron-left" group="chevrons" />{{ $t("BACK_TO_SETTINGS") }}</router-link
     >
-    <BaseForm v-slot="{ valid }" class="change-password__form" @submit="Change">
+    <BaseForm v-slot="{ valid }" class="change-password__form" @submit="changePassword">
       <BaseInput
-        v-model="ChangePassword.oldPassword"
+        v-model="changePasswordForm.oldPassword"
         :rules="passwordHints.current"
         class="changer-password_input"
         type="password"
-        placeholder="PASSWORD_CREATE_PLACEHOLDER"
+        placeholder="PASSWORD"
         label="CURRENT_PASSWORD"
       />
       <BaseInput
-        v-model="ChangePassword.newPassword"
+        v-model="changePasswordForm.newPassword"
         :rules="passwordHints.current"
         class="changer-password__input"
         type="password"
-        placeholder="PASSWORD_CREATE_PLACEHOLDER"
+        placeholder="NEW_PASSWORD"
         label="NEW_PASSWORD"
       />
       <BaseInput
-        v-model="ChangePassword.repeatNewPassword"
+        v-model="changePasswordForm.repeatNewPassword"
         :rules="passwordHints.new"
         class="changer-password__input"
         type="password"
-        placeholder="PASSWORD_CREATE_PLACEHOLDER"
+        placeholder="ENTER_PASSWORD_AGAIN"
         label="REPEAT_NEW_PASSWORD"
       />
       <button
         v-loading="isLoadingButton"
         :disabled="!valid"
         type="submit"
-        class="base-primary-button w-100 changer-password_button"
+        class="base-primary-button w-100 change-password__confirm-button"
       >
         {{ $t("CONFIRM_PASSWORD") }}
       </button>
@@ -45,6 +45,7 @@ import { ref, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useServices } from "@/composables/useServices";
+import { Entrypoints } from "@/utils/entrypoints";
 import { useUserStore } from "@/store/user";
 import { PASSWORD_REG_EXP } from "@/utils/regular-expresions";
 
@@ -53,7 +54,7 @@ const $service = useServices();
 const user = useUserStore();
 const router = useRouter();
 
-const ChangePassword = ref({ oldPassword: "", newPassword: "", repeatNewPassword: "" });
+const changePasswordForm = ref({ oldPassword: "", newPassword: "", repeatNewPassword: "" });
 const isLoadingButton = ref(false);
 
 const passwordHints = {
@@ -68,22 +69,29 @@ const passwordHints = {
     (value) => !PASSWORD_REG_EXP.test(value) && t("PASSWORD_INVALID"),
     (value) => value.length < 4 && t("MIN_CHARS", { number: 4 }),
     (value) => value.length > 128 && t("MAX_CHARS", { number: 128 }),
-    (value) => value !== ChangePassword.value.newPassword && t("PASSWORD_EQUAL")
+    (value) => value !== changePasswordForm.value.newPassword && t("PASSWORD_EQUAL")
   ]
 };
 
-const Change = async () => {
+const changePassword = async () => {
   if (isLoadingButton.value) return;
   isLoadingButton.value = true;
-  await $service.user.ChangePassword({
-    oldPassword: ChangePassword.value.oldPassword,
-    newPassword: ChangePassword.value.newPassword
+  const isChanged = await $service.user.changePassword({
+    oldPassword: changePasswordForm.value.oldPassword,
+    newPassword: changePasswordForm.value.newPassword
   });
+  isChanged && clearForm();
   isLoadingButton.value = false;
 };
 
+const clearForm = () => {
+  changePasswordForm.value.oldPassword = "";
+  changePasswordForm.value.newPassword = "";
+  changePasswordForm.value.repeatNewPassword = "";
+};
+
 onMounted(() => {
-  if (!user.getUserInfo.isVerified) {
+  if (!user.getUserInfo.isVerified || user.getEntrypoints[0].type !== Entrypoints.EMAIL) {
     router.push({ name: "Settings" });
   }
 });
@@ -101,6 +109,10 @@ onMounted(() => {
 
   &__form {
     padding: 40px 16px;
+  }
+
+  &__confirm-button {
+    margin-top: 20px;
   }
 }
 

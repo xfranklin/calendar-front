@@ -185,9 +185,6 @@ const changePassword = async () => {
     &__account-manage {
       padding: 0 24px 40px;
     }
-    &__confirm-button {
-      margin-bottom: 40px;
-    }
   }
 }
 </style>

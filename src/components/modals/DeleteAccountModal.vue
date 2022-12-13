@@ -1,5 +1,5 @@
 <template>
-  <button class="base-danger-outlined-button icon" @click="deleteModal = true">
+  <button class="base-danger-outlined-button icon modal-activate-btn" @click="deleteModal = true">
     <BaseIcon name="trash" />{{ $t("DELETE_ACCOUNT") }}
   </button>
   <BaseModal v-model:open="deleteModal" :fullscreen="true">
@@ -68,6 +68,9 @@ const deleteAccount = async () => {
 };
 </script>
 <style lang="scss">
+.settings__change-password + .modal-activate-btn {
+  margin-top: 24px;
+}
 .delete-modal {
   display: flex;
   flex-direction: column;

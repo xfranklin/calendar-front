@@ -105,7 +105,7 @@ const facebookSignIn = async () => {
     margin-top: 40px;
   }
   &__form-button {
-    margin-top: 16px;
+    margin-top: 20px;
   }
   &__forgot {
     margin-top: 24px;

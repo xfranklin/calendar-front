@@ -53,10 +53,12 @@ export class UserService {
     }
   }
 
-  async ChangePassword(passwords) {
+  async changePassword(passwords) {
     const response = await this.$http.post("/user/change-password", passwords, true);
     if (response.status === 200) {
       this.notification({ message: this.t("PASSWORD_CHANGED"), type: "success" });
+      return true;
     }
+    return false;
   }
 }

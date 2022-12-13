@@ -214,7 +214,6 @@ const actions = {
     left: 0;
     right: 0;
     cursor: pointer;
-    backdrop-filter: saturate(140%) blur(4px);
     background-color: rgba(0, 15, 31, 0.2);
   }
 }
