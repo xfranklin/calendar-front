@@ -4,6 +4,7 @@ import { useServices } from "@/composables/useServices";
 import { AuthRoutes } from "./auth.js";
 import { AppRoutes } from "@/router/app";
 import UiKit from "@/pages/UiKit.vue";
+import NotFound from "@/pages/NotFound.vue";
 
 const routes = [
   {
@@ -17,6 +18,15 @@ const routes = [
     path: "/ui-kit",
     name: "UiKit",
     component: UiKit,
+    meta: {
+      layout: "EmptyLayout",
+      open: true
+    }
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: NotFound,
     meta: {
       layout: "EmptyLayout",
       open: true
@@ -36,6 +46,9 @@ router.beforeEach(async (to, from, next) => {
   await $services.auth.init();
 
   if (to.meta.open) {
+    if (to.name === "NotFound") {
+      to.meta.layout = user.isAuthenticated ? "AppLayout" : "EmptyLayout";
+    }
     next();
   } else if (to.meta.requireAuth && !user.isAuthenticated) {
     next({ name: "SignUp" });

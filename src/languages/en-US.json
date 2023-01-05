@@ -91,5 +91,8 @@
   "REPEAT_NEW_PASSWORD": "Repeat new password",
   "BACK_TO_SETTINGS": "Back to Settings",
   "PASSWORD_EQUAL": "The password and repeat password must be equal.",
-  "PASSWORD_CHANGED": "Your password has been changed."
+  "PASSWORD_CHANGED": "Your password has been changed.",
+  "404_MESSAGE": "No results found. Keep exploring.",
+  "GO_TO_TIMELINE": "Go to your timeline",
+  "GO_TO_SIGN_IN": "Go to sign in"
 }
