@@ -4,7 +4,7 @@ import { useServices } from "@/composables/useServices";
 import { AuthRoutes } from "./auth.js";
 import { AppRoutes } from "@/router/app";
 import UiKit from "@/pages/UiKit.vue";
-import NotFound from "@/pages/NotFound.vue";
+import NotFound from "@/pages/404.vue";
 
 const routes = [
   {
@@ -25,7 +25,7 @@ const routes = [
   },
   {
     path: "/:pathMatch(.*)*",
-    name: "NotFound",
+    name: "404",
     component: NotFound,
     meta: {
       layout: "EmptyLayout",
@@ -46,11 +46,12 @@ router.beforeEach(async (to, from, next) => {
   await $services.auth.init();
 
   if (to.meta.open) {
-    if (to.name === "NotFound") {
+    if (to.name === "404") {
       to.meta.layout = user.isAuthenticated ? "AppLayout" : "EmptyLayout";
     }
     next();
-  } else if (to.meta.requireAuth && !user.isAuthenticated) {
+  }
+  if (to.meta.requireAuth && !user.isAuthenticated) {
     next({ name: "SignUp" });
   } else if (user.isAuthenticated && !user.isOnboarded && to.name !== "Onboarding") {
     next({ name: "Onboarding" });
