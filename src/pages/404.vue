@@ -21,10 +21,11 @@ const user = useUserStore();
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
+  padding-top: 32px;
 
   &__background {
     flex-grow: 1;
-    margin: 0px auto 0 auto;
+    margin: 0 auto 0 auto;
     max-width: 343px;
     width: 100%;
     height: 269px;
@@ -45,6 +46,7 @@ const user = useUserStore();
 @media screen and (min-width: 769px) {
   .not-found {
     flex-direction: row;
+    padding-top: 40px;
 
     &__background {
       height: 421px;
@@ -54,7 +56,7 @@ const user = useUserStore();
 
     &__content {
       width: max(360px, 35%);
-      padding: 0px 24px 24px;
+      padding: 0 24px 24px;
     }
   }
 }

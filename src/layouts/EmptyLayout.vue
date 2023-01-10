@@ -6,7 +6,6 @@
 <style scoped>
 .empty-layout {
   min-height: 100vh;
-  padding-top: 60px;
   background-color: var(--color-white);
   background-image: url("../assets/images/layouts/noise-bg.png");
 }
