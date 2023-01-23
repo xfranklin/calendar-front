@@ -220,11 +220,11 @@
       <hr />
     </div>
     <div style="display: flex">
-      <div>
+      <div style="display: flex; flex-direction: column">
         <BaseSwitch v-model="switch_1" label="Toggle me" class="mb-4" />
         <BaseSwitch v-model="switch_2" label="Toggle me" class="mb-4" />
       </div>
-      <div style="margin-left: 2rem">
+      <div style="display: flex; flex-direction: column; margin-left: 2rem">
         <BaseSwitch v-model="switch_3" disabled label="Toggle me" class="mb-4" />
         <BaseSwitch v-model="switch_4" disabled label="Toggle me" class="mb-4" />
       </div>
@@ -439,8 +439,7 @@ const noti_8 = () => {
 }
 
 .ui-kit {
-  margin: 0.5rem 1.5rem;
-  //max-width: 960px;
+  padding: 0.5rem 1.5rem;
   width: 100%;
 }
 
